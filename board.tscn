@@ -1,443 +1,550 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7ss0ckdihwsf"]
 
-[ext_resource type="Texture2D" uid="uid://bbi777l0mu50f" path="res://tile.png" id="1_aifny"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikr7v"]
-albedo_texture = ExtResource("1_aifny")
+[ext_resource type="Material" uid="uid://n437lsr7w31f" path="res://tiles/tile_material.tres" id="1_lkugm"]
+[ext_resource type="Material" uid="uid://cj0bs40tto217" path="res://tiles/walk_tile_material.tres" id="2_tfpkl"]
 
 [node name="Board" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D21" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D25" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D26" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D29" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D30" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("2_tfpkl")
 
 [node name="CSGBox3D31" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D32" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D33" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D34" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D35" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D36" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D37" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D38" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D39" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("2_tfpkl")
 
 [node name="CSGBox3D40" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("2_tfpkl")
 
 [node name="CSGBox3D41" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D42" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("2_tfpkl")
 
 [node name="CSGBox3D43" type="CSGBox3D" parent="."]
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D44" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("2_tfpkl")
 
 [node name="CSGBox3D45" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D46" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D47" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D48" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("2_tfpkl")
 
 [node name="CSGBox3D49" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D50" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D51" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D52" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D53" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D54" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D55" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D56" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D57" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D58" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D59" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D60" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D61" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D62" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D63" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D64" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D65" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D66" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D67" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D68" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D69" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D70" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D71" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D72" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D73" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D74" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D75" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D76" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D77" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D78" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D79" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D80" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D81" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D82" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D83" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D84" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D85" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D86" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D87" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D88" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D89" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D90" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D91" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D92" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D93" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D94" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D95" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D96" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D97" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D98" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D99" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D100" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D101" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D102" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D103" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D104" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D105" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D106" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D107" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D108" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
 
 [node name="CSGBox3D109" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-material = SubResource("StandardMaterial3D_ikr7v")
+size = Vector3(1, 0.5, 1)
+material = ExtResource("1_lkugm")
