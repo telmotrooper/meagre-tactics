@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bidr867v875ub"
-path.s3tc="res://.godot/imported/hover_tile.png-41b1a5a12950dd2fbf3e3657ddc6fc71.s3tc.ctex"
+uid="uid://bbi777l0mu50f"
+path.s3tc="res://.godot/imported/tile.png-e87ecc446708b49a4d0293ac30332bef.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://tiles/hover_tile.png"
-dest_files=["res://.godot/imported/hover_tile.png-41b1a5a12950dd2fbf3e3657ddc6fc71.s3tc.ctex"]
+source_file="res://tiles/textures/tile.png"
+dest_files=["res://.godot/imported/tile.png-e87ecc446708b49a4d0293ac30332bef.s3tc.ctex"]
 
 [params]
 

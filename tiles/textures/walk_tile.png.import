@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbi777l0mu50f"
-path.s3tc="res://.godot/imported/tile.png-f3ff2d84c4cd15ea232b8f4e9972f299.s3tc.ctex"
+uid="uid://bp0dcpgmb55ku"
+path.s3tc="res://.godot/imported/walk_tile.png-51e0a1050210b15039c78b802e0d0368.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://tiles/tile.png"
-dest_files=["res://.godot/imported/tile.png-f3ff2d84c4cd15ea232b8f4e9972f299.s3tc.ctex"]
+source_file="res://tiles/textures/walk_tile.png"
+dest_files=["res://.godot/imported/walk_tile.png-51e0a1050210b15039c78b802e0d0368.s3tc.ctex"]
 
 [params]
 
