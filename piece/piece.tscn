@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=4 format=3 uid="uid://bfr6ahl1msuvj"]
+
+[ext_resource type="Script" path="res://piece/piece.gd" id="1_yopb6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_45inp"]
 radius = 0.25
@@ -10,9 +12,12 @@ height = 1.5
 
 [node name="Piece" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("1_yopb6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_45inp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_qi4j4")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

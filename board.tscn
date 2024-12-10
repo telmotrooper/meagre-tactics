@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7ss0ckdihwsf"]
+[gd_scene load_steps=5 format=3 uid="uid://c7ss0ckdihwsf"]
 
 [ext_resource type="Material" uid="uid://n437lsr7w31f" path="res://tiles/tile_material.tres" id="1_lkugm"]
 [ext_resource type="Material" uid="uid://cj0bs40tto217" path="res://tiles/walk_tile_material.tres" id="2_tfpkl"]
+[ext_resource type="Texture2D" uid="uid://bidr867v875ub" path="res://tiles/hover_tile.png" id="3_g5urx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1ybv"]
+albedo_texture = ExtResource("3_g5urx")
 
 [node name="Board" type="Node3D"]
 
@@ -208,7 +212,7 @@ material = ExtResource("2_tfpkl")
 [node name="CSGBox3D41" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 size = Vector3(1, 0.5, 1)
-material = ExtResource("1_lkugm")
+material = SubResource("StandardMaterial3D_k1ybv")
 
 [node name="CSGBox3D42" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1)
