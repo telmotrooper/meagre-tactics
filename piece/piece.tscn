@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=7 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://piece/piece.gd" id="1_yopb6"]
+[ext_resource type="Material" uid="uid://buqakypy8cde" path="res://piece/blue_material.tres" id="2_ov4dn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_45inp"]
 radius = 0.25
@@ -13,6 +14,12 @@ height = 1.5
 [sub_resource type="SphereMesh" id="SphereMesh_g5081"]
 radius = 0.075
 height = 0.15
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2ifsu"]
+material = ExtResource("2_ov4dn")
+top_radius = 0.25
+bottom_radius = 0.3
+height = 0.1
 
 [node name="Piece" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -29,3 +36,7 @@ shape = SubResource("CapsuleShape3D_qi4j4")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.25)
 mesh = SubResource("SphereMesh_g5081")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_2ifsu")
