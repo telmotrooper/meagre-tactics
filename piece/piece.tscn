@@ -19,5 +19,4 @@ mesh = SubResource("CapsuleMesh_45inp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_qi4j4")
-
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+disabled = true
