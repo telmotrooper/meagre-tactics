@@ -1,3 +1,4 @@
+class_name Piece
 extends CharacterBody3D
 
 @export var color := "blue"
