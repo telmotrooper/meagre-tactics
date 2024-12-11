@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=8 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://piece/piece.gd" id="1_yopb6"]
+[ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://piece/red_material.tres" id="2_52lg3"]
+[ext_resource type="Material" uid="uid://buqakypy8cde" path="res://piece/blue_material.tres" id="2_ov4dn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_45inp"]
 radius = 0.25
@@ -14,11 +16,8 @@ height = 1.5
 radius = 0.075
 height = 0.15
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5c4f"]
-albedo_color = Color(0.768627, 0.282353, 0.211765, 1)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_2ifsu"]
-material = SubResource("StandardMaterial3D_d5c4f")
+material = ExtResource("2_ov4dn")
 top_radius = 0.25
 bottom_radius = 0.3
 height = 0.1
@@ -28,6 +27,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 collision_mask = 0
 input_ray_pickable = false
 script = ExtResource("1_yopb6")
+blue_material = ExtResource("2_ov4dn")
+red_material = ExtResource("2_52lg3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_45inp")

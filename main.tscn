@@ -28,15 +28,19 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1,
 
 [node name="Piece" parent="Board/Team2" instance=ExtResource("2_6erff")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, 1)
+color = "red"
 
 [node name="Piece2" parent="Board/Team2" instance=ExtResource("2_6erff")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, -2.18557e-08)
+color = "red"
 
 [node name="Piece3" parent="Board/Team2" instance=ExtResource("2_6erff")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3, 1, 6.55671e-08)
+color = "red"
 
 [node name="Piece4" parent="Board/Team2" instance=ExtResource("2_6erff")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, -1)
+color = "red"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 4.25, 3)
