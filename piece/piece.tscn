@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=9 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://piece/piece.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://piece/red_material.tres" id="2_52lg3"]
@@ -12,7 +12,10 @@ height = 1.5
 radius = 0.25
 height = 1.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ji7b3"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_g5081"]
+material = SubResource("StandardMaterial3D_ji7b3")
 radius = 0.075
 height = 0.15
 
@@ -37,11 +40,11 @@ mesh = SubResource("CapsuleMesh_45inp")
 shape = SubResource("CapsuleShape3D_qi4j4")
 
 [node name="RightEye" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.3, 0.2)
+transform = Transform3D(0.971, 0, 0, 0, 0.971, 0, 0, 0, 0.7, -0.1, 0.3, 0.2)
 mesh = SubResource("SphereMesh_g5081")
 
 [node name="LeftEye" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.3, 0.2)
+transform = Transform3D(1.00108, 0, 0, 0, 1.00108, 0, 0, 0, 0.700759, 0.1, 0.3, 0.2)
 mesh = SubResource("SphereMesh_g5081")
 
 [node name="Headband" type="MeshInstance3D" parent="."]
