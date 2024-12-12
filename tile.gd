@@ -9,10 +9,10 @@ extends CSGBox3D
 var walkable := false
 
 func has_piece() -> bool:
-	return len(%PieceDetector.get_overlapping_bodies()) > 0
+	return %PieceDetector.get_collider() != null
 
 func get_piece() -> Piece:
-	return %PieceDetector.get_overlapping_bodies()[0]
+	return %PieceDetector.get_collider() 
 
 func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
