@@ -26,12 +26,13 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_oybon")
 
-[node name="Area3D2" type="Area3D" parent="."]
+[node name="PieceDetector" type="Area3D" parent="."]
+unique_name_in_owner = true
 visible = false
 collision_layer = 0
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PieceDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("BoxShape3D_jtn4j")
 
