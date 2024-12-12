@@ -20,6 +20,9 @@ func is_left_mouse_click(event: InputEvent) -> bool:
 func _on_area_3d_mouse_entered() -> void:
 	if has_piece() and not walkable:
 		material = hover_tile_material
+		for ray_cast in %RayCasts.get_children():
+			if ray_cast.get_collider() is TileArea3D:
+				ray_cast.get_collider().get_tile().material = walk_tile_material
 
 func _on_area_3d_mouse_exited() -> void:
 	if not walkable:
