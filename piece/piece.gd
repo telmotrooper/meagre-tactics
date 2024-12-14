@@ -17,7 +17,7 @@ func walk_to(tile: Tile) -> void:
 	GameState.board.set_state(Board.State.BUSY)
 	
 	get_tree().call_group("tiles", "reset_state")
-	var target_position = Vector3(tile.global_position.x, global_position.y ,tile.global_position.z)
+	var target_position = Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
 	look_at(target_position, Vector3.UP, true)
 	var tween = create_tween()
 	# TODO: In the future use distance in number of tiles to calculate time.
