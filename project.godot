@@ -31,5 +31,5 @@ theme/custom="res://theme.tres"
 
 [layer_names]
 
-3d_physics/layer_1="Pieces"
+3d_physics/layer_1="Units"
 3d_physics/layer_2="Tiles"

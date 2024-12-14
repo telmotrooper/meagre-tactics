@@ -1,4 +1,5 @@
-class_name Piece
+@tool # Only used so we can see the unit color in the editor.
+class_name Unit
 extends CharacterBody3D
 
 @export var color := "blue"
