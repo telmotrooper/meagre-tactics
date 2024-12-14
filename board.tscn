@@ -5,6 +5,7 @@
 [node name="Board" type="Node3D"]
 
 [node name="Tile" parent="." instance=ExtResource("1_ymon7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -5)
 
 [node name="Tile2" parent="." instance=ExtResource("1_ymon7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5)
