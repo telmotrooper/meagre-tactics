@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitType" load_steps=2 format=3 uid="uid://dmwu4m4o2fwkm"]
+
+[ext_resource type="Script" path="res://unit/unit_type.gd" id="1_yy7fs"]
+
+[resource]
+script = ExtResource("1_yy7fs")
+unit_name = "Soldier"
+movement_type = 0
+movement_range = 2

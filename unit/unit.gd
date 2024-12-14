@@ -3,6 +3,7 @@ class_name Unit
 extends CharacterBody3D
 
 @export var color := "blue"
+@export var unit_type: UnitType
 
 @export_group("Materials")
 @export var blue_material: Material
