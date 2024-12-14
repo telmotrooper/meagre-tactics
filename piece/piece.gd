@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func walk_to(tile: Tile) -> void:
 	var target_position = Vector3(tile.global_position.x, global_position.y ,tile.global_position.z)
+	look_at(target_position, Vector3.UP, true)
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", target_position, 0.5) # TODO: In the future use distance in number of tiles to calculate time.
-	
+	get_tree().call_group("tiles", "reset_state")
