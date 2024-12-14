@@ -1,4 +1,4 @@
-class_name UnitSetup
+class_name UnitType
 extends Resource
 
 enum MovementType { NEIGHBORING_TILES }
