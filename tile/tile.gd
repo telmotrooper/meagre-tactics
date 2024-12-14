@@ -8,6 +8,8 @@ enum State { REGULAR, WALKABLE, HOVER }
 @export var hover_tile_material: Material
 @export var walk_tile_material: Material
 
+@onready var ray_casts = %RayCasts
+
 var state := State.REGULAR
 
 func set_state(new_state: State) -> void:
@@ -42,8 +44,24 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 		if has_unit(): # select unit
 			GameState.selected_unit = get_unit()
 			get_tree().call_group("tiles", "reset_state")
-			for tile in get_neighboring_tiles():
-				tile.set_as_walkable()
+			
+			var unit_type = get_unit().unit_type
+			
+			if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
+				var tiles: Array[Tile] = [self] 
+				
+				for i in unit_type.movement_range:
+					var neighboring_tiles: Array[Tile] = []
+					
+					for tile in tiles:
+						neighboring_tiles.append_array(get_neighboring_tiles(tile))
+					
+					for neighboring_tile in neighboring_tiles:
+						neighboring_tile.set_as_walkable()
+					
+					# Update list of tiles for next iteration.
+					tiles = neighboring_tiles
+		
 		elif state == State.WALKABLE:
 			GameState.selected_unit.walk_to(self)
 
@@ -55,10 +73,10 @@ func set_as_walkable() -> void:
 	if not has_unit():
 		set_state(State.WALKABLE)
 
-func get_neighboring_tiles() -> Array[Tile]:
+func get_neighboring_tiles(tile: Tile) -> Array[Tile]:
 	var result: Array[Tile] = []
 	
-	for ray_cast in %RayCasts.get_children():
+	for ray_cast in tile.ray_casts.get_children():
 		if ray_cast.get_collider() is TileArea3D:
 			result.append(ray_cast.get_collider().get_tile())
 	
