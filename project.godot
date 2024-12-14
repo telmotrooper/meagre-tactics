@@ -24,6 +24,10 @@ GameState="*res://game_state.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[gui]
+
+theme/custom="res://theme.tres"
+
 [layer_names]
 
 3d_physics/layer_1="Pieces"

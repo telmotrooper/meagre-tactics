@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://brc2s1pdg7hdb"]
+
+[resource]
+MarginContainer/constants/margin_bottom = 40
+MarginContainer/constants/margin_left = 40
+MarginContainer/constants/margin_right = 40
+MarginContainer/constants/margin_top = 40
