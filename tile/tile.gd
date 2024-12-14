@@ -63,3 +63,9 @@ func get_neighboring_tiles() -> Array[Tile]:
 			result.append(ray_cast.get_collider().get_tile())
 	
 	return result
+
+func enable() -> void:
+	$Area3D/CollisionShape3D.disabled = false
+
+func disable() -> void:
+	$Area3D/CollisionShape3D.disabled = true
