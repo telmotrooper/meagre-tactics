@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=6 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="1_655q7"]
 [ext_resource type="PackedScene" uid="uid://bfr6ahl1msuvj" path="res://piece/piece.tscn" id="2_6erff"]
+[ext_resource type="Script" path="res://board.gd" id="2_w2gau"]
 [ext_resource type="Script" path="res://camera_pivot.gd" id="3_6mpia"]
 
 [sub_resource type="Environment" id="Environment_loftu"]
@@ -10,6 +11,7 @@ background_mode = 1
 [node name="Main" type="Node3D"]
 
 [node name="Board" parent="." instance=ExtResource("1_655q7")]
+script = ExtResource("2_w2gau")
 
 [node name="Team1" type="Node" parent="Board"]
 
