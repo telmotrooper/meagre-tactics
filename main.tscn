@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=5 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="1_655q7"]
 [ext_resource type="PackedScene" uid="uid://bfr6ahl1msuvj" path="res://piece/piece.tscn" id="2_6erff"]
+[ext_resource type="Script" path="res://camera_pivot.gd" id="3_6mpia"]
 
 [sub_resource type="Environment" id="Environment_loftu"]
 background_mode = 1
@@ -43,14 +44,15 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, -1
 color = "red"
 
 [node name="CameraPivot" type="Node3D" parent="."]
+script = ExtResource("3_6mpia")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 4.25, 3)
 projection = 1
 size = 11.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CameraPivot"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 5, 4)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_loftu")
@@ -85,3 +87,6 @@ text = "Left"
 [node name="RightButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
 text = "Right"
+
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/LeftButton" to="CameraPivot" method="rotate_camera" binds= [-90.0]]
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/RightButton" to="CameraPivot" method="rotate_camera" binds= [90.0]]
