@@ -14,5 +14,7 @@ func _ready() -> void:
 		$Headband.set_surface_override_material(0, red_material)
 
 func walk_to(tile: Tile) -> void:
+	var target_position = Vector3(tile.global_position.x, global_position.y ,tile.global_position.z)
+	global_position = target_position
 	print("%s walk to %s" % [name, tile])
 	
