@@ -38,12 +38,14 @@ func _on_area_3d_mouse_exited() -> void:
 		set_state(State.REGULAR)
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if is_left_mouse_click(event) and has_piece():
-		GameState.selected_piece = get_piece()
-		get_tree().call_group("tiles", "reset_state")
-		for ray_cast in %RayCasts.get_children():
-			if ray_cast.get_collider() is TileArea3D:
-				ray_cast.get_collider().get_tile().set_as_walkable()
+	if is_left_mouse_click(event):
+		if has_piece(): # select piece
+			GameState.selected_piece = get_piece()
+			get_tree().call_group("tiles", "reset_state")
+			for tile in get_neighboring_tiles():
+				tile.set_as_walkable()
+		elif state == State.WALKABLE:
+			GameState.selected_piece.walk_to(self)
 
 func reset_state() -> void:
 	if state != State.HOVER:
@@ -52,3 +54,12 @@ func reset_state() -> void:
 func set_as_walkable() -> void:
 	if not has_piece():
 		set_state(State.WALKABLE)
+
+func get_neighboring_tiles() -> Array[Tile]:
+	var result: Array[Tile] = []
+	
+	for ray_cast in %RayCasts.get_children():
+		if ray_cast.get_collider() is TileArea3D:
+			result.append(ray_cast.get_collider().get_tile())
+	
+	return result

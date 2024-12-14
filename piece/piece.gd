@@ -12,3 +12,7 @@ func _ready() -> void:
 		$Headband.set_surface_override_material(0, blue_material)
 	elif color == "red":
 		$Headband.set_surface_override_material(0, red_material)
+
+func walk_to(tile: Tile) -> void:
+	print("%s walk to %s" % [name, tile])
+	
