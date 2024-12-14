@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://piece/piece.gd" id="1_yopb6"]
-[ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://piece/red_material.tres" id="2_52lg3"]
-[ext_resource type="Material" uid="uid://buqakypy8cde" path="res://piece/blue_material.tres" id="2_ov4dn"]
+[ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://piece/materials/red_material.tres" id="2_52lg3"]
+[ext_resource type="Material" uid="uid://buqakypy8cde" path="res://piece/materials/blue_material.tres" id="2_ov4dn"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_45inp"]
 radius = 0.25

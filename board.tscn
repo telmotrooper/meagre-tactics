@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c7ss0ckdihwsf"]
 
-[ext_resource type="PackedScene" uid="uid://cys55hkbt2xbd" path="res://tiles/tile.tscn" id="1_ymon7"]
+[ext_resource type="PackedScene" uid="uid://cys55hkbt2xbd" path="res://tile/tile.tscn" id="1_ymon7"]
 
 [node name="Board" type="Node3D"]
 

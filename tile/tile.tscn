@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cys55hkbt2xbd"]
 
-[ext_resource type="Material" uid="uid://n437lsr7w31f" path="res://tiles/tile.tres" id="1_58fmb"]
-[ext_resource type="Script" path="res://tile.gd" id="2_hh2o7"]
-[ext_resource type="Material" uid="uid://cktqb8xgbsw53" path="res://tiles/hover_tile.tres" id="3_b22hl"]
-[ext_resource type="Material" uid="uid://cj0bs40tto217" path="res://tiles/walk_tile.tres" id="4_h4u47"]
-[ext_resource type="Script" path="res://tiles/tile_area3d.gd" id="5_o0p71"]
+[ext_resource type="Material" uid="uid://n437lsr7w31f" path="res://tile/materials/tile.tres" id="1_58fmb"]
+[ext_resource type="Script" path="res://tile/tile.gd" id="2_hh2o7"]
+[ext_resource type="Material" uid="uid://cktqb8xgbsw53" path="res://tile/materials/hover_tile.tres" id="3_b22hl"]
+[ext_resource type="Material" uid="uid://cj0bs40tto217" path="res://tile/materials/walk_tile.tres" id="4_h4u47"]
+[ext_resource type="Script" path="res://tile/tile_area3d.gd" id="5_o0p71"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oybon"]
 size = Vector3(1, 0.5, 1)
