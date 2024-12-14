@@ -10,3 +10,8 @@ func _ready() -> void:
 
 func set_state(new_state: State) -> void:
 	state = new_state
+	match state:
+		State.IDLE:
+			get_tree().call_group("tiles", "enable")
+		State.BUSY:
+			get_tree().call_group("tiles", "disable")
