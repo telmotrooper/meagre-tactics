@@ -28,6 +28,14 @@ func get_unit() -> Unit:
 func has_unit() -> bool:
 	return %UnitDetector.get_collider() != null
 
+func has_walkable_neighbors() -> bool:
+	var neighboring_tiles = get_neighboring_tiles(self)
+	return neighboring_tiles.any(func(tile): return tile.state == State.WALKABLE)
+
+func is_neighbor(tile: Tile) -> bool:
+	var neighboring_tiles = get_neighboring_tiles(self)
+	return neighboring_tiles.any(func(neighboring_tile): return neighboring_tile == tile)
+
 func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
 
@@ -51,25 +59,29 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			var unit_type = get_unit().unit_type
 			
 			if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
-				var tiles: Array[Tile] = [self] 
+				var tiles: Array[Tile] = [self]
+				
+				var affected_tiles: Array[Tile] = []
 				
 				for _i in unit_type.movement_range:
 					var neighboring_tiles: Array[Tile] = []
 					
 					for tile in tiles:
 						neighboring_tiles.append_array(get_neighboring_tiles(tile))
-					
-					# Remove tiles occupied by enemy units from "neighboring tiles" to block path.
-					for i in range(len(neighboring_tiles), 0, -1):
-						var unit = neighboring_tiles[i-1].get_unit()
-						if unit and unit.color != get_unit().color:
-							neighboring_tiles.remove_at(i-1)
-					
+
 					for neighboring_tile in neighboring_tiles:
+						#if is_neighbor(neighboring_tile) or neighboring_tile.has_walkable_neighbors():
 						neighboring_tile.set_as_walkable()
+						if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
+							affected_tiles.append(neighboring_tile)
 					
 					# Update list of tiles for next iteration.
 					tiles = neighboring_tiles
+				
+				print(affected_tiles)
+				#for affected_tile in affected_tiles:
+					#if not affected_tile.has_walkable_neighbors():
+						#affected_tile.reset_state()
 		
 		elif state == State.WALKABLE:
 			GameState.selected_unit.walk_to(self)
