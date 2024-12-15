@@ -7,6 +7,7 @@ enum State { REGULAR, WALKABLE, HOVER }
 @export var tile_material: Material
 @export var hover_tile_material: Material
 @export var walk_tile_material: Material
+@export var debug_tile_material: Material
 
 @onready var ray_casts = %RayCasts
 
