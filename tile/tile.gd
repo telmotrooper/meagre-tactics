@@ -72,9 +72,9 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 
 					for neighboring_tile in neighboring_tiles:
 						#if is_neighbor(neighboring_tile) or neighboring_tile.has_walkable_neighbors():
-						neighboring_tile.set_as_walkable()
 						if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
 							affected_tiles.append(neighboring_tile)
+							neighboring_tile.set_as_walkable()
 					
 					# Update list of tiles for next iteration.
 					tiles = neighboring_tiles
