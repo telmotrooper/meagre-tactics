@@ -76,7 +76,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 						
 						for new_tile in new_tiles:
 							# "null" means not calculate, "true" means calculated once
-							if new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true:
+							if not has_enemy_unit(new_tile) and (new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true):
 								new_tile.reached_through_enemy_tile = has_enemy_unit(tile)
 						
 						neighboring_tiles.append_array(new_tiles)
