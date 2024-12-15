@@ -35,7 +35,7 @@ func has_enemy_unit(tile) -> bool:
 
 func has_walkable_neighbors() -> bool:
 	var neighboring_tiles = get_neighboring_tiles(self)
-	return neighboring_tiles.any(func(tile): return tile.state == State.WALKABLE)
+	return neighboring_tiles.any(func(tile): return tile.state == State.WALKABLE and not tile.reached_through_enemy_tile)
 
 func is_neighbor(tile: Tile) -> bool:
 	var neighboring_tiles = get_neighboring_tiles(self)
@@ -89,9 +89,12 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 					# Update list of tiles for next iteration.
 					tiles = neighboring_tiles
 				
-				print(affected_tiles)
 				for affected_tile in affected_tiles:
-					if affected_tile.reached_through_enemy_tile:
+					if affected_tile.reached_through_enemy_tile and affected_tile.has_walkable_neighbors():
+						affected_tile.reached_through_enemy_tile = false
+				
+				for affected_tile in affected_tiles:
+					if not affected_tile.has_walkable_neighbors():
 						affected_tile.material = debug_tile_material
 		
 		elif state == State.WALKABLE:
