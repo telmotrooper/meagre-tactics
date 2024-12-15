@@ -12,6 +12,7 @@ enum State { REGULAR, WALKABLE, HOVER }
 @onready var ray_casts = %RayCasts
 
 var state := State.REGULAR
+var reached_through_enemy_tile = null
 
 func set_state(new_state: State) -> void:
 	state = new_state
@@ -28,6 +29,9 @@ func get_unit() -> Unit:
 
 func has_unit() -> bool:
 	return %UnitDetector.get_collider() != null
+
+func has_enemy_unit(tile) -> bool:
+	return tile.get_unit() and tile.get_unit().color != get_unit().color
 
 func has_walkable_neighbors() -> bool:
 	var neighboring_tiles = get_neighboring_tiles(self)
@@ -68,7 +72,14 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 					var neighboring_tiles: Array[Tile] = []
 					
 					for tile in tiles:
-						neighboring_tiles.append_array(get_neighboring_tiles(tile))
+						var new_tiles := get_neighboring_tiles(tile)
+						
+						for new_tile in new_tiles:
+							# "null" means not calculate, "true" means calculated once
+							if new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true:
+								new_tile.reached_through_enemy_tile = has_enemy_unit(tile)
+						
+						neighboring_tiles.append_array(new_tiles)
 
 					for neighboring_tile in neighboring_tiles:
 						#if is_neighbor(neighboring_tile) or neighboring_tile.has_walkable_neighbors():
@@ -80,7 +91,9 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 					tiles = neighboring_tiles
 				
 				print(affected_tiles)
-				#for affected_tile in affected_tiles:
+				for affected_tile in affected_tiles:
+					if affected_tile.reached_through_enemy_tile:
+						affected_tile.material = debug_tile_material
 					#if not affected_tile.has_walkable_neighbors():
 						#affected_tile.reset_state()
 		
@@ -93,6 +106,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			get_tree().call_group("tiles", "reset_state")
 
 func reset_state() -> void:
+	reached_through_enemy_tile = null
 	if state != State.HOVER:
 		set_state(State.REGULAR)
 
