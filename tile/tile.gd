@@ -82,7 +82,6 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 						neighboring_tiles.append_array(new_tiles)
 
 					for neighboring_tile in neighboring_tiles:
-						#if is_neighbor(neighboring_tile) or neighboring_tile.has_walkable_neighbors():
 						if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
 							affected_tiles.append(neighboring_tile)
 							neighboring_tile.set_as_walkable()
@@ -94,8 +93,6 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 				for affected_tile in affected_tiles:
 					if affected_tile.reached_through_enemy_tile:
 						affected_tile.material = debug_tile_material
-					#if not affected_tile.has_walkable_neighbors():
-						#affected_tile.reset_state()
 		
 		elif state == State.WALKABLE:
 			GameState.selected_unit.walk_to(self)
