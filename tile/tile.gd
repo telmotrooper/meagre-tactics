@@ -53,11 +53,17 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
 				var tiles: Array[Tile] = [self] 
 				
-				for i in unit_type.movement_range:
+				for _i in unit_type.movement_range:
 					var neighboring_tiles: Array[Tile] = []
 					
 					for tile in tiles:
 						neighboring_tiles.append_array(get_neighboring_tiles(tile))
+					
+					# Remove tiles occupied by enemy units from "neighboring tiles" to block path.
+					for i in range(len(neighboring_tiles), 0, -1):
+						var unit = neighboring_tiles[i-1].get_unit()
+						if unit and unit.color != get_unit().color:
+							neighboring_tiles.remove_at(i-1)
 					
 					for neighboring_tile in neighboring_tiles:
 						neighboring_tile.set_as_walkable()
