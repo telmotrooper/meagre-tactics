@@ -34,6 +34,9 @@ func is_left_mouse_click(event: InputEvent) -> bool:
 func _on_area_3d_mouse_entered() -> void:
 	if has_unit() and state != State.WALKABLE:
 		set_state(State.HOVER)
+		GameState.unit_hovered.emit(get_unit())
+	else:
+		GameState.not_hovering_any_unit.emit()
 
 func _on_area_3d_mouse_exited() -> void:
 	if state != State.WALKABLE:
@@ -41,7 +44,7 @@ func _on_area_3d_mouse_exited() -> void:
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if is_left_mouse_click(event):
-		if has_unit(): # select unit
+		if has_unit(): # Select unit
 			GameState.selected_unit = get_unit()
 			get_tree().call_group("tiles", "reset_state")
 			
@@ -64,6 +67,11 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 		
 		elif state == State.WALKABLE:
 			GameState.selected_unit.walk_to(self)
+		
+		else: # Clean up selection
+			GameState.selected_unit = null
+			GameState.not_hovering_any_unit.emit()
+			get_tree().call_group("tiles", "reset_state")
 
 func reset_state() -> void:
 	if state != State.HOVER:
