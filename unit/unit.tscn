@@ -1,24 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=8 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
 [ext_resource type="Material" uid="uid://buqakypy8cde" path="res://unit/materials/blue_material.tres" id="2_ov4dn"]
 [ext_resource type="Resource" uid="uid://dmwu4m4o2fwkm" path="res://unit/soldier.tres" id="2_sde36"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_45inp"]
-radius = 0.25
-height = 1.5
+[ext_resource type="PackedScene" uid="uid://dxpsnxyb8fp00" path="res://unit/default_model.tscn" id="5_xcfkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qi4j4"]
 radius = 0.25
 height = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ji7b3"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_g5081"]
-material = SubResource("StandardMaterial3D_ji7b3")
-radius = 0.075
-height = 0.15
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2ifsu"]
 material = ExtResource("2_ov4dn")
@@ -35,19 +25,10 @@ unit_type = ExtResource("2_sde36")
 blue_material = ExtResource("2_ov4dn")
 red_material = ExtResource("2_52lg3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_45inp")
+[node name="DefaultModel" parent="." instance=ExtResource("5_xcfkg")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_qi4j4")
-
-[node name="RightEye" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.971, 0, 0, 0, 0.971, 0, 0, 0, 0.7, -0.1, 0.3, 0.2)
-mesh = SubResource("SphereMesh_g5081")
-
-[node name="LeftEye" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.00108, 0, 0, 0, 1.00108, 0, 0, 0, 0.700759, 0.1, 0.3, 0.2)
-mesh = SubResource("SphereMesh_g5081")
 
 [node name="Headband" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
