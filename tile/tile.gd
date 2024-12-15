@@ -35,6 +35,8 @@ func _on_area_3d_mouse_entered() -> void:
 	if has_unit() and state != State.WALKABLE:
 		set_state(State.HOVER)
 		GameState.unit_hovered.emit(get_unit())
+	else:
+		GameState.not_hovering_any_unit.emit()
 
 func _on_area_3d_mouse_exited() -> void:
 	if state != State.WALKABLE:
@@ -68,6 +70,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 		
 		else: # Clean up selection
 			GameState.selected_unit = null
+			GameState.not_hovering_any_unit.emit()
 			get_tree().call_group("tiles", "reset_state")
 
 func reset_state() -> void:

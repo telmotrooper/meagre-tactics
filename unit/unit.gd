@@ -29,4 +29,5 @@ func walk_to(tile: Tile) -> void:
 	tween.tween_property(self, "global_position", target_position, 0.5)
 	
 	tween.tween_callback(GameState.board.set_state.bind(Board.State.IDLE))
+	tween.tween_callback(func(): GameState.selected_unit = null)
 	
