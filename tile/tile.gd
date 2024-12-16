@@ -7,10 +7,12 @@ enum State { REGULAR, WALKABLE, HOVER }
 @export var tile_material: Material
 @export var hover_tile_material: Material
 @export var walk_tile_material: Material
+@export var debug_tile_material: Material
 
 @onready var ray_casts = %RayCasts
 
 var state := State.REGULAR
+var reached_through_enemy_tile = null
 
 func set_state(new_state: State) -> void:
 	state = new_state
@@ -27,6 +29,17 @@ func get_unit() -> Unit:
 
 func has_unit() -> bool:
 	return %UnitDetector.get_collider() != null
+
+func has_enemy_unit(tile) -> bool:
+	return tile.get_unit() and tile.get_unit().color != get_unit().color
+
+func has_walkable_neighbors() -> bool:
+	var neighboring_tiles = get_neighboring_tiles(self)
+	return neighboring_tiles.any(func(tile): return tile.state == State.WALKABLE and not tile.reached_through_enemy_tile)
+
+func is_neighbor(tile: Tile) -> bool:
+	var neighboring_tiles = get_neighboring_tiles(self)
+	return neighboring_tiles.any(func(neighboring_tile): return neighboring_tile == tile)
 
 func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
@@ -51,19 +64,41 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			var unit_type = get_unit().unit_type
 			
 			if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
-				var tiles: Array[Tile] = [self] 
+				var tiles: Array[Tile] = [self]
 				
-				for i in unit_type.movement_range:
+				var affected_tiles: Array[Tile] = []
+				
+				for _i in unit_type.movement_range:
 					var neighboring_tiles: Array[Tile] = []
 					
 					for tile in tiles:
-						neighboring_tiles.append_array(get_neighboring_tiles(tile))
-					
+						var new_tiles := get_neighboring_tiles(tile)
+						
+						for new_tile in new_tiles:
+							# "null" means not calculate, "true" means calculated once
+							if tile.reached_through_enemy_tile:
+								new_tile.reached_through_enemy_tile = true
+							elif not has_enemy_unit(new_tile) and (new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true):
+								new_tile.reached_through_enemy_tile = has_enemy_unit(tile)
+						
+						neighboring_tiles.append_array(new_tiles)
+
 					for neighboring_tile in neighboring_tiles:
-						neighboring_tile.set_as_walkable()
+						if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
+							affected_tiles.append(neighboring_tile)
+							neighboring_tile.set_as_walkable()
 					
 					# Update list of tiles for next iteration.
 					tiles = neighboring_tiles
+				
+				for _i in range(2): # Iterate twice cleaning up "reached_through_enemy_tile".
+					for affected_tile in affected_tiles:
+						if affected_tile.reached_through_enemy_tile and affected_tile.has_walkable_neighbors():
+							affected_tile.reached_through_enemy_tile = false
+					
+				for affected_tile in affected_tiles:
+					if affected_tile.reached_through_enemy_tile:
+						affected_tile.reset_state()
 		
 		elif state == State.WALKABLE:
 			GameState.selected_unit.walk_to(self)
@@ -74,6 +109,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			get_tree().call_group("tiles", "reset_state")
 
 func reset_state() -> void:
+	reached_through_enemy_tile = null
 	if state != State.HOVER:
 		set_state(State.REGULAR)
 
