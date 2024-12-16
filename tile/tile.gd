@@ -76,7 +76,9 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 						
 						for new_tile in new_tiles:
 							# "null" means not calculate, "true" means calculated once
-							if not has_enemy_unit(new_tile) and (new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true):
+							if tile.reached_through_enemy_tile:
+								new_tile.reached_through_enemy_tile = true
+							elif not has_enemy_unit(new_tile) and (new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true):
 								new_tile.reached_through_enemy_tile = has_enemy_unit(tile)
 						
 						neighboring_tiles.append_array(new_tiles)
@@ -89,13 +91,14 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 					# Update list of tiles for next iteration.
 					tiles = neighboring_tiles
 				
+				for _i in range(2): # Iterate twice cleaning up "reached_through_enemy_tile".
+					for affected_tile in affected_tiles:
+						if affected_tile.reached_through_enemy_tile and affected_tile.has_walkable_neighbors():
+							affected_tile.reached_through_enemy_tile = false
+					
 				for affected_tile in affected_tiles:
-					if affected_tile.reached_through_enemy_tile and affected_tile.has_walkable_neighbors():
-						affected_tile.reached_through_enemy_tile = false
-				
-				for affected_tile in affected_tiles:
-					if not affected_tile.has_walkable_neighbors():
-						affected_tile.material = debug_tile_material
+					if affected_tile.reached_through_enemy_tile:
+						affected_tile.reset_state()
 		
 		elif state == State.WALKABLE:
 			GameState.selected_unit.walk_to(self)
