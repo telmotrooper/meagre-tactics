@@ -7,4 +7,4 @@ script = ExtResource("1_yy7fs")
 unit_name = "Soldier"
 max_hp = 10
 movement_type = 0
-movement_range = 2
+movement_range = 3
