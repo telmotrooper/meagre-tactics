@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ck7tm68tjl5tb"]
+
+[ext_resource type="Texture2D" uid="uid://cx58h5di7wwo6" path="res://tile/textures/hover_walk_tile.png" id="1_m0jle"]
+
+[resource]
+albedo_texture = ExtResource("1_m0jle")
