@@ -1,12 +1,13 @@
 class_name Tile
 extends CSGBox3D
 
-enum State { REGULAR, WALKABLE, HOVER }
+enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER }
 
 @export_group("Materials")
 @export var tile_material: Material
 @export var hover_tile_material: Material
 @export var walk_tile_material: Material
+@export var hover_walk_tile_material: Material
 @export var debug_tile_material: Material
 
 @onready var ray_casts = %RayCasts
@@ -19,10 +20,12 @@ func set_state(new_state: State) -> void:
 	match state:
 		State.REGULAR:
 			material = tile_material
+		State.REGULAR_HOVER:
+			material = hover_tile_material
 		State.WALKABLE:
 			material = walk_tile_material
-		State.HOVER:
-			material = hover_tile_material
+		State.WALKABLE_HOVER:
+			material = hover_walk_tile_material
 
 func get_unit() -> Unit:
 	return %UnitDetector.get_collider()
@@ -37,22 +40,22 @@ func has_walkable_neighbors() -> bool:
 	var neighboring_tiles = get_neighboring_tiles(self)
 	return neighboring_tiles.any(func(tile): return tile.state == State.WALKABLE and not tile.reached_through_enemy_tile)
 
-func is_neighbor(tile: Tile) -> bool:
-	var neighboring_tiles = get_neighboring_tiles(self)
-	return neighboring_tiles.any(func(neighboring_tile): return neighboring_tile == tile)
-
 func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
 
 func _on_area_3d_mouse_entered() -> void:
 	if has_unit() and state != State.WALKABLE:
-		set_state(State.HOVER)
+		set_state(State.REGULAR_HOVER)
 		GameState.unit_hovered.emit(get_unit())
+	elif state == State.WALKABLE:
+		set_state(State.WALKABLE_HOVER)
 	else:
 		GameState.not_hovering_any_unit.emit()
 
 func _on_area_3d_mouse_exited() -> void:
-	if state != State.WALKABLE:
+	if state == State.WALKABLE_HOVER:
+		set_state(State.WALKABLE)
+	elif state != State.WALKABLE:
 		set_state(State.REGULAR)
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
@@ -100,7 +103,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 					if affected_tile.reached_through_enemy_tile:
 						affected_tile.reset_state()
 		
-		elif state == State.WALKABLE:
+		elif state == State.WALKABLE_HOVER:
 			GameState.selected_unit.walk_to(self)
 		
 		else: # Clean up selection
@@ -110,7 +113,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 
 func reset_state() -> void:
 	reached_through_enemy_tile = null
-	if state != State.HOVER:
+	if state != State.REGULAR_HOVER:
 		set_state(State.REGULAR)
 
 func set_as_walkable() -> void:
