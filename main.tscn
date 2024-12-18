@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=12 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="1_655q7"]
 [ext_resource type="PackedScene" uid="uid://bfr6ahl1msuvj" path="res://unit/unit.tscn" id="2_6erff"]
 [ext_resource type="Script" path="res://board.gd" id="2_w2gau"]
 [ext_resource type="Script" path="res://camera_pivot.gd" id="3_6mpia"]
 [ext_resource type="Script" path="res://ui.gd" id="5_a6jqn"]
+[ext_resource type="Texture2D" uid="uid://ciyp1bil8gpwc" path="res://ui/icons/person_walking_solid_fontawesome.svg" id="6_noigk"]
+[ext_resource type="Texture2D" uid="uid://di2b1a8dths6l" path="res://ui/icons/sword_svgrepo.svg" id="7_r4f44"]
+[ext_resource type="Texture2D" uid="uid://bakrcnvpwphm1" path="res://ui/icons/compass_solid_fontawesome.svg" id="8_8ni02"]
+[ext_resource type="Texture2D" uid="uid://cmbtn5q8jjcne" path="res://ui/icons/hourglass_end_solid_fontawesome.svg" id="9_3chcp"]
+[ext_resource type="Texture2D" uid="uid://by8h6e7prfgao" path="res://ui/icons/flag_solid_fontawesome.svg" id="9_cxhl0"]
 
 [sub_resource type="Environment" id="Environment_loftu"]
 background_mode = 1
@@ -18,41 +23,33 @@ script = ExtResource("2_w2gau")
 
 [node name="Unit" parent="Board/Team1" instance=ExtResource("2_6erff")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, -1)
-current_hp = 10
 
 [node name="Unit2" parent="Board/Team1" instance=ExtResource("2_6erff")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, 0)
-current_hp = 10
 
 [node name="Unit3" parent="Board/Team1" instance=ExtResource("2_6erff")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1, 0)
-current_hp = 10
 
 [node name="Unit4" parent="Board/Team1" instance=ExtResource("2_6erff")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, 1)
-current_hp = 10
 
 [node name="Team2" type="Node" parent="Board"]
 
 [node name="Unit" parent="Board/Team2" instance=ExtResource("2_6erff")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, 1)
 color = "red"
-current_hp = 10
 
 [node name="Unit2" parent="Board/Team2" instance=ExtResource("2_6erff")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, -2.18557e-08)
 color = "red"
-current_hp = 10
 
 [node name="Unit3" parent="Board/Team2" instance=ExtResource("2_6erff")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3, 1, 6.55671e-08)
 color = "red"
-current_hp = 10
 
 [node name="Unit4" parent="Board/Team2" instance=ExtResource("2_6erff")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, -1)
 color = "red"
-current_hp = 10
 
 [node name="CameraPivot" type="Node3D" parent="."]
 script = ExtResource("3_6mpia")
@@ -87,16 +84,47 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="LeftButton" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+[node name="TurnButtons" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="MoveButton" type="Button" parent="UI/MarginContainer/VBoxContainer/TurnButtons"]
+layout_mode = 2
+icon = ExtResource("6_noigk")
+icon_alignment = 1
+
+[node name="AttackButton" type="Button" parent="UI/MarginContainer/VBoxContainer/TurnButtons"]
+layout_mode = 2
+icon = ExtResource("7_r4f44")
+icon_alignment = 1
+
+[node name="TurnButton" type="Button" parent="UI/MarginContainer/VBoxContainer/TurnButtons"]
+layout_mode = 2
+icon = ExtResource("8_8ni02")
+icon_alignment = 1
+
+[node name="EndTurnButton" type="Button" parent="UI/MarginContainer/VBoxContainer/TurnButtons"]
+layout_mode = 2
+icon = ExtResource("9_3chcp")
+icon_alignment = 1
+
+[node name="CameraButtons" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="LeftButton" type="Button" parent="UI/MarginContainer/VBoxContainer/CameraButtons"]
 layout_mode = 2
 text = "Left"
 
-[node name="RightButton" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+[node name="RightButton" type="Button" parent="UI/MarginContainer/VBoxContainer/CameraButtons"]
 layout_mode = 2
 text = "Right"
 
@@ -107,6 +135,15 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 bbcode_enabled = true
+text = "Soldier (Blue)
+HP: 10/10"
 
-[connection signal="pressed" from="UI/MarginContainer/HBoxContainer/LeftButton" to="CameraPivot" method="rotate_camera" binds= [-90.0]]
-[connection signal="pressed" from="UI/MarginContainer/HBoxContainer/RightButton" to="CameraPivot" method="rotate_camera" binds= [90.0]]
+[node name="SurrenderButton" type="Button" parent="UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+icon = ExtResource("9_cxhl0")
+icon_alignment = 1
+
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/CameraButtons/LeftButton" to="CameraPivot" method="rotate_camera" binds= [-90.0]]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/CameraButtons/RightButton" to="CameraPivot" method="rotate_camera" binds= [90.0]]

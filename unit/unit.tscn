@@ -22,7 +22,7 @@ collision_mask = 0
 input_ray_pickable = false
 script = ExtResource("1_yopb6")
 unit_type = ExtResource("2_sde36")
-current_hp = null
+current_hp = 10
 blue_material = ExtResource("2_ov4dn")
 red_material = ExtResource("2_52lg3")
 
