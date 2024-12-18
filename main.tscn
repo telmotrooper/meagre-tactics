@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=14 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="1_655q7"]
 [ext_resource type="PackedScene" uid="uid://bfr6ahl1msuvj" path="res://unit/unit.tscn" id="2_6erff"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://bakrcnvpwphm1" path="res://ui/icons/compass_solid_fontawesome.svg" id="8_8ni02"]
 [ext_resource type="Texture2D" uid="uid://cmbtn5q8jjcne" path="res://ui/icons/hourglass_end_solid_fontawesome.svg" id="9_3chcp"]
 [ext_resource type="Texture2D" uid="uid://by8h6e7prfgao" path="res://ui/icons/flag_solid_fontawesome.svg" id="9_cxhl0"]
+[ext_resource type="Texture2D" uid="uid://csahb2cysgu55" path="res://ui/icons/rotate_cw_icon_inverted.svg" id="10_sjeny"]
+[ext_resource type="Texture2D" uid="uid://d4kc4eu8kalrp" path="res://ui/icons/rotate_cw_icon.svg" id="11_6hxpy"]
 
 [sub_resource type="Environment" id="Environment_loftu"]
 background_mode = 1
@@ -122,11 +124,11 @@ size_flags_vertical = 0
 
 [node name="LeftButton" type="Button" parent="UI/MarginContainer/VBoxContainer/CameraButtons"]
 layout_mode = 2
-text = "Left"
+icon = ExtResource("10_sjeny")
 
 [node name="RightButton" type="Button" parent="UI/MarginContainer/VBoxContainer/CameraButtons"]
 layout_mode = 2
-text = "Right"
+icon = ExtResource("11_6hxpy")
 
 [node name="SelectedUnitOverview" type="RichTextLabel" parent="UI/MarginContainer"]
 unique_name_in_owner = true
