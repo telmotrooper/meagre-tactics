@@ -3,6 +3,7 @@ extends Control
 const text = "%s (%s)\nHP: %d/%d"
 
 func _ready() -> void:
+	%SelectedUnitOverview.text = ""
 	GameState.unit_hovered.connect(update_unit_overview)
 	GameState.not_hovering_any_unit.connect(fallback_overview)
 
