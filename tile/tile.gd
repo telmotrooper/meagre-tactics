@@ -1,7 +1,7 @@
 class_name Tile
 extends CSGBox3D
 
-enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER }
+enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER, ATTACKABLE, ATTACKABLE_HOVER }
 
 @export_group("Materials")
 @export var tile_material: Material
@@ -26,6 +26,10 @@ func set_state(new_state: State) -> void:
 			material = walk_tile_material
 		State.WALKABLE_HOVER:
 			material = hover_walk_tile_material
+		State.ATTACKABLE:
+			material = debug_tile_material
+		State.ATTACKABLE_HOVER:
+			material = debug_tile_material
 
 func get_unit() -> Unit:
 	return %UnitDetector.get_collider()
@@ -33,12 +37,15 @@ func get_unit() -> Unit:
 func has_unit() -> bool:
 	return %UnitDetector.get_collider() != null
 
-func has_enemy_unit(tile) -> bool:
+func has_enemy_unit(tile: Tile) -> bool:
 	return tile.get_unit() and tile.get_unit().color != get_unit().color
+
+func is_walkable(tile: Tile) -> bool:
+	return tile.state == State.WALKABLE or tile.state == State.WALKABLE_HOVER
 
 func has_walkable_neighbors() -> bool:
 	var neighboring_tiles = get_neighboring_tiles(self)
-	return neighboring_tiles.any(func(tile): return tile.state == State.WALKABLE and not tile.reached_through_enemy_tile)
+	return neighboring_tiles.any(func(tile): return is_walkable(tile) and not tile.reached_through_enemy_tile)
 
 func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
