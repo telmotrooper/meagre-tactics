@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=11 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="1_655q7"]
 [ext_resource type="PackedScene" uid="uid://bfr6ahl1msuvj" path="res://unit/unit.tscn" id="2_6erff"]
 [ext_resource type="Script" path="res://board.gd" id="2_w2gau"]
 [ext_resource type="Script" path="res://camera_pivot.gd" id="3_6mpia"]
 [ext_resource type="Script" path="res://ui.gd" id="5_a6jqn"]
+[ext_resource type="Texture2D" uid="uid://ciyp1bil8gpwc" path="res://ui/icons/person_walking_solid_fontawesome.svg" id="6_noigk"]
+[ext_resource type="Texture2D" uid="uid://di2b1a8dths6l" path="res://ui/icons/sword_svgrepo.svg" id="7_r4f44"]
+[ext_resource type="Texture2D" uid="uid://bakrcnvpwphm1" path="res://ui/icons/compass_solid_fontawesome.svg" id="8_8ni02"]
+[ext_resource type="Texture2D" uid="uid://by8h6e7prfgao" path="res://ui/icons/flag_solid_fontawesome.svg" id="9_cxhl0"]
 
 [sub_resource type="Environment" id="Environment_loftu"]
 background_mode = 1
@@ -79,16 +83,44 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="LeftButton" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("6_noigk")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("7_r4f44")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_8ni02")
+icon_alignment = 1
+
+[node name="Button4" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("9_cxhl0")
+icon_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="LeftButton" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Left"
 
-[node name="RightButton" type="Button" parent="UI/MarginContainer/HBoxContainer"]
+[node name="RightButton" type="Button" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Right"
 
@@ -102,5 +134,5 @@ bbcode_enabled = true
 text = "Soldier (Blue)
 HP: 10/10"
 
-[connection signal="pressed" from="UI/MarginContainer/HBoxContainer/LeftButton" to="CameraPivot" method="rotate_camera" binds= [-90.0]]
-[connection signal="pressed" from="UI/MarginContainer/HBoxContainer/RightButton" to="CameraPivot" method="rotate_camera" binds= [90.0]]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HBoxContainer2/LeftButton" to="CameraPivot" method="rotate_camera" binds= [-90.0]]
+[connection signal="pressed" from="UI/MarginContainer/VBoxContainer/HBoxContainer2/RightButton" to="CameraPivot" method="rotate_camera" binds= [90.0]]
