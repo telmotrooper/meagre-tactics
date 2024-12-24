@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djmy0eeab85si"]
+[gd_scene load_steps=10 format=3 uid="uid://djmy0eeab85si"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_xp253"]
 [ext_resource type="Texture2D" uid="uid://ciyp1bil8gpwc" path="res://ui/icons/person_walking_solid_fontawesome.svg" id="2_4k0br"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://csahb2cysgu55" path="res://ui/icons/rotate_cw_inverted_openclipart.svg" id="6_60usq"]
 [ext_resource type="Texture2D" uid="uid://d4kc4eu8kalrp" path="res://ui/icons/rotate_cw_openclipart.svg" id="7_skt3y"]
 [ext_resource type="Texture2D" uid="uid://by8h6e7prfgao" path="res://ui/icons/flag_solid_fontawesome.svg" id="8_gkatd"]
+[ext_resource type="Texture2D" uid="uid://51kgjpauts7a" path="res://ui/icons/gear_solid_fontawesome.svg" id="9_abgnr"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -92,9 +93,16 @@ icon = ExtResource("6_60usq")
 layout_mode = 2
 icon = ExtResource("7_skt3y")
 
-[node name="SurrenderButton" type="Button" parent="MarginContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 8
+icon = ExtResource("9_abgnr")
+icon_alignment = 1
+
+[node name="SurrenderButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 8
 icon = ExtResource("8_gkatd")
 icon_alignment = 1
