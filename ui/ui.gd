@@ -28,6 +28,7 @@ func fallback_overview() -> void:
 
 func update_turn() -> void:
 	%TurnIndicator.text = "Turn: %s" % GameState.current_turn.capitalize()
+	$TurnTimer.start()
 
 func _on_tick_timer_timeout() -> void:
 	%TimeLeftIndicator.value = $TurnTimer.time_left * 100 / $TurnTimer.wait_time
