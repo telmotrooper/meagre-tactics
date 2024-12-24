@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://di2b1a8dths6l" path="res://ui/icons/sword_svgrepo.svg" id="3_pcnx6"]
 [ext_resource type="Texture2D" uid="uid://bakrcnvpwphm1" path="res://ui/icons/compass_solid_fontawesome.svg" id="4_mtx78"]
 [ext_resource type="Texture2D" uid="uid://cmbtn5q8jjcne" path="res://ui/icons/hourglass_end_solid_fontawesome.svg" id="5_gxtx8"]
-[ext_resource type="Texture2D" uid="uid://csahb2cysgu55" path="res://ui/icons/rotate_cw_icon_inverted.svg" id="6_60usq"]
-[ext_resource type="Texture2D" uid="uid://d4kc4eu8kalrp" path="res://ui/icons/rotate_cw_icon.svg" id="7_skt3y"]
+[ext_resource type="Texture2D" uid="uid://csahb2cysgu55" path="res://ui/icons/rotate_cw_inverted_openclipart.svg" id="6_60usq"]
+[ext_resource type="Texture2D" uid="uid://d4kc4eu8kalrp" path="res://ui/icons/rotate_cw_openclipart.svg" id="7_skt3y"]
 [ext_resource type="Texture2D" uid="uid://by8h6e7prfgao" path="res://ui/icons/flag_solid_fontawesome.svg" id="8_gkatd"]
 
 [node name="UI" type="Control"]
