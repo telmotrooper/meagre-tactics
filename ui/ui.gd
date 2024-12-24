@@ -1,8 +1,11 @@
+class_name UI
 extends Control
 
 const text = "%s (%s)\nHP: %d/%d"
 
 func _ready() -> void:
+	GameState.ui = self
+	
 	if not is_instance_valid(GameState.camera_pivot):
 		print("Error: Camera pivot not found.")
 	
@@ -23,5 +26,5 @@ func fallback_overview() -> void:
 	else:
 		%SelectedUnitOverview.text = ""
 
-func set_turn(team_color: String) -> void:
-	print("hello")
+func update_turn() -> void:
+	%TurnIndicator.text = "Turn: %s" % GameState.current_turn.capitalize()
