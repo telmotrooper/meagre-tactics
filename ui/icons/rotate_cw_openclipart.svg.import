@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4kc4eu8kalrp"
-path="res://.godot/imported/rotate_cw_icon.svg-d1fc174b17169499337f06f4dc5b7914.ctex"
+path="res://.godot/imported/rotate_cw_openclipart.svg-5822148eaecd7549fcc7f36b52f61829.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/icons/rotate_cw_icon.svg"
-dest_files=["res://.godot/imported/rotate_cw_icon.svg-d1fc174b17169499337f06f4dc5b7914.ctex"]
+source_file="res://ui/icons/rotate_cw_openclipart.svg"
+dest_files=["res://.godot/imported/rotate_cw_openclipart.svg-5822148eaecd7549fcc7f36b52f61829.ctex"]
 
 [params]
 

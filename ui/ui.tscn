@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://djmy0eeab85si"]
+[gd_scene load_steps=10 format=3 uid="uid://djmy0eeab85si"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_xp253"]
 [ext_resource type="Texture2D" uid="uid://ciyp1bil8gpwc" path="res://ui/icons/person_walking_solid_fontawesome.svg" id="2_4k0br"]
 [ext_resource type="Texture2D" uid="uid://di2b1a8dths6l" path="res://ui/icons/sword_svgrepo.svg" id="3_pcnx6"]
 [ext_resource type="Texture2D" uid="uid://bakrcnvpwphm1" path="res://ui/icons/compass_solid_fontawesome.svg" id="4_mtx78"]
 [ext_resource type="Texture2D" uid="uid://cmbtn5q8jjcne" path="res://ui/icons/hourglass_end_solid_fontawesome.svg" id="5_gxtx8"]
-[ext_resource type="Texture2D" uid="uid://csahb2cysgu55" path="res://ui/icons/rotate_cw_icon_inverted.svg" id="6_60usq"]
-[ext_resource type="Texture2D" uid="uid://d4kc4eu8kalrp" path="res://ui/icons/rotate_cw_icon.svg" id="7_skt3y"]
+[ext_resource type="Texture2D" uid="uid://csahb2cysgu55" path="res://ui/icons/rotate_cw_inverted_openclipart.svg" id="6_60usq"]
+[ext_resource type="Texture2D" uid="uid://d4kc4eu8kalrp" path="res://ui/icons/rotate_cw_openclipart.svg" id="7_skt3y"]
 [ext_resource type="Texture2D" uid="uid://by8h6e7prfgao" path="res://ui/icons/flag_solid_fontawesome.svg" id="8_gkatd"]
+[ext_resource type="Texture2D" uid="uid://51kgjpauts7a" path="res://ui/icons/gear_solid_fontawesome.svg" id="9_abgnr"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -38,7 +39,12 @@ bbcode_enabled = true
 text = "Soldier (Blue)
 HP: 10/10"
 
-[node name="TurnIndicator" type="RichTextLabel" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TurnIndicator" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -47,54 +53,78 @@ text = "Turn: Blue"
 fit_content = true
 autowrap_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="TimeLeftIndicator" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="GameButtons" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="TurnButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="TurnButtons" type="HBoxContainer" parent="MarginContainer/GameButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="MoveButton" type="Button" parent="MarginContainer/VBoxContainer/TurnButtons"]
+[node name="MoveButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
 layout_mode = 2
 icon = ExtResource("2_4k0br")
 icon_alignment = 1
 
-[node name="AttackButton" type="Button" parent="MarginContainer/VBoxContainer/TurnButtons"]
+[node name="AttackButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
 layout_mode = 2
 icon = ExtResource("3_pcnx6")
 icon_alignment = 1
 
-[node name="TurnButton" type="Button" parent="MarginContainer/VBoxContainer/TurnButtons"]
+[node name="TurnButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
 layout_mode = 2
 icon = ExtResource("4_mtx78")
 icon_alignment = 1
 
-[node name="EndTurnButton" type="Button" parent="MarginContainer/VBoxContainer/TurnButtons"]
+[node name="EndTurnButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
 layout_mode = 2
 icon = ExtResource("5_gxtx8")
 icon_alignment = 1
 
-[node name="CameraButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="CameraButtons" type="HBoxContainer" parent="MarginContainer/GameButtons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="LeftButton" type="Button" parent="MarginContainer/VBoxContainer/CameraButtons"]
+[node name="LeftButton" type="Button" parent="MarginContainer/GameButtons/CameraButtons"]
 layout_mode = 2
 icon = ExtResource("6_60usq")
 
-[node name="RightButton" type="Button" parent="MarginContainer/VBoxContainer/CameraButtons"]
+[node name="RightButton" type="Button" parent="MarginContainer/GameButtons/CameraButtons"]
 layout_mode = 2
 icon = ExtResource("7_skt3y")
 
-[node name="SurrenderButton" type="Button" parent="MarginContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+icon = ExtResource("9_abgnr")
+icon_alignment = 1
+
+[node name="SurrenderButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 icon = ExtResource("8_gkatd")
 icon_alignment = 1
+
+[node name="TurnTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="TickTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]
+[connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
