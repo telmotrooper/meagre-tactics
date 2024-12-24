@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=10 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="1_655q7"]
 [ext_resource type="Script" path="res://main.gd" id="1_m5qru"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://board.gd" id="2_w2gau"]
 [ext_resource type="Script" path="res://camera_pivot.gd" id="3_6mpia"]
 [ext_resource type="PackedScene" uid="uid://djmy0eeab85si" path="res://ui/ui.tscn" id="5_n4uyp"]
+[ext_resource type="AudioStream" uid="uid://dhra8lxayunuw" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_1_zapsplat.mp3" id="6_qjc6m"]
+[ext_resource type="AudioStream" uid="uid://xxejjtcm12rr" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_2_zapsplat.mp3" id="7_aiorw"]
 
 [sub_resource type="Environment" id="Environment_loftu"]
 background_mode = 1
@@ -50,6 +52,8 @@ color = "red"
 
 [node name="CameraPivot" type="Node3D" parent="."]
 script = ExtResource("3_6mpia")
+sound_effect_left = ExtResource("6_qjc6m")
+sound_effect_right = ExtResource("7_aiorw")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 4.5, 3)
