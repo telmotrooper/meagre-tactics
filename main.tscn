@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bfr6ahl1msuvj" path="res://unit/unit.tscn" id="2_6erff"]
 [ext_resource type="Script" path="res://board.gd" id="2_w2gau"]
 [ext_resource type="Script" path="res://camera_pivot.gd" id="3_6mpia"]
-[ext_resource type="PackedScene" uid="uid://djmy0eeab85si" path="res://ui.tscn" id="5_n4uyp"]
+[ext_resource type="PackedScene" uid="uid://djmy0eeab85si" path="res://ui/ui.tscn" id="5_n4uyp"]
 
 [sub_resource type="Environment" id="Environment_loftu"]
 background_mode = 1

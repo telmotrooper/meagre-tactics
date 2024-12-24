@@ -22,3 +22,6 @@ func fallback_overview() -> void:
 		update_unit_overview(GameState.selected_unit)
 	else:
 		%SelectedUnitOverview.text = ""
+
+func set_turn(team_color: String) -> void:
+	print("hello")
