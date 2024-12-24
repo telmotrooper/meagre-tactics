@@ -57,7 +57,7 @@ color = "red"
 script = ExtResource("3_6mpia")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 4.25, 3)
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 4.5, 3)
 projection = 1
 size = 11.0
 
@@ -85,6 +85,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="SelectedUnitOverview" type="RichTextLabel" parent="UI/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "Soldier (Blue)
+HP: 10/10"
+
+[node name="TurnIndicator" type="RichTextLabel" parent="UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Turn: Blue"
+fit_content = true
+autowrap_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
@@ -129,16 +147,6 @@ icon = ExtResource("10_sjeny")
 [node name="RightButton" type="Button" parent="UI/MarginContainer/VBoxContainer/CameraButtons"]
 layout_mode = 2
 icon = ExtResource("11_6hxpy")
-
-[node name="SelectedUnitOverview" type="RichTextLabel" parent="UI/MarginContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 100)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-bbcode_enabled = true
-text = "Soldier (Blue)
-HP: 10/10"
 
 [node name="SurrenderButton" type="Button" parent="UI/MarginContainer"]
 layout_mode = 2
