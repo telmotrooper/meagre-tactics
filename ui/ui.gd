@@ -16,6 +16,8 @@ func _ready() -> void:
 	%TurnButtons.get_children()[0].grab_focus()
 	GameState.unit_hovered.connect(update_unit_overview)
 	GameState.not_hovering_any_unit.connect(fallback_overview)
+	
+	%TurnButtons/EndTurnButton.pressed.connect(GameState.end_turn)
 
 func update_unit_overview(unit: Unit) -> void:
 	%SelectedUnitOverview.text = text % [unit.unit_type.unit_name, unit.color.capitalize(), unit.current_hp, unit.unit_type.max_hp]

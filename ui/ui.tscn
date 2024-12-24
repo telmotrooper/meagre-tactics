@@ -72,21 +72,25 @@ size_flags_vertical = 0
 
 [node name="MoveButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
 layout_mode = 2
+tooltip_text = "Move"
 icon = ExtResource("2_4k0br")
 icon_alignment = 1
 
 [node name="AttackButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
 layout_mode = 2
+tooltip_text = "Attack"
 icon = ExtResource("3_pcnx6")
 icon_alignment = 1
 
 [node name="TurnButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
 layout_mode = 2
+tooltip_text = "Turn"
 icon = ExtResource("4_mtx78")
 icon_alignment = 1
 
 [node name="EndTurnButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
 layout_mode = 2
+tooltip_text = "End Turn"
 icon = ExtResource("5_gxtx8")
 icon_alignment = 1
 
@@ -98,16 +102,19 @@ size_flags_vertical = 0
 
 [node name="LeftButton" type="Button" parent="MarginContainer/GameButtons/CameraButtons"]
 layout_mode = 2
+tooltip_text = "Rotate Counter Clockwise"
 icon = ExtResource("6_60usq")
 
 [node name="RightButton" type="Button" parent="MarginContainer/GameButtons/CameraButtons"]
 layout_mode = 2
+tooltip_text = "Rotate Clockwise"
 icon = ExtResource("7_skt3y")
 
 [node name="SettingsButton" type="Button" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+tooltip_text = "Settings"
 icon = ExtResource("9_abgnr")
 icon_alignment = 1
 
@@ -115,6 +122,7 @@ icon_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+tooltip_text = "Surrender"
 icon = ExtResource("8_gkatd")
 icon_alignment = 1
 
