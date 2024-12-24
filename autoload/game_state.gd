@@ -7,3 +7,4 @@ signal not_hovering_any_unit
 
 var board: Board
 var selected_unit: Unit
+var camera_pivot: CameraPivot
