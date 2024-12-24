@@ -11,3 +11,8 @@ var camera_pivot: CameraPivot
 var ui: UI
 
 var current_turn := "blue"
+
+func end_turn() -> void:
+	current_turn = "blue" if current_turn == "red" else "red"
+	ui.update_turn()
+	selected_unit = null
