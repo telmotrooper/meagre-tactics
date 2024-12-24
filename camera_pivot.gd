@@ -1,6 +1,10 @@
+class_name CameraPivot
 extends Node3D
 
 var busy := false
+
+func _ready() -> void:
+	GameState.camera_pivot = self
 
 func rotate_camera(degrees: float) -> void:
 	if busy:

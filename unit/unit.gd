@@ -19,6 +19,9 @@ func _ready() -> void:
 		$Headband.set_surface_override_material(0, red_material)
 
 func walk_to(tile: Tile) -> void:
+	if color != GameState.current_turn:
+		return
+	
 	GameState.board.set_state(Board.State.BUSY)
 	
 	get_tree().call_group("tiles", "reset_state")
@@ -29,5 +32,4 @@ func walk_to(tile: Tile) -> void:
 	tween.tween_property(self, "global_position", target_position, 0.5)
 	
 	tween.tween_callback(GameState.board.set_state.bind(Board.State.IDLE))
-	tween.tween_callback(func(): GameState.selected_unit = null)
-	
+	tween.tween_callback(func(): GameState.end_turn())

@@ -1,8 +1,17 @@
+class_name UI
 extends Control
 
 const text = "%s (%s)\nHP: %d/%d"
 
 func _ready() -> void:
+	GameState.ui = self
+	
+	if not is_instance_valid(GameState.camera_pivot):
+		print("Error: Camera pivot not found.")
+	
+	%CameraButtons/LeftButton.pressed.connect(GameState.camera_pivot.rotate_camera.bind(-90.0))
+	%CameraButtons/RightButton.pressed.connect(GameState.camera_pivot.rotate_camera.bind(90.0))
+	
 	%SelectedUnitOverview.text = ""
 	%TurnButtons.get_children()[0].grab_focus()
 	GameState.unit_hovered.connect(update_unit_overview)
@@ -16,3 +25,6 @@ func fallback_overview() -> void:
 		update_unit_overview(GameState.selected_unit)
 	else:
 		%SelectedUnitOverview.text = ""
+
+func update_turn() -> void:
+	%TurnIndicator.text = "Turn: %s" % GameState.current_turn.capitalize()
