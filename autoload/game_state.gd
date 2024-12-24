@@ -16,3 +16,7 @@ func end_turn() -> void:
 	current_turn = "blue" if current_turn == "red" else "red"
 	ui.update_turn()
 	selected_unit = null
+
+func play_sound(audio_stream: AudioStream) -> void:
+	$AudioStreamPlayer.stream = audio_stream
+	$AudioStreamPlayer.play()

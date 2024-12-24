@@ -4,3 +4,5 @@
 
 [node name="GameState" type="Node"]
 script = ExtResource("1_rsbb3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
