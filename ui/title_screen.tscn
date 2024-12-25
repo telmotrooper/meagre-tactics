@@ -25,9 +25,9 @@ offset_top = 200.0
 offset_right = 230.5
 offset_bottom = 288.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 64
+theme_type_variation = &"TitleScreenRichTextLabel"
 bbcode_enabled = true
-text = "Meagre Tactics"
+text = "[b]Meagre Tactics[/b]"
 fit_content = true
 autowrap_mode = 0
 
@@ -47,6 +47,7 @@ grow_vertical = 2
 
 [node name="PracticeButton" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"TitleScreenButton"
 text = "Practice"
 
 [connection signal="pressed" from="Control/VBoxContainer/PracticeButton" to="." method="_on_practice_button_pressed"]

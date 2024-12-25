@@ -38,3 +38,6 @@ func _on_tick_timer_timeout() -> void:
 
 func _on_turn_timer_timeout() -> void:
 	GameState.end_turn()
+
+func _on_surrender_button_pressed() -> void:
+	GameState.change_scene(GameState.TITLE_SCREEN)

@@ -134,5 +134,6 @@ autostart = true
 wait_time = 0.25
 autostart = true
 
+[connection signal="pressed" from="MarginContainer/SurrenderButton" to="." method="_on_surrender_button_pressed"]
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
