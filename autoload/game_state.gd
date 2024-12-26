@@ -5,6 +5,8 @@ signal unit_hovered
 @warning_ignore("unused_signal")
 signal not_hovering_any_unit
 
+const TITLE_SCREEN := "res://ui/title_screen.tscn"
+
 @export var end_turn_sound: AudioStream
 
 var board: Board
@@ -23,3 +25,6 @@ func end_turn() -> void:
 func play_sound(audio_stream: AudioStream) -> void:
 	$AudioStreamPlayer.stream = audio_stream
 	$AudioStreamPlayer.play()
+
+func change_scene(path: String) -> void:
+	get_tree().change_scene_to_file(path)

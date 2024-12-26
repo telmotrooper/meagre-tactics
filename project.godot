@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Meagre Tactics"
-run/main_scene="res://main.tscn"
+run/main_scene="res://ui/title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -28,6 +28,7 @@ window/stretch/mode="canvas_items"
 [gui]
 
 theme/custom="res://ui/theme.tres"
+theme/custom_font="res://ui/fonts/rubik_regular.ttf"
 
 [layer_names]
 

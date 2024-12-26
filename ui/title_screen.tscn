@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu2f54i4tkcy7"]
+
+[ext_resource type="Script" path="res://ui/title_screen.gd" id="1_cl6t8"]
+[ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
+
+[node name="TitleScreen" type="Node3D"]
+script = ExtResource("1_cl6t8")
+practice_scene = ExtResource("2_ig3re")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -230.5
+offset_top = 200.0
+offset_right = 230.5
+offset_bottom = 288.0
+grow_horizontal = 2
+theme_type_variation = &"TitleScreenRichTextLabel"
+bbcode_enabled = true
+text = "Meagre Tactics"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -235.0
+offset_top = -135.0
+offset_right = 235.0
+offset_bottom = 335.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = -34.0
+offset_right = 100.5
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PracticeButton" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenButton"
+text = "Practice"
+
+[node name="PlayOnlineButton" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenButton"
+disabled = true
+text = "Play Online"
+
+[node name="SettingsButton" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenButton"
+disabled = true
+text = "Settings"
+
+[connection signal="pressed" from="Control/Panel/VBoxContainer/PracticeButton" to="." method="_on_practice_button_pressed"]

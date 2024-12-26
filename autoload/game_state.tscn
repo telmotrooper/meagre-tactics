@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpcaw8n28awfh"]
+[gd_scene load_steps=4 format=3 uid="uid://cpcaw8n28awfh"]
 
 [ext_resource type="Script" path="res://autoload/game_state.gd" id="1_rsbb3"]
 [ext_resource type="AudioStream" uid="uid://b4xl3iykj5xuh" path="res://sounds/game_sound_plucked_harp_warm_success_tone_zapsplat.mp3" id="2_i5f31"]
+[ext_resource type="AudioStream" uid="uid://yuxwjfottcan" path="res://sounds/i_know_im_nothing_biiansu_zapsplat.mp3" id="3_d4lek"]
 
 [node name="GameState" type="Node"]
 script = ExtResource("1_rsbb3")
 end_turn_sound = ExtResource("2_i5f31")
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d4lek")
+autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
