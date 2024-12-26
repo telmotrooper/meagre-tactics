@@ -17,6 +17,7 @@ RichTextLabel/font_sizes/normal_font_size = 24
 TitleScreenButton/base_type = &"Button"
 TitleScreenButton/font_sizes/font_size = 50
 TitleScreenRichTextLabel/base_type = &"RichTextLabel"
+TitleScreenRichTextLabel/constants/outline_size = 28
 TitleScreenRichTextLabel/font_sizes/normal_font_size = 120
 TitleScreenRichTextLabel/fonts/normal_font = ExtResource("1_urdoo")
 VBoxContainer/constants/separation = 20

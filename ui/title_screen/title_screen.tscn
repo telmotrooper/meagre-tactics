@@ -1,11 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu2f54i4tkcy7"]
+[gd_scene load_steps=5 format=3 uid="uid://bu2f54i4tkcy7"]
 
-[ext_resource type="Script" path="res://ui/title_screen.gd" id="1_cl6t8"]
+[ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
 [ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
+[ext_resource type="PackedScene" uid="uid://cgkfhhl56nqim" path="res://ui/title_screen/dungeon_entry.blend" id="3_e07mo"]
+[ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="4_3rylc"]
 
 [node name="TitleScreen" type="Node3D"]
 script = ExtResource("1_cl6t8")
 practice_scene = ExtResource("2_ig3re")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="DungeonEntry" parent="Node3D" instance=ExtResource("3_e07mo")]
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09188, 3, 5.1346)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+environment = ExtResource("4_3rylc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+omni_range = 8.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -17,17 +34,20 @@ grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -230.5
-offset_top = 200.0
-offset_right = 230.5
-offset_bottom = 288.0
+anchor_bottom = 0.5
+offset_left = -437.0
+offset_top = -340.0
+offset_right = 437.0
+offset_bottom = -189.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_type_variation = &"TitleScreenRichTextLabel"
 bbcode_enabled = true
-text = "Meagre Tactics"
+text = "[center]Meagre Tactics[center]"
 fit_content = true
 autowrap_mode = 0
 

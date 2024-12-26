@@ -7,10 +7,8 @@
 [ext_resource type="Script" path="res://camera_pivot.gd" id="5_xqxay"]
 [ext_resource type="AudioStream" uid="uid://dhra8lxayunuw" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_1_zapsplat.mp3" id="6_b454t"]
 [ext_resource type="AudioStream" uid="uid://xxejjtcm12rr" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_2_zapsplat.mp3" id="7_byk71"]
+[ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="8_7pww7"]
 [ext_resource type="PackedScene" uid="uid://djmy0eeab85si" path="res://ui/ui.tscn" id="8_aoq4e"]
-
-[sub_resource type="Environment" id="Environment_loftu"]
-background_mode = 1
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_2c1y3")
@@ -64,6 +62,6 @@ size = 11.0
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 5, 4)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_loftu")
+environment = ExtResource("8_7pww7")
 
 [node name="UI" parent="." instance=ExtResource("8_aoq4e")]

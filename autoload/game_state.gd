@@ -5,7 +5,7 @@ signal unit_hovered
 @warning_ignore("unused_signal")
 signal not_hovering_any_unit
 
-const TITLE_SCREEN := "res://ui/title_screen.tscn"
+const TITLE_SCREEN := "res://ui/title_screen/title_screen.tscn"
 
 @export var end_turn_sound: AudioStream
 
