@@ -1,4 +1,6 @@
-[gd_resource type="Theme" format=3 uid="uid://brc2s1pdg7hdb"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://brc2s1pdg7hdb"]
+
+[ext_resource type="FontFile" uid="uid://c05l6327icab2" path="res://ui/fonts/black_chancery.ttf" id="1_urdoo"]
 
 [resource]
 Button/font_sizes/font_size = 32
@@ -13,8 +15,9 @@ RichTextLabel/font_sizes/italics_font_size = 24
 RichTextLabel/font_sizes/mono_font_size = 24
 RichTextLabel/font_sizes/normal_font_size = 24
 TitleScreenButton/base_type = &"Button"
-TitleScreenButton/font_sizes/font_size = 40
+TitleScreenButton/font_sizes/font_size = 50
 TitleScreenButton/fonts/font = null
 TitleScreenRichTextLabel/base_type = &"RichTextLabel"
-TitleScreenRichTextLabel/font_sizes/bold_font_size = 80
+TitleScreenRichTextLabel/font_sizes/normal_font_size = 120
+TitleScreenRichTextLabel/fonts/normal_font = ExtResource("1_urdoo")
 VBoxContainer/constants/separation = 10
