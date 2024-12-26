@@ -25,6 +25,3 @@ func end_turn() -> void:
 func play_sound(audio_stream: AudioStream) -> void:
 	$AudioStreamPlayer.stream = audio_stream
 	$AudioStreamPlayer.play()
-
-func change_scene(path: String) -> void:
-	get_tree().change_scene_to_file(path)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckvef5vjpsbxc"]
+
+[ext_resource type="Script" path="res://autoload/scene_changer.gd" id="1_ydwj2"]
+
+[node name="SceneChanger" type="Control"]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ydwj2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
