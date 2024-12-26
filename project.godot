@@ -28,6 +28,7 @@ window/stretch/mode="canvas_items"
 [gui]
 
 theme/custom="res://ui/theme.tres"
+theme/custom_font="res://ui/fonts/rubik_regular.ttf"
 
 [layer_names]
 
