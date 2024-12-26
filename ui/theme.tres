@@ -19,4 +19,4 @@ TitleScreenButton/font_sizes/font_size = 50
 TitleScreenRichTextLabel/base_type = &"RichTextLabel"
 TitleScreenRichTextLabel/font_sizes/normal_font_size = 120
 TitleScreenRichTextLabel/fonts/normal_font = ExtResource("1_urdoo")
-VBoxContainer/constants/separation = 10
+VBoxContainer/constants/separation = 20
