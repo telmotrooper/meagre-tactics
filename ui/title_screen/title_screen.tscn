@@ -14,7 +14,7 @@ practice_scene = ExtResource("2_ig3re")
 [node name="DungeonEntry" parent="Node3D" instance=ExtResource("3_e07mo")]
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09188, 3, 5.1346)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5.1)
 current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
