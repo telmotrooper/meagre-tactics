@@ -17,11 +17,12 @@ practice_scene = ExtResource("2_ig3re")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09188, 3, 5.1346)
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 5, 4)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
 environment = ExtResource("4_3rylc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
+omni_range = 8.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
