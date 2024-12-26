@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SceneChanger="*res://autoload/scene_changer.tscn"
 GameState="*res://autoload/game_state.tscn"
 
 [display]
