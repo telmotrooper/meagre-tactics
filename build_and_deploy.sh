@@ -11,6 +11,11 @@ GITHUB_PAGES_BRANCH=web
 TIME_STAMP=$(date -u +"%Y%m%d-%H%M%S")
 EXPORT_PATH=$TARGET_FOLDER/"$GAME_NAME"_"$TIME_STAMP"
 
+echo '{"build": "'$TIME_STAMP'"}' > metadata.json
+git add metadata.json
+git commit -m "build label updated to \"$TIME_STAMP\""
+git push
+
 rm -rf $EXPORT_PATH
 mkdir -p $EXPORT_PATH
 godot --headless --export-release "Web" $EXPORT_PATH/index.html
