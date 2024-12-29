@@ -3,6 +3,8 @@ extends Control
 
 @export var button_click_sound: AudioStream
 
+var progress_bar_fill: StyleBoxFlat = load("res://ui/progress_bar_fill.tres")
+
 const text = "%s (%s)\nHP: %d/%d"
 
 func _ready() -> void:
@@ -31,6 +33,7 @@ func fallback_overview() -> void:
 		%SelectedUnitOverview.text = ""
 
 func update_turn() -> void:
+	progress_bar_fill.bg_color = GameState.team_colors[GameState.current_turn]
 	%TurnIndicator.text = "Turn: %s" % GameState.current_turn.capitalize()
 	$TurnTimer.start()
 	_on_tick_timer_timeout() # Force instant refresh.

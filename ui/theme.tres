@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://brc2s1pdg7hdb"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://brc2s1pdg7hdb"]
 
 [ext_resource type="FontFile" uid="uid://c05l6327icab2" path="res://ui/fonts/black_chancery.ttf" id="1_urdoo"]
+[ext_resource type="StyleBox" uid="uid://dxaramdl7rorx" path="res://ui/progress_bar_fill.tres" id="1_ygn05"]
 
 [resource]
 Button/font_sizes/font_size = 24
@@ -10,6 +11,7 @@ MarginContainer/constants/margin_bottom = 40
 MarginContainer/constants/margin_left = 40
 MarginContainer/constants/margin_right = 40
 MarginContainer/constants/margin_top = 40
+ProgressBar/styles/fill = ExtResource("1_ygn05")
 RichTextLabel/font_sizes/bold_font_size = 24
 RichTextLabel/font_sizes/bold_italics_font_size = 24
 RichTextLabel/font_sizes/italics_font_size = 24

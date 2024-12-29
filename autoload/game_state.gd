@@ -14,6 +14,11 @@ var selected_unit: Unit
 var camera_pivot: CameraPivot
 var ui: UI
 
+const team_colors := {
+	"blue": "#384962",
+	"red": "#c44836"
+}
+
 var current_turn := "blue"
 
 func end_turn() -> void:
