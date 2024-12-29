@@ -3,8 +3,9 @@
 [ext_resource type="FontFile" uid="uid://c05l6327icab2" path="res://ui/fonts/black_chancery.ttf" id="1_urdoo"]
 
 [resource]
-Button/font_sizes/font_size = 32
+Button/font_sizes/font_size = 24
 HBoxContainer/constants/separation = 10
+Label/font_sizes/font_size = 24
 MarginContainer/constants/margin_bottom = 40
 MarginContainer/constants/margin_left = 40
 MarginContainer/constants/margin_right = 40

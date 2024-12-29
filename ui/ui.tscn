@@ -134,6 +134,16 @@ autostart = true
 wait_time = 0.25
 autostart = true
 
+[node name="SurrenderDialog" type="ConfirmationDialog" parent="."]
+title = "Confirm"
+initial_position = 2
+size = Vector2i(420, 100)
+unresizable = true
+ok_button_text = "Yes"
+dialog_text = "Are you sure you want to surrender?"
+cancel_button_text = "No"
+
 [connection signal="pressed" from="MarginContainer/SurrenderButton" to="." method="_on_surrender_button_pressed"]
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
+[connection signal="confirmed" from="SurrenderDialog" to="." method="_on_surrender_dialog_confirmed"]
