@@ -45,3 +45,7 @@ ui_toggle_fullscreen={
 
 3d_physics/layer_1="Units"
 3d_physics/layer_2="Tiles"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

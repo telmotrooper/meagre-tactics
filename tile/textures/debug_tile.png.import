@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://capwmf1xh3b0m"
 path.s3tc="res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.s3tc.ctex"
+path.etc2="res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://tile/textures/debug_tile.png"
-dest_files=["res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.s3tc.ctex"]
+dest_files=["res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.s3tc.ctex", "res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.etc2.ctex"]
 
 [params]
 
