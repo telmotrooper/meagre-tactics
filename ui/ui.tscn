@@ -43,6 +43,7 @@ HP: 10/10"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_constants/separation = 5
 
 [node name="TurnIndicator" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
