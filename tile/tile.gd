@@ -3,6 +3,8 @@ extends CSGBox3D
 
 enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER, ATTACKABLE, ATTACKABLE_HOVER }
 
+@export var unit_selected_sound: AudioStream
+
 @export_group("Materials")
 @export var tile_material: Material
 @export var hover_tile_material: Material
@@ -68,6 +70,7 @@ func _on_area_3d_mouse_exited() -> void:
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if is_left_mouse_click(event):
 		if has_unit(): # Select unit
+			GameState.play_sound(unit_selected_sound)
 			GameState.selected_unit = get_unit()
 			get_tree().call_group("tiles", "reset_state")
 			

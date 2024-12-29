@@ -7,6 +7,7 @@ func _on_practice_button_pressed() -> void:
 
 func enter_dungeon():
 	var tween := create_tween()
+	tween.tween_callback($Control/AudioStreamPlayer.play)
 	tween.tween_property($Control, "modulate", Color.hex(0xffffff00), 1.0)
 	tween.tween_property($Node3D/Camera3D, "position", Vector3(0,3,-8),3.5)
 	tween.tween_callback(func():

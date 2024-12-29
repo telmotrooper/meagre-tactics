@@ -96,4 +96,6 @@ theme_type_variation = &"TitleScreenButton"
 disabled = true
 text = "Settings"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
+
 [connection signal="pressed" from="Control/Panel/VBoxContainer/PracticeButton" to="." method="_on_practice_button_pressed"]
