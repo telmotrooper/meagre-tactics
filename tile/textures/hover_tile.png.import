@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bidr867v875ub"
 path.s3tc="res://.godot/imported/hover_tile.png-478ce67d0a0d0152e08185929031d303.s3tc.ctex"
+path.etc2="res://.godot/imported/hover_tile.png-478ce67d0a0d0152e08185929031d303.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://tile/textures/hover_tile.png"
-dest_files=["res://.godot/imported/hover_tile.png-478ce67d0a0d0152e08185929031d303.s3tc.ctex"]
+dest_files=["res://.godot/imported/hover_tile.png-478ce67d0a0d0152e08185929031d303.s3tc.ctex", "res://.godot/imported/hover_tile.png-478ce67d0a0d0152e08185929031d303.etc2.ctex"]
 
 [params]
 
