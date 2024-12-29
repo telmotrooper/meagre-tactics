@@ -13,3 +13,4 @@ stream = ExtResource("3_d4lek")
 autoplay = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+max_polyphony = 2
