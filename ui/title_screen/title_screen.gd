@@ -2,6 +2,12 @@ extends Node3D
 
 @export var practice_scene: PackedScene
 
+func _ready() -> void:
+	var metadata_file = FileAccess.get_file_as_string("res://metadata.json")
+	var metadata = JSON.parse_string(metadata_file)
+	if metadata.build:
+		%BuildLabel.text = "Build: %s" % metadata.build
+
 func _on_practice_button_pressed() -> void:
 	enter_dungeon()
 
