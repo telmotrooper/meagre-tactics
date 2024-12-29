@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu2f54i4tkcy7"]
+[gd_scene load_steps=6 format=3 uid="uid://bu2f54i4tkcy7"]
 
 [ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
 [ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
 [ext_resource type="PackedScene" uid="uid://cgkfhhl56nqim" path="res://ui/title_screen/dungeon_entry.blend" id="3_e07mo"]
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="4_3rylc"]
+[ext_resource type="AudioStream" uid="uid://cgsj5nqegvbsd" path="res://sounds/brick_or_piece_of_stone_short_scrape_on_concrete_surface_2_zapsplat.mp3" id="5_fiemo"]
 
 [node name="TitleScreen" type="Node3D"]
 script = ExtResource("1_cl6t8")
@@ -97,5 +98,6 @@ disabled = true
 text = "Settings"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource("5_fiemo")
 
 [connection signal="pressed" from="Control/Panel/VBoxContainer/PracticeButton" to="." method="_on_practice_button_pressed"]

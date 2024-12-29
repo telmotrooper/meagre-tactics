@@ -1,6 +1,8 @@
 class_name UI
 extends Control
 
+@export var button_click_sound: AudioStream
+
 const text = "%s (%s)\nHP: %d/%d"
 
 func _ready() -> void:
@@ -23,7 +25,7 @@ func update_unit_overview(unit: Unit) -> void:
 	%SelectedUnitOverview.text = text % [unit.unit_type.unit_name, unit.color.capitalize(), unit.current_hp, unit.unit_type.max_hp]
 
 func fallback_overview() -> void:
-	if GameState.selected_unit:
+	if is_instance_valid(GameState.selected_unit):
 		update_unit_overview(GameState.selected_unit)
 	else:
 		%SelectedUnitOverview.text = ""
@@ -39,8 +41,25 @@ func _on_tick_timer_timeout() -> void:
 func _on_turn_timer_timeout() -> void:
 	GameState.end_turn()
 
+func _on_move_button_pressed() -> void:
+	GameState.play_sound(button_click_sound)
+
+func _on_attack_button_pressed() -> void:
+	GameState.play_sound(button_click_sound)
+
+func _on_turn_button_pressed() -> void:
+	GameState.play_sound(button_click_sound)
+
+func _on_settings_button_pressed() -> void:
+	GameState.play_sound(button_click_sound)
+
 func _on_surrender_button_pressed() -> void:
+	GameState.play_sound(button_click_sound)
 	$SurrenderDialog.show()
 
 func _on_surrender_dialog_confirmed() -> void:
+	GameState.play_sound(button_click_sound)
 	SceneChanger.change_scene(GameState.TITLE_SCREEN)
+
+func _on_surrender_dialog_canceled() -> void:
+	GameState.play_sound(button_click_sound)
