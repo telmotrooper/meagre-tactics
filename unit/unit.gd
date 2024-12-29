@@ -28,8 +28,11 @@ func walk_to(tile: Tile) -> void:
 	var target_position = Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
 	look_at(target_position, Vector3.UP, true)
 	var tween = create_tween()
+	tween.tween_callback($AudioStreamPlayer.play)
 	# TODO: In the future use distance in number of tiles to calculate time.
 	tween.tween_property(self, "global_position", target_position, 0.5)
-	
-	tween.tween_callback(GameState.board.set_state.bind(Board.State.IDLE))
-	tween.tween_callback(func(): GameState.end_turn())
+	tween.tween_callback(func():
+		$AudioStreamPlayer.stop()
+		GameState.board.set_state(Board.State.IDLE)
+		GameState.end_turn()
+	)
