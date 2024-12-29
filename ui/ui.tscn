@@ -143,7 +143,12 @@ ok_button_text = "Yes"
 dialog_text = "Are you sure you want to surrender?"
 cancel_button_text = "No"
 
+[connection signal="pressed" from="MarginContainer/GameButtons/TurnButtons/MoveButton" to="." method="_on_move_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GameButtons/TurnButtons/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GameButtons/TurnButtons/TurnButton" to="." method="_on_turn_button_pressed"]
+[connection signal="pressed" from="MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="MarginContainer/SurrenderButton" to="." method="_on_surrender_button_pressed"]
 [connection signal="timeout" from="TurnTimer" to="." method="_on_turn_timer_timeout"]
 [connection signal="timeout" from="TickTimer" to="." method="_on_tick_timer_timeout"]
+[connection signal="canceled" from="SurrenderDialog" to="." method="_on_surrender_dialog_canceled"]
 [connection signal="confirmed" from="SurrenderDialog" to="." method="_on_surrender_dialog_confirmed"]
