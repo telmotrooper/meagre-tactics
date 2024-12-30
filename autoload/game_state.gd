@@ -31,6 +31,12 @@ func end_turn() -> void:
 	selected_unit = null
 	play_sound(end_turn_sound)
 
+func consume_action(action: Action) -> void:
+	if remaining_actions.has(action):
+		remaining_actions.erase(action)
+	if len(remaining_actions) == 0:
+		end_turn()
+
 func play_sound(audio_stream: AudioStream) -> void:
 	$AudioStreamPlayer.stream = audio_stream
 	$AudioStreamPlayer.play()
