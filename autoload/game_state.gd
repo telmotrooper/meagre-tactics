@@ -23,10 +23,12 @@ const team_color := {
 
 var current_team := "blue"
 var remaining_actions := [Action.MOVE, Action.ATTACK, Action.TURN]
+var current_action := Action.MOVE
 
 func end_turn() -> void:
 	current_team = "blue" if current_team == "red" else "red"
 	remaining_actions = [Action.MOVE, Action.ATTACK, Action.TURN]
+	current_action = Action.MOVE
 	ui.update_turn()
 	selected_unit = null
 	play_sound(end_turn_sound)
