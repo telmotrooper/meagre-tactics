@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvm1jrmyvxxbs"]
+[gd_scene load_steps=6 format=3 uid="uid://cvm1jrmyvxxbs"]
 
 [ext_resource type="Script" path="res://autoload/material_manager.gd" id="1_d41ki"]
 [ext_resource type="Material" uid="uid://dkyn1hqn46ue6" path="res://tile/materials/tile.tres" id="2_i2lv1"]
+[ext_resource type="Texture2D" uid="uid://dm772nwnpsguo" path="res://tile/tile_texture.png" id="2_u18o7"]
 [ext_resource type="Material" uid="uid://cj0bs40tto217" path="res://tile/materials/walk_tile.tres" id="3_k6wgi"]
 [ext_resource type="Material" uid="uid://s7hxboosx8bs" path="res://tile/materials/debug_tile.tres" id="4_uxwnw"]
 
 [node name="MaterialManager" type="Node"]
 script = ExtResource("1_d41ki")
+tile_texture = ExtResource("2_u18o7")
 tile_material = ExtResource("2_i2lv1")
 walk_tile_material = ExtResource("3_k6wgi")
 debug_tile_material = ExtResource("4_uxwnw")
