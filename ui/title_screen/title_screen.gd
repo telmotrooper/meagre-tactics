@@ -3,6 +3,12 @@ extends Node3D
 @export var practice_scene: PackedScene
 
 func _ready() -> void:
+	read_build_label()
+	
+	if OS.has_feature("web"):
+		%QuitButton.queue_free()
+
+func read_build_label() -> void:
 	var metadata_file = FileAccess.get_file_as_string("res://metadata.json")
 	var metadata = JSON.parse_string(metadata_file)
 	if metadata.build:
@@ -19,3 +25,6 @@ func enter_dungeon():
 	tween.tween_callback(func():
 		SceneChanger.change_scene(practice_scene.get_path())
 	)
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

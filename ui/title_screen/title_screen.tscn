@@ -97,6 +97,12 @@ theme_type_variation = &"TitleScreenButton"
 disabled = true
 text = "Settings"
 
+[node name="QuitButton" type="Button" parent="Control/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleScreenButton"
+text = "Quit"
+
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -117,3 +123,4 @@ text = "Build: build_label"
 stream = ExtResource("5_fiemo")
 
 [connection signal="pressed" from="Control/Panel/VBoxContainer/PracticeButton" to="." method="_on_practice_button_pressed"]
+[connection signal="pressed" from="Control/Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
