@@ -28,3 +28,6 @@ func enter_dungeon():
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_toggle_fullscreen_button_pressed() -> void:
+	Hotkeys.toggle_fullscreen()
