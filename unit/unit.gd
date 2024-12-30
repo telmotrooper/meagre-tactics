@@ -2,7 +2,7 @@
 class_name Unit
 extends CharacterBody3D
 
-@export var color := "blue"
+@export var team_color := "blue"
 @export var unit_type: UnitType
 @export var current_hp := 0
 
@@ -13,13 +13,13 @@ extends CharacterBody3D
 func _ready() -> void:
 	current_hp = unit_type.max_hp
 	
-	if color == "blue":
+	if team_color == "blue":
 		$Headband.set_surface_override_material(0, blue_material)
-	elif color == "red":
+	elif team_color == "red":
 		$Headband.set_surface_override_material(0, red_material)
 
 func walk_to(tile: Tile) -> void:
-	if color != GameState.current_team:
+	if team_color != GameState.current_team:
 		return
 	
 	GameState.board.set_state(Board.State.BUSY)

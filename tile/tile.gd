@@ -18,7 +18,7 @@ func set_state(new_state: State) -> void:
 		State.REGULAR_HOVER:
 			material = MaterialManager.hover_tile_material
 		State.WALKABLE:
-			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.color != GameState.current_team:
+			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color != GameState.current_team:
 				material = MaterialManager.blocked_walk_tile_material
 			else:
 				material = MaterialManager.walk_tile_material
@@ -36,7 +36,7 @@ func has_unit() -> bool:
 	return %UnitDetector.get_collider() != null
 
 func has_enemy_unit(tile: Tile) -> bool:
-	return tile.get_unit() and tile.get_unit().color != get_unit().color
+	return tile.get_unit() and tile.get_unit().team_color != get_unit().team_color
 
 func is_walkable(tile: Tile) -> bool:
 	return tile.state == State.WALKABLE or tile.state == State.WALKABLE_HOVER
@@ -52,7 +52,7 @@ func _on_area_3d_mouse_entered() -> void:
 	if has_unit() and state != State.WALKABLE:
 		set_state(State.REGULAR_HOVER)
 		GameState.unit_hovered.emit(get_unit())
-	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.color == GameState.current_team:
+	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
 		set_state(State.WALKABLE_HOVER)
 	else:
 		GameState.not_hovering_any_unit.emit()

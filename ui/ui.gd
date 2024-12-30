@@ -24,7 +24,7 @@ func _ready() -> void:
 	%TurnButtons/EndTurnButton.pressed.connect(GameState.end_turn)
 
 func update_unit_overview(unit: Unit) -> void:
-	%SelectedUnitOverview.text = text % [unit.unit_type.unit_name, unit.color.capitalize(), unit.current_hp, unit.unit_type.max_hp]
+	%SelectedUnitOverview.text = text % [unit.unit_type.unit_name, unit.team_color.capitalize(), unit.current_hp, unit.unit_type.max_hp]
 
 func fallback_overview() -> void:
 	if is_instance_valid(GameState.selected_unit):
