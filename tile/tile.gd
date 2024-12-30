@@ -5,13 +5,6 @@ enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER, ATTACKABLE, ATTAC
 
 @export var unit_selected_sound: AudioStream
 
-@export_group("Materials")
-@export var tile_material: Material
-@export var hover_tile_material: Material
-@export var walk_tile_material: Material
-@export var hover_walk_tile_material: Material
-@export var debug_tile_material: Material
-
 @onready var ray_casts = %RayCasts
 
 var state := State.REGULAR
@@ -21,17 +14,17 @@ func set_state(new_state: State) -> void:
 	state = new_state
 	match state:
 		State.REGULAR:
-			material = tile_material
+			material = MaterialManager.tile_material
 		State.REGULAR_HOVER:
-			material = hover_tile_material
+			material = MaterialManager.hover_tile_material
 		State.WALKABLE:
-			material = walk_tile_material
+			material = MaterialManager.walk_tile_material
 		State.WALKABLE_HOVER:
-			material = hover_walk_tile_material
+			material = MaterialManager.hover_walk_tile_material
 		State.ATTACKABLE:
-			material = debug_tile_material
+			material = MaterialManager.debug_tile_material
 		State.ATTACKABLE_HOVER:
-			material = debug_tile_material
+			material = MaterialManager.debug_tile_material
 
 func get_unit() -> Unit:
 	return %UnitDetector.get_collider()
