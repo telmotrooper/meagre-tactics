@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=9 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_2c1y3"]
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="2_qole7"]
-[ext_resource type="Script" path="res://board.gd" id="3_wltfk"]
 [ext_resource type="PackedScene" uid="uid://bfr6ahl1msuvj" path="res://unit/unit.tscn" id="4_p2ii1"]
 [ext_resource type="Script" path="res://camera_pivot.gd" id="5_xqxay"]
 [ext_resource type="AudioStream" uid="uid://dhra8lxayunuw" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_1_zapsplat.mp3" id="6_b454t"]
@@ -14,7 +13,6 @@
 script = ExtResource("1_2c1y3")
 
 [node name="Board" parent="." instance=ExtResource("2_qole7")]
-script = ExtResource("3_wltfk")
 
 [node name="Team1" type="Node" parent="Board"]
 
