@@ -34,5 +34,5 @@ func walk_to(tile: Tile) -> void:
 	tween.tween_callback(func():
 		$AudioStreamPlayer.stop()
 		GameState.board.set_state(Board.State.IDLE)
-		GameState.end_turn()
+		GameState.consume_action(GameState.Action.MOVE)
 	)

@@ -109,7 +109,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 					if affected_tile.reached_through_enemy_tile:
 						affected_tile.reset_state()
 		
-		elif state == State.WALKABLE_HOVER and is_instance_valid(GameState.selected_unit):
+		elif state == State.WALKABLE_HOVER and is_instance_valid(GameState.selected_unit) and GameState.is_action_available(GameState.Action.MOVE):
 			GameState.selected_unit.walk_to(self)
 		
 		else: # Clean up selection

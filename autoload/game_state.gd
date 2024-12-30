@@ -14,7 +14,7 @@ var selected_unit: Unit
 var camera_pivot: CameraPivot
 var ui: UI
 
-enum Action { WALK, ATTACK, TURN }
+enum Action { MOVE, ATTACK, TURN }
 
 const team_color := {
 	"blue": "#384962",
@@ -22,18 +22,25 @@ const team_color := {
 }
 
 var current_team := "blue"
-var remaining_actions := [Action.WALK, Action.ATTACK, Action.TURN]
+var remaining_actions := [Action.MOVE, Action.ATTACK, Action.TURN]
 
 func end_turn() -> void:
 	current_team = "blue" if current_team == "red" else "red"
-	remaining_actions = [Action.WALK, Action.ATTACK, Action.TURN]
+	remaining_actions = [Action.MOVE, Action.ATTACK, Action.TURN]
 	ui.update_turn()
 	selected_unit = null
 	play_sound(end_turn_sound)
 
+func is_action_available(action: Action) -> bool:
+	return remaining_actions.has(action)
+
 func consume_action(action: Action) -> void:
-	if remaining_actions.has(action):
-		remaining_actions.erase(action)
+	if not is_action_available(action):
+		print("Error: Attempting to consume unavailable action.")
+		return
+	
+	remaining_actions.erase(action)
+	
 	if len(remaining_actions) == 0:
 		end_turn()
 
