@@ -18,7 +18,10 @@ func set_state(new_state: State) -> void:
 		State.REGULAR_HOVER:
 			material = MaterialManager.hover_tile_material
 		State.WALKABLE:
-			material = MaterialManager.walk_tile_material
+			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.color != GameState.current_turn:
+				material = MaterialManager.blocked_walk_tile_material
+			else:
+				material = MaterialManager.walk_tile_material
 		State.WALKABLE_HOVER:
 			material = MaterialManager.hover_walk_tile_material
 		State.ATTACKABLE:
@@ -49,7 +52,7 @@ func _on_area_3d_mouse_entered() -> void:
 	if has_unit() and state != State.WALKABLE:
 		set_state(State.REGULAR_HOVER)
 		GameState.unit_hovered.emit(get_unit())
-	elif state == State.WALKABLE:
+	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.color == GameState.current_turn:
 		set_state(State.WALKABLE_HOVER)
 	else:
 		GameState.not_hovering_any_unit.emit()
