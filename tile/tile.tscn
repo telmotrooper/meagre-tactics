@@ -1,17 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cys55hkbt2xbd"]
+[gd_scene load_steps=8 format=3 uid="uid://cys55hkbt2xbd"]
 
 [ext_resource type="Script" path="res://tile/tile.gd" id="2_hh2o7"]
-[ext_resource type="Material" uid="uid://cly3idnej6vy4" path="res://tile/materials/hover_tile.tres" id="3_b22hl"]
 [ext_resource type="Script" path="res://tile/tile_area3d.gd" id="5_o0p71"]
 [ext_resource type="Texture2D" uid="uid://dm772nwnpsguo" path="res://tile/tile_texture.png" id="7_1nsy7"]
 [ext_resource type="Material" uid="uid://dkyn1hqn46ue6" path="res://tile/materials/tile.tres" id="7_6penk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqehb"]
 albedo_color = Color(0.329412, 0.388235, 0.431373, 1)
-albedo_texture = ExtResource("7_1nsy7")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqms4"]
-albedo_color = Color(0.537255, 0.596078, 0.643137, 1)
 albedo_texture = ExtResource("7_1nsy7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro04k"]
@@ -26,9 +21,7 @@ size = Vector3(1, 0.5, 1)
 material = ExtResource("7_6penk")
 script = ExtResource("2_hh2o7")
 tile_material = ExtResource("7_6penk")
-hover_tile_material = ExtResource("3_b22hl")
 walk_tile_material = SubResource("StandardMaterial3D_oqehb")
-hover_walk_tile_material = SubResource("StandardMaterial3D_pqms4")
 debug_tile_material = SubResource("StandardMaterial3D_ro04k")
 
 [node name="Area3D" type="Area3D" parent="."]
