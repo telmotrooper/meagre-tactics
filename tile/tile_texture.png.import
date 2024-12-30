@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://capwmf1xh3b0m"
-path.s3tc="res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.s3tc.ctex"
-path.etc2="res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.etc2.ctex"
+uid="uid://dm772nwnpsguo"
+path.s3tc="res://.godot/imported/tile_texture.png-fe640526ced1ed55ef3920611bf03595.s3tc.ctex"
+path.etc2="res://.godot/imported/tile_texture.png-fe640526ced1ed55ef3920611bf03595.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://tile/textures/debug_tile.png"
-dest_files=["res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.s3tc.ctex", "res://.godot/imported/debug_tile.png-ae4a2ac1d7a8e860da4b793eb7e657ca.etc2.ctex"]
+source_file="res://tile/tile_texture.png"
+dest_files=["res://.godot/imported/tile_texture.png-fe640526ced1ed55ef3920611bf03595.s3tc.ctex", "res://.godot/imported/tile_texture.png-fe640526ced1ed55ef3920611bf03595.etc2.ctex"]
 
 [params]
 

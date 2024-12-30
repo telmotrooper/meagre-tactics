@@ -1,25 +1,35 @@
-[gd_scene load_steps=9 format=3 uid="uid://cys55hkbt2xbd"]
+[gd_scene load_steps=10 format=3 uid="uid://cys55hkbt2xbd"]
 
-[ext_resource type="Material" uid="uid://n437lsr7w31f" path="res://tile/materials/tile.tres" id="1_58fmb"]
 [ext_resource type="Script" path="res://tile/tile.gd" id="2_hh2o7"]
-[ext_resource type="Material" uid="uid://cktqb8xgbsw53" path="res://tile/materials/hover_tile.tres" id="3_b22hl"]
-[ext_resource type="Material" uid="uid://cj0bs40tto217" path="res://tile/materials/walk_tile.tres" id="4_h4u47"]
-[ext_resource type="Material" uid="uid://s7hxboosx8bs" path="res://tile/materials/debug_tile.tres" id="5_3ei4b"]
-[ext_resource type="Material" uid="uid://ck7tm68tjl5tb" path="res://tile/materials/hover_walk_tile.tres" id="5_i4yaf"]
+[ext_resource type="Material" uid="uid://cly3idnej6vy4" path="res://tile/materials/hover_tile.tres" id="3_b22hl"]
 [ext_resource type="Script" path="res://tile/tile_area3d.gd" id="5_o0p71"]
+[ext_resource type="Texture2D" uid="uid://dm772nwnpsguo" path="res://tile/tile_texture.png" id="7_1nsy7"]
+[ext_resource type="Material" uid="uid://dkyn1hqn46ue6" path="res://tile/materials/tile.tres" id="7_6penk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqehb"]
+albedo_color = Color(0.329412, 0.388235, 0.431373, 1)
+albedo_texture = ExtResource("7_1nsy7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqms4"]
+albedo_color = Color(0.537255, 0.596078, 0.643137, 1)
+albedo_texture = ExtResource("7_1nsy7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro04k"]
+albedo_color = Color(0.611765, 0.588235, 0.231373, 1)
+albedo_texture = ExtResource("7_1nsy7")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oybon"]
 size = Vector3(1, 0.5, 1)
 
 [node name="Tile" type="CSGBox3D" groups=["tiles"]]
 size = Vector3(1, 0.5, 1)
-material = ExtResource("1_58fmb")
+material = ExtResource("7_6penk")
 script = ExtResource("2_hh2o7")
-tile_material = ExtResource("1_58fmb")
+tile_material = ExtResource("7_6penk")
 hover_tile_material = ExtResource("3_b22hl")
-walk_tile_material = ExtResource("4_h4u47")
-hover_walk_tile_material = ExtResource("5_i4yaf")
-debug_tile_material = ExtResource("5_3ei4b")
+walk_tile_material = SubResource("StandardMaterial3D_oqehb")
+hover_walk_tile_material = SubResource("StandardMaterial3D_pqms4")
+debug_tile_material = SubResource("StandardMaterial3D_ro04k")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 2
