@@ -2,6 +2,8 @@
 
 A 1v1 tactical RPG inspired by Tactics Arena Online.
 
+You can play the game [here](https://telmotrooper.github.io/meagre-tactics/).
+
 ## Screenshots
 
 <p float="left">

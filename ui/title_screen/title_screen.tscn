@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu2f54i4tkcy7"]
+[gd_scene load_steps=7 format=3 uid="uid://bu2f54i4tkcy7"]
 
 [ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
 [ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
 [ext_resource type="PackedScene" uid="uid://cgkfhhl56nqim" path="res://ui/title_screen/dungeon_entry.blend" id="3_e07mo"]
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="4_3rylc"]
 [ext_resource type="AudioStream" uid="uid://cgsj5nqegvbsd" path="res://sounds/brick_or_piece_of_stone_short_scrape_on_concrete_surface_2_zapsplat.mp3" id="5_fiemo"]
+[ext_resource type="Texture2D" uid="uid://dqraxd5n34p31" path="res://ui/icons/expand_solid_fontawesome.svg" id="5_x7cjt"]
 
 [node name="TitleScreen" type="Node3D"]
 script = ExtResource("1_cl6t8")
@@ -97,6 +98,12 @@ theme_type_variation = &"TitleScreenButton"
 disabled = true
 text = "Settings"
 
+[node name="QuitButton" type="Button" parent="Control/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleScreenButton"
+text = "Quit"
+
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -113,7 +120,18 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Build: build_label"
 
+[node name="ToggleFullscreenButton" type="Button" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+tooltip_text = "Toggle Fullscreen"
+icon = ExtResource("5_x7cjt")
+icon_alignment = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource("5_fiemo")
 
 [connection signal="pressed" from="Control/Panel/VBoxContainer/PracticeButton" to="." method="_on_practice_button_pressed"]
+[connection signal="pressed" from="Control/Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/ToggleFullscreenButton" to="." method="_on_toggle_fullscreen_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/ToggleFullscreenButton" to="." method="_on_maximize_button_pressed"]
