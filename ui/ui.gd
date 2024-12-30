@@ -33,8 +33,8 @@ func fallback_overview() -> void:
 		%SelectedUnitOverview.text = ""
 
 func update_turn() -> void:
-	progress_bar_fill.bg_color = GameState.team_colors[GameState.current_turn]
-	%TurnIndicator.text = "Turn: %s" % GameState.current_turn.capitalize()
+	progress_bar_fill.bg_color = GameState.team_color[GameState.current_team]
+	%TurnIndicator.text = "Turn: %s" % GameState.current_team.capitalize()
 	$TurnTimer.start()
 	_on_tick_timer_timeout() # Force instant refresh.
 

@@ -19,7 +19,7 @@ func _ready() -> void:
 		$Headband.set_surface_override_material(0, red_material)
 
 func walk_to(tile: Tile) -> void:
-	if color != GameState.current_turn:
+	if color != GameState.current_team:
 		return
 	
 	GameState.board.set_state(Board.State.BUSY)

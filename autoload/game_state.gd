@@ -14,15 +14,19 @@ var selected_unit: Unit
 var camera_pivot: CameraPivot
 var ui: UI
 
-const team_colors := {
+enum Action { WALK, ATTACK, TURN }
+
+const team_color := {
 	"blue": "#384962",
 	"red": "#c44836"
 }
 
-var current_turn := "blue"
+var current_team := "blue"
+var remaining_actions := [Action.WALK, Action.ATTACK, Action.TURN]
 
 func end_turn() -> void:
-	current_turn = "blue" if current_turn == "red" else "red"
+	current_team = "blue" if current_team == "red" else "red"
+	remaining_actions = [Action.WALK, Action.ATTACK, Action.TURN]
 	ui.update_turn()
 	selected_unit = null
 	play_sound(end_turn_sound)
