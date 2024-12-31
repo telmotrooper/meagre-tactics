@@ -40,6 +40,9 @@ func update_turn() -> void:
 	%TurnIndicator.text = "Turn: %s" % GameState.current_team.capitalize()
 	$TurnTimer.start()
 	_on_tick_timer_timeout() # Force instant refresh.
+	
+	for turn_button in %TurnButtons.get_children():
+		turn_button.disabled = false
 
 func _on_tick_timer_timeout() -> void:
 	%TimeLeftIndicator.value = $TurnTimer.time_left * 100 / $TurnTimer.wait_time

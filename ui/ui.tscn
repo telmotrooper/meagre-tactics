@@ -80,12 +80,14 @@ icon = ExtResource("2_4k0br")
 icon_alignment = 1
 
 [node name="AttackButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
+unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Attack"
 icon = ExtResource("3_pcnx6")
 icon_alignment = 1
 
 [node name="TurnButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
+unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Turn"
 icon = ExtResource("4_mtx78")
