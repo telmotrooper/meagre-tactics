@@ -56,7 +56,8 @@ func consume_action(action: Action) -> void:
 	
 	action_consumed.emit(action)
 	
-	if len(remaining_actions) == 0:
+	# TODO: Remove "end turn" when only "tur"n is available once "turn" is implemented.
+	if len(remaining_actions) == 0 or (len(remaining_actions) == 1 and remaining_actions[0] == Action.TURN):
 		end_turn()
 
 func change_current_action(action: Action) -> void:

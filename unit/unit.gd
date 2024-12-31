@@ -47,6 +47,11 @@ func attack(tile: Tile) -> void:
 	#tween.tween_callback($AudioStreamPlayer.play)
 	tween.tween_callback(func():
 		$AudioStreamPlayer.stop()
+		
+		# TODO: Perform actual hit calculation here instead of deleting unit.
+		if tile.get_unit():
+			tile.get_unit().queue_free()
+		
 		GameState.board.set_state(Board.State.IDLE)
 		GameState.consume_action(GameState.Action.ATTACK)
 	)
