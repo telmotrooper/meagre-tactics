@@ -54,12 +54,15 @@ func _on_turn_timer_timeout() -> void:
 
 func _on_move_button_pressed() -> void:
 	GameState.play_sound(button_click_sound)
+	GameState.change_current_action(GameState.Action.MOVE)
 
 func _on_attack_button_pressed() -> void:
 	GameState.play_sound(button_click_sound)
+	GameState.change_current_action(GameState.Action.ATTACK)
 
 func _on_turn_button_pressed() -> void:
 	GameState.play_sound(button_click_sound)
+	GameState.change_current_action(GameState.Action.TURN)
 
 func _on_settings_button_pressed() -> void:
 	GameState.play_sound(button_click_sound)

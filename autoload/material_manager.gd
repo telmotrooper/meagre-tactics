@@ -12,12 +12,15 @@ var hover_walk_tile_material: Material
 var hover_attack_tile_material: Material
 
 var blocked_walk_tile_material: Material
+var blocked_attack_tile_material: Material
 
 func _ready() -> void:
 	hover_tile_material = derive_material(tile_material)
 	hover_walk_tile_material = derive_material(walk_tile_material)
 	hover_attack_tile_material = derive_material(attack_tile_material)
+	
 	blocked_walk_tile_material = derive_material(hover_tile_material, -0.4)
+	blocked_attack_tile_material = derive_material(hover_tile_material, -0.4)
 
 # Derive a brighter or darker version of an existing material.
 func derive_material(existing_material: Material, factor := 0.2) -> Material:

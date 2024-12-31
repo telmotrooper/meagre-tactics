@@ -8,6 +8,8 @@ signal not_hovering_any_unit
 signal action_consumed
 @warning_ignore("unused_signal")
 signal turn_ended
+@warning_ignore("unused_signal")
+signal action_changed
 
 const TITLE_SCREEN := "res://ui/title_screen/title_screen.tscn"
 
@@ -32,7 +34,7 @@ var current_action := Action.MOVE
 func end_turn() -> void:
 	current_team = "blue" if current_team == "red" else "red"
 	remaining_actions = [Action.MOVE, Action.ATTACK, Action.TURN]
-	current_action = Action.MOVE
+	change_current_action(Action.MOVE)
 	selected_unit = null
 	play_sound(end_turn_sound)
 	turn_ended.emit()
@@ -48,14 +50,19 @@ func consume_action(action: Action) -> void:
 	remaining_actions.erase(action)
 	
 	if action == Action.MOVE and is_action_available(Action.ATTACK):
-		current_action = Action.ATTACK
+		change_current_action(Action.ATTACK)
 	elif action == Action.ATTACK and is_action_available(Action.TURN):
-		current_action = Action.TURN
+		change_current_action(Action.TURN)
 	
 	action_consumed.emit(action)
 	
 	if len(remaining_actions) == 0:
 		end_turn()
+
+func change_current_action(action: Action) -> void:
+	if is_action_available(action):
+		current_action = action
+	action_changed.emit()
 
 func play_sound(audio_stream: AudioStream) -> void:
 	$AudioStreamPlayer.stream = audio_stream

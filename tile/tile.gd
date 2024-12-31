@@ -25,7 +25,10 @@ func set_state(new_state: State) -> void:
 		State.WALKABLE_HOVER:
 			material = MaterialManager.hover_walk_tile_material
 		State.ATTACKABLE:
-			material = MaterialManager.attack_tile_material
+			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color != GameState.current_team:
+				material = MaterialManager.blocked_attack_tile_material
+			else:
+				material = MaterialManager.attack_tile_material
 		State.ATTACKABLE_HOVER:
 			material = MaterialManager.hover_attack_tile_material
 
