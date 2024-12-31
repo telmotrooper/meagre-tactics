@@ -54,6 +54,7 @@ fit_content = true
 autowrap_mode = 0
 
 [node name="Panel" type="Panel" parent="Control"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -121,6 +122,7 @@ size_flags_vertical = 8
 text = "Build: build_label"
 
 [node name="ToggleFullscreenButton" type="Button" parent="Control/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
