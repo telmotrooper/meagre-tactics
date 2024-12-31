@@ -46,6 +46,10 @@ func consume_action(action: Action) -> void:
 		return
 	
 	remaining_actions.erase(action)
+	
+	if action == Action.MOVE and is_action_available(Action.ATTACK):
+		current_action = Action.ATTACK
+	
 	action_consumed.emit(action)
 	
 	if len(remaining_actions) == 0:
