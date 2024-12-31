@@ -35,6 +35,10 @@ func walk_to(tile: Tile) -> void:
 		$AudioStreamPlayer.stop()
 		GameState.board.set_state(Board.State.IDLE)
 		GameState.consume_action(GameState.Action.MOVE)
+		
+		# TODO: Remove this dumb workaround.
+		await get_tree().create_timer(0.05).timeout
+		tile.handle_click() # Trigger next action.
 	)
 
 func attack(tile: Tile) -> void:
