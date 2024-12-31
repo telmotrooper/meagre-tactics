@@ -57,7 +57,7 @@ func _on_area_3d_mouse_entered() -> void:
 		GameState.unit_hovered.emit(get_unit())
 	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
 		set_state(State.WALKABLE_HOVER)
-	elif state == State.ATTACKABLE:
+	elif state == State.ATTACKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
 		set_state(State.ATTACKABLE_HOVER)
 	else:
 		GameState.not_hovering_any_unit.emit()
