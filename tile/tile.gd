@@ -70,45 +70,11 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			GameState.selected_unit = get_unit()
 			get_tree().call_group("tiles", "reset_state")
 			
-			var unit_type = get_unit().unit_type
-			
-			if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
-				var tiles: Array[Tile] = [self]
-				
-				var affected_tiles: Array[Tile] = []
-				
-				for _i in unit_type.movement_range:
-					var neighboring_tiles: Array[Tile] = []
-					
-					for tile in tiles:
-						var new_tiles := get_neighboring_tiles(tile)
-						
-						for new_tile in new_tiles:
-							# "null" means not calculate, "true" means calculated once
-							if tile.reached_through_enemy_tile:
-								new_tile.reached_through_enemy_tile = true
-							elif not has_enemy_unit(new_tile) and (new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true):
-								new_tile.reached_through_enemy_tile = has_enemy_unit(tile)
-						
-						neighboring_tiles.append_array(new_tiles)
+			match GameState.current_action:
+				GameState.Action.MOVE:
+					compute_walk_tiles()
 
-					for neighboring_tile in neighboring_tiles:
-						if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
-							affected_tiles.append(neighboring_tile)
-							neighboring_tile.set_as_walkable()
-					
-					# Update list of tiles for next iteration.
-					tiles = neighboring_tiles
-				
-				for _i in range(2): # Iterate twice cleaning up "reached_through_enemy_tile".
-					for affected_tile in affected_tiles:
-						if affected_tile.reached_through_enemy_tile and affected_tile.has_walkable_neighbors():
-							affected_tile.reached_through_enemy_tile = false
-					
-				for affected_tile in affected_tiles:
-					if affected_tile.reached_through_enemy_tile:
-						affected_tile.reset_state()
-		
+			
 		elif state == State.WALKABLE_HOVER and is_instance_valid(GameState.selected_unit) and GameState.is_action_available(GameState.Action.MOVE):
 			GameState.selected_unit.walk_to(self)
 		
@@ -116,6 +82,46 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			GameState.selected_unit = null
 			GameState.not_hovering_any_unit.emit()
 			get_tree().call_group("tiles", "reset_state")
+
+func compute_walk_tiles() -> void:
+	var unit_type = get_unit().unit_type
+	
+	if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
+		var tiles: Array[Tile] = [self]
+		
+		var affected_tiles: Array[Tile] = []
+		
+		for _i in unit_type.movement_range:
+			var neighboring_tiles: Array[Tile] = []
+			
+			for tile in tiles:
+				var new_tiles := get_neighboring_tiles(tile)
+				
+				for new_tile in new_tiles:
+					# "null" means not calculate, "true" means calculated once
+					if tile.reached_through_enemy_tile:
+						new_tile.reached_through_enemy_tile = true
+					elif not has_enemy_unit(new_tile) and (new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true):
+						new_tile.reached_through_enemy_tile = has_enemy_unit(tile)
+				
+				neighboring_tiles.append_array(new_tiles)
+
+			for neighboring_tile in neighboring_tiles:
+				if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
+					affected_tiles.append(neighboring_tile)
+					neighboring_tile.set_as_walkable()
+			
+			# Update list of tiles for next iteration.
+			tiles = neighboring_tiles
+		
+		for _i in range(2): # Iterate twice cleaning up "reached_through_enemy_tile".
+			for affected_tile in affected_tiles:
+				if affected_tile.reached_through_enemy_tile and affected_tile.has_walkable_neighbors():
+					affected_tile.reached_through_enemy_tile = false
+			
+		for affected_tile in affected_tiles:
+			if affected_tile.reached_through_enemy_tile:
+				affected_tile.reset_state()
 
 func reset_state() -> void:
 	reached_through_enemy_tile = null
