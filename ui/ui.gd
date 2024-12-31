@@ -18,9 +18,11 @@ func _ready() -> void:
 	
 	%SelectedUnitOverview.text = ""
 	%TurnButtons.get_children()[0].grab_focus()
+	
 	GameState.unit_hovered.connect(update_unit_overview)
 	GameState.not_hovering_any_unit.connect(fallback_overview)
 	GameState.action_consumed.connect(disable_action_button)
+	GameState.turn_ended.connect(update_turn)
 	
 	%TurnButtons/EndTurnButton.pressed.connect(GameState.end_turn)
 

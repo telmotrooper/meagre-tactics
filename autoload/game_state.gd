@@ -6,6 +6,8 @@ signal unit_hovered
 signal not_hovering_any_unit
 @warning_ignore("unused_signal")
 signal action_consumed
+@warning_ignore("unused_signal")
+signal turn_ended
 
 const TITLE_SCREEN := "res://ui/title_screen/title_screen.tscn"
 
@@ -31,9 +33,9 @@ func end_turn() -> void:
 	current_team = "blue" if current_team == "red" else "red"
 	remaining_actions = [Action.MOVE, Action.ATTACK, Action.TURN]
 	current_action = Action.MOVE
-	ui.update_turn()
 	selected_unit = null
 	play_sound(end_turn_sound)
+	turn_ended.emit()
 
 func is_action_available(action: Action) -> bool:
 	return remaining_actions.has(action)
