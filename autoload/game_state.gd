@@ -9,7 +9,7 @@ signal action_consumed
 @warning_ignore("unused_signal")
 signal turn_ended
 @warning_ignore("unused_signal")
-signal action_changed
+signal action_changed # Currently unused.
 
 const TITLE_SCREEN := "res://ui/title_screen/title_screen.tscn"
 
