@@ -49,6 +49,8 @@ func consume_action(action: Action) -> void:
 	
 	if action == Action.MOVE and is_action_available(Action.ATTACK):
 		current_action = Action.ATTACK
+	elif action == Action.ATTACK and is_action_available(Action.TURN):
+		current_action = Action.TURN
 	
 	action_consumed.emit(action)
 	

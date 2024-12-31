@@ -80,6 +80,9 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 		elif state == State.WALKABLE_HOVER and is_instance_valid(GameState.selected_unit) and GameState.is_action_available(GameState.Action.MOVE):
 			GameState.selected_unit.walk_to(self)
 		
+		elif state == State.ATTACKABLE_HOVER:
+			GameState.selected_unit.attack(self)
+		
 		else: # Clean up selection
 			GameState.selected_unit = null
 			GameState.not_hovering_any_unit.emit()
