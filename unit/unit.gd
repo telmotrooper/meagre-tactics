@@ -2,7 +2,7 @@
 class_name Unit
 extends CharacterBody3D
 
-@export var color := "blue"
+@export var team_color := "blue"
 @export var unit_type: UnitType
 @export var current_hp := 0
 
@@ -13,13 +13,13 @@ extends CharacterBody3D
 func _ready() -> void:
 	current_hp = unit_type.max_hp
 	
-	if color == "blue":
+	if team_color == "blue":
 		$Headband.set_surface_override_material(0, blue_material)
-	elif color == "red":
+	elif team_color == "red":
 		$Headband.set_surface_override_material(0, red_material)
 
 func walk_to(tile: Tile) -> void:
-	if color != GameState.current_turn:
+	if team_color != GameState.current_team:
 		return
 	
 	GameState.board.set_state(Board.State.BUSY)
@@ -34,5 +34,28 @@ func walk_to(tile: Tile) -> void:
 	tween.tween_callback(func():
 		$AudioStreamPlayer.stop()
 		GameState.board.set_state(Board.State.IDLE)
-		GameState.end_turn()
+		GameState.consume_action(GameState.Action.MOVE)
+		
+		# TODO: Remove this dumb workaround.
+		await get_tree().create_timer(0.05).timeout
+		tile.handle_click() # Trigger next action.
+	)
+
+func attack(tile: Tile) -> void:
+	GameState.board.set_state(Board.State.BUSY)
+	
+	get_tree().call_group("tiles", "reset_state")
+	var target_position = Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
+	look_at(target_position, Vector3.UP, true)
+	var tween = create_tween()
+	#tween.tween_callback($AudioStreamPlayer.play)
+	tween.tween_callback(func():
+		$AudioStreamPlayer.stop()
+		
+		# TODO: Perform actual hit calculation here instead of deleting unit.
+		if tile.get_unit():
+			tile.get_unit().queue_free()
+		
+		GameState.board.set_state(Board.State.IDLE)
+		GameState.consume_action(GameState.Action.ATTACK)
 	)

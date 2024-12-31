@@ -3,5 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://dm772nwnpsguo" path="res://tile/tile_texture.png" id="1_u0fhq"]
 
 [resource]
-albedo_color = Color(0.611765, 0.588235, 0.231373, 1)
+albedo_color = Color(0.607843, 0.447059, 0.266667, 1)
 albedo_texture = ExtResource("1_u0fhq")

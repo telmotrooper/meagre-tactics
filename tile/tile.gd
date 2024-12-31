@@ -18,16 +18,19 @@ func set_state(new_state: State) -> void:
 		State.REGULAR_HOVER:
 			material = MaterialManager.hover_tile_material
 		State.WALKABLE:
-			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.color != GameState.current_turn:
+			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color != GameState.current_team:
 				material = MaterialManager.blocked_walk_tile_material
 			else:
 				material = MaterialManager.walk_tile_material
 		State.WALKABLE_HOVER:
 			material = MaterialManager.hover_walk_tile_material
 		State.ATTACKABLE:
-			material = MaterialManager.debug_tile_material
+			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color != GameState.current_team:
+				material = MaterialManager.blocked_attack_tile_material
+			else:
+				material = MaterialManager.attack_tile_material
 		State.ATTACKABLE_HOVER:
-			material = MaterialManager.debug_tile_material
+			material = MaterialManager.hover_attack_tile_material
 
 func get_unit() -> Unit:
 	return %UnitDetector.get_collider()
@@ -36,7 +39,7 @@ func has_unit() -> bool:
 	return %UnitDetector.get_collider() != null
 
 func has_enemy_unit(tile: Tile) -> bool:
-	return tile.get_unit() and tile.get_unit().color != get_unit().color
+	return tile.get_unit() and tile.get_unit().team_color != get_unit().team_color
 
 func is_walkable(tile: Tile) -> bool:
 	return tile.state == State.WALKABLE or tile.state == State.WALKABLE_HOVER
@@ -49,73 +52,114 @@ func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
 
 func _on_area_3d_mouse_entered() -> void:
-	if has_unit() and state != State.WALKABLE:
+	if has_unit() and state != State.WALKABLE and state != State.ATTACKABLE:
 		set_state(State.REGULAR_HOVER)
 		GameState.unit_hovered.emit(get_unit())
-	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.color == GameState.current_turn:
+	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
 		set_state(State.WALKABLE_HOVER)
+	elif state == State.ATTACKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
+		set_state(State.ATTACKABLE_HOVER)
 	else:
 		GameState.not_hovering_any_unit.emit()
 
 func _on_area_3d_mouse_exited() -> void:
 	if state == State.WALKABLE_HOVER:
 		set_state(State.WALKABLE)
+	elif state == State.ATTACKABLE_HOVER:
+		set_state(State.ATTACKABLE)
 	elif state != State.WALKABLE:
 		set_state(State.REGULAR)
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if is_left_mouse_click(event):
-		if has_unit(): # Select unit
-			GameState.play_sound(unit_selected_sound)
-			GameState.selected_unit = get_unit()
-			get_tree().call_group("tiles", "reset_state")
-			
-			var unit_type = get_unit().unit_type
-			
-			if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
-				var tiles: Array[Tile] = [self]
-				
-				var affected_tiles: Array[Tile] = []
-				
-				for _i in unit_type.movement_range:
-					var neighboring_tiles: Array[Tile] = []
-					
-					for tile in tiles:
-						var new_tiles := get_neighboring_tiles(tile)
-						
-						for new_tile in new_tiles:
-							# "null" means not calculate, "true" means calculated once
-							if tile.reached_through_enemy_tile:
-								new_tile.reached_through_enemy_tile = true
-							elif not has_enemy_unit(new_tile) and (new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true):
-								new_tile.reached_through_enemy_tile = has_enemy_unit(tile)
-						
-						neighboring_tiles.append_array(new_tiles)
+		handle_click()
 
-					for neighboring_tile in neighboring_tiles:
-						if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
-							affected_tiles.append(neighboring_tile)
-							neighboring_tile.set_as_walkable()
-					
-					# Update list of tiles for next iteration.
-					tiles = neighboring_tiles
+func handle_click() -> void:
+	if has_unit() and state != State.ATTACKABLE_HOVER: # Select unit
+		GameState.play_sound(unit_selected_sound)
+		GameState.selected_unit = get_unit()
+		get_tree().call_group("tiles", "reset_state")
+		
+		if GameState.current_action != GameState.Action.TURN:
+			compute_tiles(GameState.current_action)
+		
+	elif state == State.WALKABLE_HOVER and is_instance_valid(GameState.selected_unit) and GameState.is_action_available(GameState.Action.MOVE):
+		GameState.selected_unit.walk_to(self)
+	
+	elif state == State.ATTACKABLE_HOVER:
+		GameState.selected_unit.attack(self)
+	
+	else: # Clean up selection
+		GameState.selected_unit = null
+		GameState.not_hovering_any_unit.emit()
+		get_tree().call_group("tiles", "reset_state")
+
+func compute_tiles(action: GameState.Action) -> void:
+	match action:
+		GameState.Action.MOVE:
+			compute_walk_tiles()
+		GameState.Action.ATTACK:
+			compute_attack_tiles()
+
+func compute_walk_tiles() -> void:
+	var unit_type = get_unit().unit_type
+	
+	if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
+		var tiles: Array[Tile] = [self]
+		
+		var affected_tiles: Array[Tile] = []
+		
+		for _i in unit_type.movement_range:
+			var neighboring_tiles: Array[Tile] = []
+			
+			for tile in tiles:
+				var new_tiles := get_neighboring_tiles(tile)
 				
-				for _i in range(2): # Iterate twice cleaning up "reached_through_enemy_tile".
-					for affected_tile in affected_tiles:
-						if affected_tile.reached_through_enemy_tile and affected_tile.has_walkable_neighbors():
-							affected_tile.reached_through_enemy_tile = false
-					
-				for affected_tile in affected_tiles:
-					if affected_tile.reached_through_enemy_tile:
-						affected_tile.reset_state()
+				for new_tile in new_tiles:
+					# "null" means not calculate, "true" means calculated once
+					if tile.reached_through_enemy_tile:
+						new_tile.reached_through_enemy_tile = true
+					elif not has_enemy_unit(new_tile) and (new_tile.reached_through_enemy_tile == null or new_tile.reached_through_enemy_tile == true):
+						new_tile.reached_through_enemy_tile = has_enemy_unit(tile)
+				
+				neighboring_tiles.append_array(new_tiles)
+
+			for neighboring_tile in neighboring_tiles:
+				if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
+					affected_tiles.append(neighboring_tile)
+					neighboring_tile.set_as_walkable()
+			
+			# Update list of tiles for next iteration.
+			tiles = neighboring_tiles
 		
-		elif state == State.WALKABLE_HOVER and is_instance_valid(GameState.selected_unit):
-			GameState.selected_unit.walk_to(self)
+		for _i in range(2): # Iterate twice cleaning up "reached_through_enemy_tile".
+			for affected_tile in affected_tiles:
+				if affected_tile.reached_through_enemy_tile and affected_tile.has_walkable_neighbors():
+					affected_tile.reached_through_enemy_tile = false
+			
+		for affected_tile in affected_tiles:
+			if affected_tile.reached_through_enemy_tile:
+				affected_tile.reset_state()
+
+func compute_attack_tiles() -> void:
+	var unit_type = get_unit().unit_type
+	
+	if unit_type.attack_type == unit_type.MovementType.NEIGHBORING_TILES:
+		var tiles: Array[Tile] = [self]
 		
-		else: # Clean up selection
-			GameState.selected_unit = null
-			GameState.not_hovering_any_unit.emit()
-			get_tree().call_group("tiles", "reset_state")
+		for _i in unit_type.attack_range:
+			var neighboring_tiles: Array[Tile] = []
+			
+			for tile in tiles:
+				var new_tiles := get_neighboring_tiles(tile)
+				neighboring_tiles.append_array(new_tiles)
+
+			for neighboring_tile in neighboring_tiles:
+				if neighboring_tile != self:
+					neighboring_tile.set_state(State.ATTACKABLE)
+			
+			# Update list of tiles for next iteration.
+			tiles = neighboring_tiles
 
 func reset_state() -> void:
 	reached_through_enemy_tile = null

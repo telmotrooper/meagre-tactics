@@ -8,3 +8,5 @@ unit_name = "Soldier"
 max_hp = 10
 movement_type = 0
 movement_range = 3
+attack_type = 0
+attack_range = 1
