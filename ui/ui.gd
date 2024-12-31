@@ -20,6 +20,7 @@ func _ready() -> void:
 	%TurnButtons.get_children()[0].grab_focus()
 	GameState.unit_hovered.connect(update_unit_overview)
 	GameState.not_hovering_any_unit.connect(fallback_overview)
+	GameState.action_consumed.connect(disable_action_button)
 	
 	%TurnButtons/EndTurnButton.pressed.connect(GameState.end_turn)
 
@@ -66,3 +67,10 @@ func _on_surrender_dialog_confirmed() -> void:
 
 func _on_surrender_dialog_canceled() -> void:
 	GameState.play_sound(button_click_sound)
+
+func disable_action_button(action: GameState.Action) -> void:
+	match action:
+		GameState.Action.MOVE:
+			%MoveButton.disabled = true
+		_:
+			print("Error: Action unmapped.")

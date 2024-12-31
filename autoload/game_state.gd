@@ -4,6 +4,8 @@ extends Node
 signal unit_hovered
 @warning_ignore("unused_signal")
 signal not_hovering_any_unit
+@warning_ignore("unused_signal")
+signal action_consumed
 
 const TITLE_SCREEN := "res://ui/title_screen/title_screen.tscn"
 
@@ -42,6 +44,7 @@ func consume_action(action: Action) -> void:
 		return
 	
 	remaining_actions.erase(action)
+	action_consumed.emit(action)
 	
 	if len(remaining_actions) == 0:
 		end_turn()

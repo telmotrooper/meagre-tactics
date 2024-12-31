@@ -73,6 +73,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 
 [node name="MoveButton" type="Button" parent="MarginContainer/GameButtons/TurnButtons"]
+unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Move"
 icon = ExtResource("2_4k0br")
