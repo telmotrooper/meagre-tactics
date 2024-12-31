@@ -52,7 +52,7 @@ func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
 
 func _on_area_3d_mouse_entered() -> void:
-	if has_unit() and state != State.WALKABLE:
+	if has_unit() and state != State.WALKABLE and state != State.ATTACKABLE:
 		set_state(State.REGULAR_HOVER)
 		GameState.unit_hovered.emit(get_unit())
 	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
@@ -72,7 +72,7 @@ func _on_area_3d_mouse_exited() -> void:
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if is_left_mouse_click(event):
-		if has_unit(): # Select unit
+		if has_unit() and state != State.ATTACKABLE_HOVER: # Select unit
 			GameState.play_sound(unit_selected_sound)
 			GameState.selected_unit = get_unit()
 			get_tree().call_group("tiles", "reset_state")
