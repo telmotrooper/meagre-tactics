@@ -70,10 +70,8 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			GameState.selected_unit = get_unit()
 			get_tree().call_group("tiles", "reset_state")
 			
-			match GameState.current_action:
-				GameState.Action.MOVE:
-					compute_walk_tiles()
-
+			if GameState.current_action != GameState.Action.TURN:
+				compute_tiles(GameState.current_action)
 			
 		elif state == State.WALKABLE_HOVER and is_instance_valid(GameState.selected_unit) and GameState.is_action_available(GameState.Action.MOVE):
 			GameState.selected_unit.walk_to(self)
@@ -83,15 +81,18 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			GameState.not_hovering_any_unit.emit()
 			get_tree().call_group("tiles", "reset_state")
 
-func compute_walk_tiles() -> void:
+func compute_tiles(action: GameState.Action) -> void:
+	var action_type := "movement_type" if action == GameState.Action.MOVE else "attack_type"
+	var action_range := "movement_range" if action == GameState.Action.MOVE else "attack_range"
+	
 	var unit_type = get_unit().unit_type
 	
-	if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
+	if unit_type[action_type] == unit_type.MovementType.NEIGHBORING_TILES:
 		var tiles: Array[Tile] = [self]
 		
 		var affected_tiles: Array[Tile] = []
 		
-		for _i in unit_type.movement_range:
+		for _i in unit_type[action_range]:
 			var neighboring_tiles: Array[Tile] = []
 			
 			for tile in tiles:
