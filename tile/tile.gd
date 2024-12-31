@@ -25,9 +25,9 @@ func set_state(new_state: State) -> void:
 		State.WALKABLE_HOVER:
 			material = MaterialManager.hover_walk_tile_material
 		State.ATTACKABLE:
-			material = MaterialManager.debug_tile_material
+			material = MaterialManager.attack_tile_material
 		State.ATTACKABLE_HOVER:
-			material = MaterialManager.debug_tile_material
+			material = MaterialManager.hover_attack_tile_material
 
 func get_unit() -> Unit:
 	return %UnitDetector.get_collider()
@@ -54,12 +54,16 @@ func _on_area_3d_mouse_entered() -> void:
 		GameState.unit_hovered.emit(get_unit())
 	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
 		set_state(State.WALKABLE_HOVER)
+	elif state == State.ATTACKABLE:
+		set_state(State.ATTACKABLE_HOVER)
 	else:
 		GameState.not_hovering_any_unit.emit()
 
 func _on_area_3d_mouse_exited() -> void:
 	if state == State.WALKABLE_HOVER:
 		set_state(State.WALKABLE)
+	elif state == State.ATTACKABLE_HOVER:
+		set_state(State.ATTACKABLE)
 	elif state != State.WALKABLE:
 		set_state(State.REGULAR)
 
@@ -82,17 +86,21 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			get_tree().call_group("tiles", "reset_state")
 
 func compute_tiles(action: GameState.Action) -> void:
-	var action_type := "movement_type" if action == GameState.Action.MOVE else "attack_type"
-	var action_range := "movement_range" if action == GameState.Action.MOVE else "attack_range"
-	
+	match action:
+		GameState.Action.MOVE:
+			compute_walk_tiles()
+		GameState.Action.ATTACK:
+			compute_attack_tiles()
+
+func compute_walk_tiles() -> void:
 	var unit_type = get_unit().unit_type
 	
-	if unit_type[action_type] == unit_type.MovementType.NEIGHBORING_TILES:
+	if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
 		var tiles: Array[Tile] = [self]
 		
 		var affected_tiles: Array[Tile] = []
 		
-		for _i in unit_type[action_range]:
+		for _i in unit_type.movement_range:
 			var neighboring_tiles: Array[Tile] = []
 			
 			for tile in tiles:
@@ -123,6 +131,26 @@ func compute_tiles(action: GameState.Action) -> void:
 		for affected_tile in affected_tiles:
 			if affected_tile.reached_through_enemy_tile:
 				affected_tile.reset_state()
+
+func compute_attack_tiles() -> void:
+	var unit_type = get_unit().unit_type
+	
+	if unit_type.attack_type == unit_type.MovementType.NEIGHBORING_TILES:
+		var tiles: Array[Tile] = [self]
+		
+		for _i in unit_type.attack_range:
+			var neighboring_tiles: Array[Tile] = []
+			
+			for tile in tiles:
+				var new_tiles := get_neighboring_tiles(tile)
+				neighboring_tiles.append_array(new_tiles)
+
+			for neighboring_tile in neighboring_tiles:
+				if neighboring_tile != self:
+					neighboring_tile.set_state(State.ATTACKABLE)
+			
+			# Update list of tiles for next iteration.
+			tiles = neighboring_tiles
 
 func reset_state() -> void:
 	reached_through_enemy_tile = null
