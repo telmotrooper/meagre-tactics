@@ -17,7 +17,7 @@ func _ready() -> void:
 	%CameraButtons/RightButton.pressed.connect(GameState.camera_pivot.rotate_camera.bind(90.0))
 	
 	%SelectedUnitOverview.text = ""
-	%TurnButtons.get_children()[0].grab_focus()
+	%MoveButton.grab_focus()
 	
 	GameState.unit_hovered.connect(update_unit_overview)
 	GameState.not_hovering_any_unit.connect(fallback_overview)
@@ -43,6 +43,8 @@ func update_turn() -> void:
 	
 	for turn_button in %TurnButtons.get_children():
 		turn_button.disabled = false
+	
+	%MoveButton.grab_focus()
 
 func _on_tick_timer_timeout() -> void:
 	%TimeLeftIndicator.value = $TurnTimer.time_left * 100 / $TurnTimer.wait_time
@@ -79,3 +81,7 @@ func disable_action_button(action: GameState.Action) -> void:
 			%MoveButton.disabled = true
 		_:
 			print("Error: Action unmapped.")
+	
+	match GameState.current_action:
+		GameState.Action.ATTACK:
+			%AttackButton.grab_focus()
