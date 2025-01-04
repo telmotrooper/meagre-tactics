@@ -1,7 +1,7 @@
 class_name Tile
 extends CSGBox3D
 
-enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER, ATTACKABLE, ATTACKABLE_HOVER }
+enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER, ATTACKABLE, ATTACKABLE_HOVER, BLOCKED }
 
 @export var unit_selected_sound: AudioStream
 
@@ -18,19 +18,15 @@ func set_state(new_state: State) -> void:
 		State.REGULAR_HOVER:
 			material = MaterialManager.hover_tile_material
 		State.WALKABLE:
-			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color != GameState.current_team:
-				material = MaterialManager.blocked_walk_tile_material
-			else:
-				material = MaterialManager.walk_tile_material
+			material = MaterialManager.walk_tile_material
 		State.WALKABLE_HOVER:
 			material = MaterialManager.hover_walk_tile_material
 		State.ATTACKABLE:
-			if is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color != GameState.current_team:
-				material = MaterialManager.blocked_attack_tile_material
-			else:
-				material = MaterialManager.attack_tile_material
+			material = MaterialManager.attack_tile_material
 		State.ATTACKABLE_HOVER:
 			material = MaterialManager.hover_attack_tile_material
+		State.BLOCKED:
+			material = MaterialManager.blocked_tile_material
 
 func get_unit() -> Unit:
 	return %UnitDetector.get_collider()
@@ -52,23 +48,27 @@ func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
 
 func _on_area_3d_mouse_entered() -> void:
-	if has_unit() and state != State.WALKABLE and state != State.ATTACKABLE:
-		set_state(State.REGULAR_HOVER)
+	match state:
+		State.REGULAR:
+			set_state(State.REGULAR_HOVER)
+		State.WALKABLE:
+			set_state(State.WALKABLE_HOVER)
+		State.ATTACKABLE:
+			set_state(State.ATTACKABLE_HOVER)
+	
+	if has_unit():
 		GameState.unit_hovered.emit(get_unit())
-	elif state == State.WALKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
-		set_state(State.WALKABLE_HOVER)
-	elif state == State.ATTACKABLE and is_instance_valid(GameState.selected_unit) and GameState.selected_unit.team_color == GameState.current_team:
-		set_state(State.ATTACKABLE_HOVER)
 	else:
 		GameState.not_hovering_any_unit.emit()
 
 func _on_area_3d_mouse_exited() -> void:
-	if state == State.WALKABLE_HOVER:
-		set_state(State.WALKABLE)
-	elif state == State.ATTACKABLE_HOVER:
-		set_state(State.ATTACKABLE)
-	elif state != State.WALKABLE:
-		set_state(State.REGULAR)
+	match state:
+		State.REGULAR_HOVER:
+			set_state(State.REGULAR)
+		State.WALKABLE_HOVER:
+			set_state(State.WALKABLE)
+		State.ATTACKABLE_HOVER:
+			set_state(State.ATTACKABLE)
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if is_left_mouse_click(event):
@@ -102,7 +102,10 @@ func compute_tiles(action: GameState.Action) -> void:
 			compute_attack_tiles()
 
 func compute_walk_tiles() -> void:
+	var in_current_team = GameState.current_team == get_unit().team_color
 	var unit_type = get_unit().unit_type
+	
+	var target_state := State.WALKABLE if in_current_team else State.BLOCKED
 	
 	if unit_type.movement_type == unit_type.MovementType.NEIGHBORING_TILES:
 		var tiles: Array[Tile] = [self]
@@ -127,7 +130,8 @@ func compute_walk_tiles() -> void:
 			for neighboring_tile in neighboring_tiles:
 				if neighboring_tile != self and not affected_tiles.has(neighboring_tile): # Not ideal to iterate the array every time.
 					affected_tiles.append(neighboring_tile)
-					neighboring_tile.set_as_walkable()
+					if not neighboring_tile.has_unit():
+						neighboring_tile.set_state(target_state)
 			
 			# Update list of tiles for next iteration.
 			tiles = neighboring_tiles
@@ -142,7 +146,10 @@ func compute_walk_tiles() -> void:
 				affected_tile.reset_state()
 
 func compute_attack_tiles() -> void:
+	var in_current_team = GameState.current_team == get_unit().team_color
 	var unit_type = get_unit().unit_type
+	
+	var target_state := State.ATTACKABLE if in_current_team else State.BLOCKED
 	
 	if unit_type.attack_type == unit_type.MovementType.NEIGHBORING_TILES:
 		var tiles: Array[Tile] = [self]
@@ -156,7 +163,7 @@ func compute_attack_tiles() -> void:
 
 			for neighboring_tile in neighboring_tiles:
 				if neighboring_tile != self:
-					neighboring_tile.set_state(State.ATTACKABLE)
+					neighboring_tile.set_state(target_state)
 			
 			# Update list of tiles for next iteration.
 			tiles = neighboring_tiles
@@ -165,10 +172,6 @@ func reset_state() -> void:
 	reached_through_enemy_tile = null
 	if state != State.REGULAR_HOVER:
 		set_state(State.REGULAR)
-
-func set_as_walkable() -> void:
-	if not has_unit():
-		set_state(State.WALKABLE)
 
 func get_neighboring_tiles(tile: Tile) -> Array[Tile]:
 	var result: Array[Tile] = []
