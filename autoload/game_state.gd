@@ -28,6 +28,7 @@ const team_color := {
 var current_team := "blue"
 var remaining_actions := [Action.MOVE, Action.ATTACK, Action.TURN]
 var current_action := Action.MOVE
+var turn_time := 45.0
 
 func end_turn() -> void:
 	current_team = "blue" if current_team == "red" else "red"

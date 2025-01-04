@@ -10,6 +10,8 @@ const text = "%s (%s)\nHP: %d/%d"
 func _ready() -> void:
 	GameState.ui = self
 	
+	$TurnTimer.wait_time = GameState.turn_time
+	
 	if not is_instance_valid(GameState.camera_pivot):
 		print("Error: Camera pivot not found.")
 	
