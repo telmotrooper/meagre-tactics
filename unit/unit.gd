@@ -41,12 +41,8 @@ func walk_to(tile: Tile) -> void:
 	tween.tween_property(self, "global_position", target_position, 0.5)
 	tween.tween_callback(func():
 		$AudioStreamPlayer.stop()
-		GameState.board.set_state(Board.State.IDLE)
 		GameState.consume_action(GameState.Action.MOVE)
-		
-		# TODO: Remove this dumb workaround.
-		await get_tree().create_timer(0.05).timeout
-		tile.handle_click() # Trigger next action.
+		GameState.board.set_state(Board.State.IDLE)
 	)
 
 func attack(tile: Tile) -> void:
@@ -64,6 +60,6 @@ func attack(tile: Tile) -> void:
 		if tile.get_unit():
 			tile.get_unit().queue_free()
 		
-		GameState.board.set_state(Board.State.IDLE)
 		GameState.consume_action(GameState.Action.ATTACK)
+		GameState.board.set_state(Board.State.IDLE)
 	)
