@@ -8,8 +8,6 @@ signal not_hovering_any_unit
 signal action_consumed
 @warning_ignore("unused_signal")
 signal turn_ended
-@warning_ignore("unused_signal")
-signal action_changed # Currently unused.
 
 const TITLE_SCREEN := "res://ui/title_screen/title_screen.tscn"
 
@@ -63,7 +61,17 @@ func consume_action(action: Action) -> void:
 func change_current_action(action: Action) -> void:
 	if is_action_available(action):
 		current_action = action
-	action_changed.emit()
+	
+	if is_instance_valid(GameState.selected_unit) and is_instance_valid(GameState.selected_unit.get_tile()):
+		get_tree().call_group("tiles", "reset_state")
+		
+		var tile: Tile = GameState.selected_unit.get_tile()
+		
+		match action:
+			Action.MOVE:
+				tile.compute_walk_tiles()
+			Action.ATTACK:
+				tile.compute_attack_tiles()
 
 func play_sound(audio_stream: AudioStream) -> void:
 	$AudioStreamPlayer.stream = audio_stream

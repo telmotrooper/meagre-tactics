@@ -18,6 +18,14 @@ func _ready() -> void:
 	elif team_color == "red":
 		$Headband.set_surface_override_material(0, red_material)
 
+func get_tile() -> Tile:
+	var collider = $RayCast3D.get_collider()
+	
+	if collider is TileArea3D:
+		return collider.get_tile()
+	
+	return null
+
 func walk_to(tile: Tile) -> void:
 	if team_color != GameState.current_team:
 		return
