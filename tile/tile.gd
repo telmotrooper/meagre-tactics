@@ -9,6 +9,8 @@ enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER, ATTACKABLE, ATTAC
 
 var state := State.REGULAR
 var reached_through_enemy_tile = null
+var capturing_mouse := true
+var being_hovered := false
 
 func set_state(new_state: State) -> void:
 	state = new_state
@@ -48,6 +50,11 @@ func is_left_mouse_click(event: InputEvent) -> bool:
 	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
 
 func _on_area_3d_mouse_entered() -> void:
+	being_hovered = true
+	
+	if not capturing_mouse:
+		return
+	
 	match state:
 		State.REGULAR:
 			set_state(State.REGULAR_HOVER)
@@ -62,6 +69,11 @@ func _on_area_3d_mouse_entered() -> void:
 		GameState.not_hovering_any_unit.emit()
 
 func _on_area_3d_mouse_exited() -> void:
+	being_hovered = false
+	
+	if not capturing_mouse:
+		return
+	
 	match state:
 		State.REGULAR_HOVER:
 			set_state(State.REGULAR)
@@ -71,6 +83,9 @@ func _on_area_3d_mouse_exited() -> void:
 			set_state(State.ATTACKABLE)
 
 func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	if not capturing_mouse:
+		return
+	
 	if is_left_mouse_click(event):
 		handle_click()
 
@@ -183,7 +198,9 @@ func get_neighboring_tiles(tile: Tile) -> Array[Tile]:
 	return result
 
 func enable() -> void:
-	$Area3D/CollisionShape3D.disabled = false
+	capturing_mouse = true
+	if being_hovered:
+		_on_area_3d_mouse_entered()
 
 func disable() -> void:
-	$Area3D/CollisionShape3D.disabled = true
+	capturing_mouse = false

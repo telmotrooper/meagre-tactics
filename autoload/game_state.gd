@@ -28,12 +28,13 @@ const team_color := {
 var current_team := "blue"
 var remaining_actions := [Action.MOVE, Action.ATTACK, Action.TURN]
 var current_action := Action.MOVE
+var turn_time := 45.0
 
 func end_turn() -> void:
 	current_team = "blue" if current_team == "red" else "red"
 	remaining_actions = [Action.MOVE, Action.ATTACK, Action.TURN]
-	change_current_action(Action.MOVE)
 	selected_unit = null
+	change_current_action(Action.MOVE)
 	play_sound(end_turn_sound)
 	turn_ended.emit()
 
@@ -62,9 +63,9 @@ func change_current_action(action: Action) -> void:
 	if is_action_available(action):
 		current_action = action
 	
+	get_tree().call_group("tiles", "reset_state")
+	
 	if is_instance_valid(GameState.selected_unit) and is_instance_valid(GameState.selected_unit.get_tile()):
-		get_tree().call_group("tiles", "reset_state")
-		
 		var tile: Tile = GameState.selected_unit.get_tile()
 		
 		match action:
