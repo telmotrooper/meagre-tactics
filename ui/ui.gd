@@ -25,8 +25,6 @@ func _ready() -> void:
 	GameState.not_hovering_any_unit.connect(fallback_overview)
 	GameState.action_consumed.connect(disable_action_button)
 	GameState.turn_ended.connect(update_turn)
-	
-	%TurnButtons/EndTurnButton.pressed.connect(GameState.end_turn)
 
 func update_unit_overview(unit: Unit) -> void:
 	%SelectedUnitOverview.text = text % [unit.unit_type.unit_name, unit.team_color.capitalize(), unit.current_hp, unit.unit_type.max_hp]
@@ -65,6 +63,16 @@ func _on_attack_button_pressed() -> void:
 func _on_turn_button_pressed() -> void:
 	GameState.play_sound(button_click_sound)
 	GameState.change_current_action(GameState.Action.TURN)
+
+func _on_end_turn_button_pressed() -> void:
+	if len(GameState.remaining_actions) == 3:
+		$SkipTurnDialog.title = "Confirm (%s)" % GameState.current_team.capitalize()
+		$SkipTurnDialog.show()
+	else:
+		GameState.end_turn()
+
+func _on_skip_turn_dialog_confirmed() -> void:
+	GameState.end_turn()
 
 func _on_settings_button_pressed() -> void:
 	GameState.play_sound(button_click_sound)
