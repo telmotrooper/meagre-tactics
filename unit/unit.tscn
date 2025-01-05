@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=11 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dmwu4m4o2fwkm" path="res://unit/soldier.tres" id="2_sde36"]
 [ext_resource type="PackedScene" uid="uid://dxpsnxyb8fp00" path="res://unit/default_model.tscn" id="5_xcfkg"]
 [ext_resource type="AudioStream" uid="uid://msili56a3mam" path="res://sounds/broken_ceramic_cup_pieces_movement_zapsplat_modified.mp3" id="6_h8wnr"]
+[ext_resource type="Material" uid="uid://rwspdc3oobor" path="res://unit/yellow_material.tres" id="7_qjrx8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qi4j4"]
 radius = 0.25
@@ -57,6 +58,7 @@ transform = Transform3D(0.999848, 0.00136162, -0.0174102, -0.00136992, 0.999999,
 [node name="FrontArrow" type="CSGMesh3D" parent="Pivots/Pivot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
 mesh = SubResource("PrismMesh_d2ie5")
+material = ExtResource("7_qjrx8")
 
 [node name="Pivot2" type="Node3D" parent="Pivots"]
 transform = Transform3D(-0.999848, -0.00136162, 0.0174103, -0.00136992, 0.999999, -0.00046506, -0.0174096, -0.000488836, -0.999848, 0, 0, 0)
@@ -64,6 +66,7 @@ transform = Transform3D(-0.999848, -0.00136162, 0.0174103, -0.00136992, 0.999999
 [node name="BackArrow" type="CSGMesh3D" parent="Pivots/Pivot2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
 mesh = SubResource("PrismMesh_d2ie5")
+material = ExtResource("7_qjrx8")
 
 [node name="Pivot3" type="Node3D" parent="Pivots"]
 transform = Transform3D(0.0174095, 0.000488836, 0.999848, -0.00136992, 0.999999, -0.00046506, -0.999848, -0.00136162, 0.0174101, 0, 0, 0)
@@ -71,6 +74,7 @@ transform = Transform3D(0.0174095, 0.000488836, 0.999848, -0.00136992, 0.999999,
 [node name="LeftArrow" type="CSGMesh3D" parent="Pivots/Pivot3"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
 mesh = SubResource("PrismMesh_d2ie5")
+material = ExtResource("7_qjrx8")
 
 [node name="Pivot4" type="Node3D" parent="Pivots"]
 transform = Transform3D(-0.0174096, -0.00048888, -0.999848, -0.00136988, 0.999999, -0.000465104, 0.999848, 0.00136157, -0.0174102, 0, 0, 0)
@@ -78,3 +82,4 @@ transform = Transform3D(-0.0174096, -0.00048888, -0.999848, -0.00136988, 0.99999
 [node name="RightArrow" type="CSGMesh3D" parent="Pivots/Pivot4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
 mesh = SubResource("PrismMesh_d2ie5")
+material = ExtResource("7_qjrx8")
