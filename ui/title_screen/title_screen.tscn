@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu2f54i4tkcy7"]
+[gd_scene load_steps=10 format=3 uid="uid://bu2f54i4tkcy7"]
 
 [ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
 [ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dnlkgonb130un" path="res://ui/icons/volume_high_solid_fontawesome_modified.svg" id="5_5c3bh"]
 [ext_resource type="AudioStream" uid="uid://cgsj5nqegvbsd" path="res://sounds/brick_or_piece_of_stone_short_scrape_on_concrete_surface_2_zapsplat.mp3" id="5_fiemo"]
 [ext_resource type="Texture2D" uid="uid://dqraxd5n34p31" path="res://ui/icons/expand_solid_fontawesome.svg" id="5_x7cjt"]
+[ext_resource type="Texture2D" uid="uid://bcp27bylc6jvd" path="res://ui/icons/chevron_left_solid_fontawesome.svg" id="7_jb8j4"]
 
 [node name="TitleScreen" type="Node3D"]
 script = ExtResource("1_cl6t8")
@@ -69,6 +70,7 @@ mouse_filter = 2
 
 [node name="MainPanel" type="Panel" parent="Control/Panels"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -121,17 +123,16 @@ text = "Quit"
 
 [node name="PracticePanel" type="Panel" parent="Control/Panels"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -164.0
-offset_top = -4.5
-offset_right = 164.0
-offset_bottom = 204.5
+offset_left = -189.0
+offset_top = -30.0
+offset_right = 189.0
+offset_bottom = 230.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -166,6 +167,25 @@ popup/item_0/text = "Local Player vs Player"
 [node name="PlayButton" type="Button" parent="Control/Panels/PracticePanel/VBoxContainer"]
 layout_mode = 2
 text = "Play"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panels/PracticePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="BackButton" type="Button" parent="Control/Panels/PracticePanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource("7_jb8j4")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -212,5 +232,6 @@ stream = ExtResource("5_fiemo")
 [connection signal="pressed" from="Control/Panels/MainPanel/VBoxContainer/PracticeButton" to="." method="display_panel" binds= ["PracticePanel"]]
 [connection signal="pressed" from="Control/Panels/MainPanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Control/Panels/PracticePanel/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/Panels/PracticePanel/MarginContainer/BackButton" to="." method="display_panel" binds= ["MainPanel"]]
 [connection signal="pressed" from="Control/MarginContainer/HBoxContainer/VolumeButton" to="." method="_on_volume_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/HBoxContainer/ToggleFullscreenButton" to="." method="_on_toggle_fullscreen_button_pressed"]

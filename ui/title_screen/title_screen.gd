@@ -12,6 +12,11 @@ func _ready() -> void:
 	
 	if OS.has_feature("web"):
 		%QuitButton.queue_free()
+	
+	for panel in %Panels.get_children():
+		panel.hide()
+	
+	%MainPanel.show()
 
 func read_build_label() -> void:
 	var metadata_file = FileAccess.get_file_as_string("res://metadata.json")
