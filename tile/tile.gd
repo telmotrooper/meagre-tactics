@@ -92,7 +92,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 func handle_click() -> void:
 	if has_unit() and state != State.ATTACKABLE_HOVER: # Select unit
 		GameState.play_sound(unit_selected_sound)
-		GameState.selected_unit = get_unit()
+		GameState.set_current_unit(get_unit())
 		get_tree().call_group("tiles", "reset_state")
 		
 		if GameState.current_action != GameState.Action.TURN:
@@ -105,7 +105,7 @@ func handle_click() -> void:
 		GameState.selected_unit.attack(self)
 	
 	else: # Clean up selection
-		GameState.selected_unit = null
+		GameState.set_current_unit(null)
 		GameState.not_hovering_any_unit.emit()
 		get_tree().call_group("tiles", "reset_state")
 

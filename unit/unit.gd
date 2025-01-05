@@ -63,3 +63,9 @@ func attack(tile: Tile) -> void:
 		GameState.consume_action(GameState.Action.ATTACK)
 		GameState.board.set_state(Board.State.IDLE)
 	)
+
+func display_arrows() -> void:
+	$Pivots.set_visible(true)
+
+func hide_arrows() -> void:
+	$Pivots.set_visible(false)

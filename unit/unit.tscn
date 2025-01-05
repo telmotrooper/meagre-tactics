@@ -51,6 +51,7 @@ collide_with_areas = true
 collide_with_bodies = false
 
 [node name="Pivots" type="Node3D" parent="."]
+visible = false
 
 [node name="Pivot" type="Node3D" parent="Pivots"]
 transform = Transform3D(0.999848, 0.00136162, -0.0174102, -0.00136992, 0.999999, -0.00046506, 0.0174095, 0.000488836, 0.999848, 0, 0, 0)
