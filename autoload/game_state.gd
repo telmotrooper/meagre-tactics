@@ -50,13 +50,14 @@ func consume_action(action: Action) -> void:
 	
 	if action == Action.MOVE and is_action_available(Action.ATTACK):
 		change_current_action(Action.ATTACK)
-	elif action == Action.ATTACK and is_action_available(Action.TURN):
+	elif action == Action.ATTACK and is_action_available(Action.MOVE):
+		change_current_action(Action.MOVE)
+	elif is_action_available(Action.TURN):
 		change_current_action(Action.TURN)
 	
 	action_consumed.emit(action)
 	
-	# TODO: Remove "end turn" when only "turn" is available once "turn" is implemented.
-	if len(remaining_actions) == 0 or (len(remaining_actions) == 1 and remaining_actions[0] == Action.TURN):
+	if len(remaining_actions) == 0:
 		end_turn()
 
 func change_current_action(action: Action) -> void:
