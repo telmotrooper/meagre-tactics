@@ -14,6 +14,7 @@ extends CharacterBody3D
 @export_group("Sounds")
 @export var moving_sound: AudioStream
 @export var attacking_sound: AudioStream
+@export var missing_attack_sound: AudioStream
 
 func _ready() -> void:
 	current_hp = unit_type.max_hp
@@ -61,7 +62,7 @@ func attack(tile: Tile) -> void:
 	look_at(target_position, Vector3.UP, true)
 	var tween = create_tween()
 	tween.tween_callback(func():
-		$AudioStreamPlayer.stream = attacking_sound
+		$AudioStreamPlayer.stream = attacking_sound if tile.get_unit() else missing_attack_sound
 		$AudioStreamPlayer.play()
 		
 		if tile.get_unit():
