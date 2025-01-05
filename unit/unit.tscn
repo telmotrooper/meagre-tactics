@@ -60,3 +60,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 
 [node name="RightArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[connection signal="clicked" from="Arrows/FrontArrow" to="." method="_on_arrow_clicked"]
+[connection signal="clicked" from="Arrows/BackArrow" to="." method="_on_arrow_clicked"]
+[connection signal="clicked" from="Arrows/LeftArrow" to="." method="_on_arrow_clicked"]
+[connection signal="clicked" from="Arrows/RightArrow" to="." method="_on_arrow_clicked"]

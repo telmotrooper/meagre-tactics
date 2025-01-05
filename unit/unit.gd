@@ -69,3 +69,8 @@ func display_arrows() -> void:
 
 func hide_arrows() -> void:
 	$Arrows.set_visible(false)
+
+func _on_arrow_clicked(arrow: Node3D) -> void:
+	if team_color == GameState.current_team:
+		GameState.consume_action(GameState.Action.TURN)
+		rotation_degrees.y += arrow.rotation_degrees.y
