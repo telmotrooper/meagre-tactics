@@ -46,9 +46,6 @@ func has_walkable_neighbors() -> bool:
 	var neighboring_tiles = get_neighboring_tiles(self)
 	return neighboring_tiles.any(func(tile): return is_walkable(tile) and not tile.reached_through_enemy_tile)
 
-func is_left_mouse_click(event: InputEvent) -> bool:
-	return event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed
-
 func _on_area_3d_mouse_entered() -> void:
 	being_hovered = true
 	
@@ -86,7 +83,7 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 	if not capturing_mouse:
 		return
 	
-	if is_left_mouse_click(event):
+	if Utils.is_left_mouse_click(event):
 		handle_click()
 
 func handle_click() -> void:

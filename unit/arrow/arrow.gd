@@ -12,5 +12,5 @@ func _on_mouse_exited() -> void:
 	print("_on_mouse_exited")
 
 func _on_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.pressed:
+	if Utils.is_left_mouse_click(event):
 		print("arrow clicked")
