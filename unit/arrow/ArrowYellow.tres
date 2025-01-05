@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://kxb1pd75uiwx"]
+
+[resource]
+resource_name = "ArrowYellow"
+cull_mode = 2
+albedo_color = Color(1, 0.890197, 0.458824, 1)
+roughness = 0.5
