@@ -33,7 +33,7 @@ var turn_time := 45.0
 func end_turn() -> void:
 	current_team = "blue" if current_team == "red" else "red"
 	remaining_actions = [Action.MOVE, Action.ATTACK, Action.TURN]
-	selected_unit = null
+	set_current_unit(null)
 	change_current_action(Action.MOVE)
 	play_sound(end_turn_sound)
 	turn_ended.emit()
@@ -50,13 +50,14 @@ func consume_action(action: Action) -> void:
 	
 	if action == Action.MOVE and is_action_available(Action.ATTACK):
 		change_current_action(Action.ATTACK)
-	elif action == Action.ATTACK and is_action_available(Action.TURN):
+	elif action == Action.ATTACK and is_action_available(Action.MOVE):
+		change_current_action(Action.MOVE)
+	elif is_action_available(Action.TURN):
 		change_current_action(Action.TURN)
 	
 	action_consumed.emit(action)
 	
-	# TODO: Remove "end turn" when only "turn" is available once "turn" is implemented.
-	if len(remaining_actions) == 0 or (len(remaining_actions) == 1 and remaining_actions[0] == Action.TURN):
+	if len(remaining_actions) == 0 or action == Action.TURN:
 		end_turn()
 
 func change_current_action(action: Action) -> void:
@@ -65,15 +66,28 @@ func change_current_action(action: Action) -> void:
 	
 	get_tree().call_group("tiles", "reset_state")
 	
-	if is_instance_valid(GameState.selected_unit) and is_instance_valid(GameState.selected_unit.get_tile()):
-		var tile: Tile = GameState.selected_unit.get_tile()
+	if is_instance_valid(selected_unit) and is_instance_valid(selected_unit.get_tile()):
+		var tile: Tile = selected_unit.get_tile()
 		
 		match action:
 			Action.MOVE:
+				selected_unit.hide_arrows()
 				tile.compute_walk_tiles()
 			Action.ATTACK:
+				selected_unit.hide_arrows()
 				tile.compute_attack_tiles()
+			Action.TURN:
+				selected_unit.display_arrows()
 
 func play_sound(audio_stream: AudioStream) -> void:
 	$AudioStreamPlayer.stream = audio_stream
 	$AudioStreamPlayer.play()
+
+func set_current_unit(unit: Unit) -> void:
+	if is_instance_valid(selected_unit):
+		selected_unit.hide_arrows()
+		
+	if is_instance_valid(unit) and current_action == Action.TURN:
+		unit.display_arrows()
+	
+	selected_unit = unit

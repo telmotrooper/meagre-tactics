@@ -86,10 +86,14 @@ func disable_action_button(action: GameState.Action) -> void:
 			%MoveButton.disabled = true
 		GameState.Action.ATTACK:
 			%AttackButton.disabled = true
+		GameState.Action.TURN:
+			%TurnButton.disabled = true
 		_:
 			print("Error: Action unmapped.")
 	
 	match GameState.current_action:
+		GameState.Action.MOVE:
+			%MoveButton.grab_focus()
 		GameState.Action.ATTACK:
 			%AttackButton.grab_focus()
 		GameState.Action.TURN:

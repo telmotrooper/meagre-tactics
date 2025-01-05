@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=11 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
 [ext_resource type="Material" uid="uid://buqakypy8cde" path="res://unit/materials/blue_material.tres" id="2_ov4dn"]
 [ext_resource type="Resource" uid="uid://dmwu4m4o2fwkm" path="res://unit/soldier.tres" id="2_sde36"]
+[ext_resource type="Material" uid="uid://dkyqpee2j5i1k" path="res://unit/arrow/ArrowYellowTransparent.tres" id="5_4p43v"]
 [ext_resource type="PackedScene" uid="uid://dxpsnxyb8fp00" path="res://unit/default_model.tscn" id="5_xcfkg"]
 [ext_resource type="AudioStream" uid="uid://msili56a3mam" path="res://sounds/broken_ceramic_cup_pieces_movement_zapsplat_modified.mp3" id="6_h8wnr"]
+[ext_resource type="PackedScene" uid="uid://bgdmkxdd5acau" path="res://unit/arrow/arrow.tscn" id="7_iw0nk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qi4j4"]
 radius = 0.25
@@ -26,6 +28,7 @@ unit_type = ExtResource("2_sde36")
 current_hp = 10
 blue_material = ExtResource("2_ov4dn")
 red_material = ExtResource("2_52lg3")
+blocked_arrow_material = ExtResource("5_4p43v")
 
 [node name="DefaultModel" parent="." instance=ExtResource("5_xcfkg")]
 
@@ -45,3 +48,22 @@ target_position = Vector3(0, -2, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Arrows" type="Node3D" parent="."]
+visible = false
+
+[node name="FrontArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
+
+[node name="BackArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="LeftArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="RightArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[connection signal="clicked" from="Arrows/FrontArrow" to="." method="_on_arrow_clicked"]
+[connection signal="clicked" from="Arrows/BackArrow" to="." method="_on_arrow_clicked"]
+[connection signal="clicked" from="Arrows/LeftArrow" to="." method="_on_arrow_clicked"]
+[connection signal="clicked" from="Arrows/RightArrow" to="." method="_on_arrow_clicked"]

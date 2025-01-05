@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export_group("Materials")
 @export var blue_material: Material
 @export var red_material: Material
+@export var blocked_arrow_material: Material
 
 func _ready() -> void:
 	current_hp = unit_type.max_hp
@@ -63,3 +64,19 @@ func attack(tile: Tile) -> void:
 		GameState.consume_action(GameState.Action.ATTACK)
 		GameState.board.set_state(Board.State.IDLE)
 	)
+
+func display_arrows() -> void:
+	var new_material = null if team_color == GameState.current_team else blocked_arrow_material
+	
+	for arrow in $Arrows.get_children():
+		arrow.set_material(new_material)
+	
+	$Arrows.set_visible(true)
+
+func hide_arrows() -> void:
+	$Arrows.set_visible(false)
+
+func _on_arrow_clicked(arrow: Node3D) -> void:
+	if team_color == GameState.current_team:
+		GameState.consume_action(GameState.Action.TURN)
+		rotation_degrees.y += arrow.rotation_degrees.y
