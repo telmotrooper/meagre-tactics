@@ -11,6 +11,10 @@ extends CharacterBody3D
 @export var red_material: Material
 @export var blocked_arrow_material: Material
 
+@export_group("Sounds")
+@export var moving_sound: AudioStream
+@export var attacking_sound: AudioStream
+
 func _ready() -> void:
 	current_hp = unit_type.max_hp
 	
@@ -37,7 +41,10 @@ func walk_to(tile: Tile) -> void:
 	var target_position = Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
 	look_at(target_position, Vector3.UP, true)
 	var tween = create_tween()
-	tween.tween_callback($AudioStreamPlayer.play)
+	tween.tween_callback(func():
+		$AudioStreamPlayer.stream = moving_sound
+		$AudioStreamPlayer.play()
+	)
 	# TODO: In the future use distance in number of tiles to calculate time.
 	tween.tween_property(self, "global_position", target_position, 0.5)
 	tween.tween_callback(func():
@@ -53,13 +60,14 @@ func attack(tile: Tile) -> void:
 	var target_position = Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
 	look_at(target_position, Vector3.UP, true)
 	var tween = create_tween()
-	#tween.tween_callback($AudioStreamPlayer.play)
 	tween.tween_callback(func():
-		$AudioStreamPlayer.stop()
+		$AudioStreamPlayer.stream = attacking_sound
+		$AudioStreamPlayer.play()
 		
-		# TODO: Perform actual hit calculation here instead of deleting unit.
 		if tile.get_unit():
 			tile.get_unit().queue_free()
+		
+		await $AudioStreamPlayer.finished
 		
 		GameState.consume_action(GameState.Action.ATTACK)
 		GameState.board.set_state(Board.State.IDLE)
