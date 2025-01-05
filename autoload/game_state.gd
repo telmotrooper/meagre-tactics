@@ -57,7 +57,7 @@ func consume_action(action: Action) -> void:
 	
 	action_consumed.emit(action)
 	
-	if len(remaining_actions) == 0:
+	if len(remaining_actions) == 0 or action == Action.TURN:
 		end_turn()
 
 func change_current_action(action: Action) -> void:

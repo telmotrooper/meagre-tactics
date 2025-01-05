@@ -13,4 +13,4 @@ func _on_mouse_exited() -> void:
 
 func _on_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if Utils.is_left_mouse_click(event):
-		print("arrow clicked")
+		GameState.consume_action(GameState.Action.TURN)
