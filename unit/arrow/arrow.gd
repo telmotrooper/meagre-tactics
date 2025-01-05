@@ -9,6 +9,7 @@ signal clicked
 @onready var model = $arrow/Plane_001
 
 func _ready() -> void:
+	# Make materials unique to the instance.
 	regular_material = regular_material.duplicate()
 	blocked_material = blocked_material.duplicate()
 	
@@ -17,11 +18,9 @@ func _ready() -> void:
 	$arrow/Plane.input_event.connect(_on_input_event)
 
 func _on_mouse_entered() -> void:
-	print("_on_mouse_entered")
 	model.get_active_material(0).next_pass = highlight_shader_material
 
 func _on_mouse_exited() -> void:
-	print("_on_mouse_exited")
 	model.get_active_material(0).next_pass = null
 
 func _on_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
@@ -29,6 +28,5 @@ func _on_input_event(_camera: Node, event: InputEvent, _event_position: Vector3,
 		clicked.emit(self)
 
 func set_enabled(enabled: bool) -> void:
-	print("set_material")
 	var material = regular_material if enabled else blocked_material
 	model.set_surface_override_material(0, material)
