@@ -9,7 +9,6 @@ extends CharacterBody3D
 @export_group("Materials")
 @export var blue_material: Material
 @export var red_material: Material
-@export var blocked_arrow_material: Material
 
 @export_group("Sounds")
 @export var moving_sound: AudioStream
@@ -75,10 +74,10 @@ func attack(tile: Tile) -> void:
 	)
 
 func display_arrows() -> void:
-	var new_material = null if team_color == GameState.current_team else blocked_arrow_material
+	var enabled = team_color == GameState.current_team
 	
 	for arrow in $Arrows.get_children():
-		arrow.set_material(new_material)
+		arrow.set_enabled(enabled)
 	
 	$Arrows.set_visible(true)
 

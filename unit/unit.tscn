@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=12 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
 [ext_resource type="Material" uid="uid://buqakypy8cde" path="res://unit/materials/blue_material.tres" id="2_ov4dn"]
 [ext_resource type="Resource" uid="uid://dmwu4m4o2fwkm" path="res://unit/soldier.tres" id="2_sde36"]
-[ext_resource type="Material" uid="uid://dkyqpee2j5i1k" path="res://unit/arrow/ArrowYellowTransparent.tres" id="5_4p43v"]
 [ext_resource type="PackedScene" uid="uid://dxpsnxyb8fp00" path="res://unit/default_model.tscn" id="5_xcfkg"]
 [ext_resource type="AudioStream" uid="uid://msili56a3mam" path="res://unit/sounds/broken_ceramic_cup_pieces_movement_zapsplat_modified.mp3" id="6_h8wnr"]
 [ext_resource type="AudioStream" uid="uid://m1rlcraq236s" path="res://unit/sounds/sword_swing_swipe_hit_body_slash_zapsplat_modified.mp3" id="7_e7okb"]
@@ -30,7 +29,6 @@ unit_type = ExtResource("2_sde36")
 current_hp = 10
 blue_material = ExtResource("2_ov4dn")
 red_material = ExtResource("2_52lg3")
-blocked_arrow_material = ExtResource("5_4p43v")
 moving_sound = ExtResource("6_h8wnr")
 attacking_sound = ExtResource("7_e7okb")
 missing_attack_sound = ExtResource("8_dje8i")

@@ -1,10 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgdmkxdd5acau"]
+[gd_scene load_steps=6 format=3 uid="uid://bgdmkxdd5acau"]
 
+[ext_resource type="Material" uid="uid://kxb1pd75uiwx" path="res://unit/arrow/ArrowYellow.tres" id="2_c6up5"]
 [ext_resource type="Script" path="res://unit/arrow/arrow.gd" id="2_sddrl"]
+[ext_resource type="Material" uid="uid://dydkd8jkj72h1" path="res://shaders/highlight.tres" id="2_vd5tj"]
 [ext_resource type="PackedScene" uid="uid://dfif3i8fis3gc" path="res://unit/arrow/arrow.blend" id="3_wpt75"]
+[ext_resource type="Material" uid="uid://dkyqpee2j5i1k" path="res://unit/arrow/ArrowYellowTransparent.tres" id="3_xdtiw"]
 
 [node name="Arrow" type="Node3D"]
 script = ExtResource("2_sddrl")
+regular_material = ExtResource("2_c6up5")
+blocked_material = ExtResource("3_xdtiw")
+highlight_shader_material = ExtResource("2_vd5tj")
 
 [node name="arrow" parent="." instance=ExtResource("3_wpt75")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.5)

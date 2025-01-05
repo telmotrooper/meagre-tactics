@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dydkd8jkj72h1"]
+
+[ext_resource type="Shader" path="res://shaders/highlight.gdshader" id="1_ftswt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ftswt")
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/strength = 0.5
