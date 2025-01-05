@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgdmkxdd5acau"]
+
+[ext_resource type="Material" uid="uid://rwspdc3oobor" path="res://unit/yellow_material.tres" id="1_30au4"]
+[ext_resource type="Script" path="res://unit/arrow.gd" id="2_sddrl"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_d2ie5"]
+size = Vector3(0.5, 0.3, 0.1)
+
+[node name="Arrow" type="Node3D"]
+script = ExtResource("2_sddrl")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
+mesh = SubResource("PrismMesh_d2ie5")
+material = ExtResource("1_30au4")

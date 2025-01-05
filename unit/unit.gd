@@ -65,7 +65,7 @@ func attack(tile: Tile) -> void:
 	)
 
 func display_arrows() -> void:
-	$Pivots.set_visible(true)
+	$Arrows.set_visible(true)
 
 func hide_arrows() -> void:
-	$Pivots.set_visible(false)
+	$Arrows.set_visible(false)
