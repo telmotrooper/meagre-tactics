@@ -32,7 +32,7 @@ func _on_practice_button_pressed() -> void:
 func disable_buttons() -> void:
 	const MOUSE_FILTER_IGNORE = 2
 	
-	for button in %Panel/VBoxContainer.get_children():
+	for button in %MainPanel/VBoxContainer.get_children():
 		button.mouse_filter = MOUSE_FILTER_IGNORE
 	
 	%ToggleFullscreenButton.mouse_filter = MOUSE_FILTER_IGNORE
@@ -55,10 +55,22 @@ func _on_quit_button_pressed() -> void:
 func _on_toggle_fullscreen_button_pressed() -> void:
 	Hotkeys.toggle_fullscreen()
 
-
 func _on_volume_button_pressed() -> void:
 	if GameState.background_music_player.playing:
 		GameState.background_music_player.stop()
 	else:
 		GameState.background_music_player.play()
 	update_volume_button()
+
+func _on_play_button_pressed() -> void:
+	enter_dungeon()
+
+func display_panel(panel_name: String) -> void:
+	for panel in %Panels.get_children():
+		panel.hide()
+		
+	match panel_name:
+		"MainPanel":
+			%MainPanel.show()
+		"PracticePanel":
+			%PracticePanel.show()
