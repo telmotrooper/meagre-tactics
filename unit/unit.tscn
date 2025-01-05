@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=10 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
@@ -16,6 +16,9 @@ material = ExtResource("2_ov4dn")
 top_radius = 0.25
 bottom_radius = 0.3
 height = 0.1
+
+[sub_resource type="PrismMesh" id="PrismMesh_d2ie5"]
+size = Vector3(0.5, 0.3, 0.1)
 
 [node name="Unit" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -45,3 +48,33 @@ target_position = Vector3(0, -2, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Pivots" type="Node3D" parent="."]
+
+[node name="Pivot" type="Node3D" parent="Pivots"]
+transform = Transform3D(0.999848, 0.00136162, -0.0174102, -0.00136992, 0.999999, -0.00046506, 0.0174095, 0.000488836, 0.999848, 0, 0, 0)
+
+[node name="FrontArrow" type="CSGMesh3D" parent="Pivots/Pivot"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
+mesh = SubResource("PrismMesh_d2ie5")
+
+[node name="Pivot2" type="Node3D" parent="Pivots"]
+transform = Transform3D(-0.999848, -0.00136162, 0.0174103, -0.00136992, 0.999999, -0.00046506, -0.0174096, -0.000488836, -0.999848, 0, 0, 0)
+
+[node name="BackArrow" type="CSGMesh3D" parent="Pivots/Pivot2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
+mesh = SubResource("PrismMesh_d2ie5")
+
+[node name="Pivot3" type="Node3D" parent="Pivots"]
+transform = Transform3D(0.0174095, 0.000488836, 0.999848, -0.00136992, 0.999999, -0.00046506, -0.999848, -0.00136162, 0.0174101, 0, 0, 0)
+
+[node name="LeftArrow" type="CSGMesh3D" parent="Pivots/Pivot3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
+mesh = SubResource("PrismMesh_d2ie5")
+
+[node name="Pivot4" type="Node3D" parent="Pivots"]
+transform = Transform3D(-0.0174096, -0.00048888, -0.999848, -0.00136988, 0.999999, -0.000465104, 0.999848, 0.00136157, -0.0174102, 0, 0, 0)
+
+[node name="RightArrow" type="CSGMesh3D" parent="Pivots/Pivot4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.7)
+mesh = SubResource("PrismMesh_d2ie5")
