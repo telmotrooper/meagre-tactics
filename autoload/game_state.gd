@@ -13,6 +13,8 @@ const TITLE_SCREEN := "res://ui/title_screen/title_screen.tscn"
 
 @export var end_turn_sound: AudioStream
 
+@onready var background_music_player: AudioStreamPlayer = $BackgroundMusicPlayer
+
 var board: Board
 var selected_unit: Unit
 var camera_pivot: CameraPivot
