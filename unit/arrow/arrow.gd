@@ -18,7 +18,8 @@ func _ready() -> void:
 	$arrow/Plane.input_event.connect(_on_input_event)
 
 func _on_mouse_entered() -> void:
-	model.get_active_material(0).next_pass = highlight_shader_material
+	if model.get_active_material(0) == regular_material:
+		model.get_active_material(0).next_pass = highlight_shader_material
 
 func _on_mouse_exited() -> void:
 	model.get_active_material(0).next_pass = null
