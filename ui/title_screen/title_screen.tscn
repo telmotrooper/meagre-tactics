@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bu2f54i4tkcy7"]
+[gd_scene load_steps=9 format=3 uid="uid://bu2f54i4tkcy7"]
 
 [ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
 [ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
 [ext_resource type="PackedScene" uid="uid://cgkfhhl56nqim" path="res://ui/title_screen/dungeon_entry.blend" id="3_e07mo"]
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="4_3rylc"]
+[ext_resource type="Texture2D" uid="uid://do8anadmhg2ts" path="res://ui/icons/volume_off_solid_fontawesome_modified.svg" id="4_g8evf"]
+[ext_resource type="Texture2D" uid="uid://dnlkgonb130un" path="res://ui/icons/volume_high_solid_fontawesome_modified.svg" id="5_5c3bh"]
 [ext_resource type="AudioStream" uid="uid://cgsj5nqegvbsd" path="res://sounds/brick_or_piece_of_stone_short_scrape_on_concrete_surface_2_zapsplat.mp3" id="5_fiemo"]
 [ext_resource type="Texture2D" uid="uid://dqraxd5n34p31" path="res://ui/icons/expand_solid_fontawesome.svg" id="5_x7cjt"]
 
 [node name="TitleScreen" type="Node3D"]
 script = ExtResource("1_cl6t8")
 practice_scene = ExtResource("2_ig3re")
+volume_on_icon = ExtResource("5_5c3bh")
+volume_off_icon = ExtResource("4_g8evf")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -114,14 +118,21 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BuildLabel" type="Label" parent="Control/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="VolumeButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "Build: build_label"
+size_flags_vertical = 0
+tooltip_text = "Toggle Fullscreen"
+icon = ExtResource("5_5c3bh")
+icon_alignment = 1
 
-[node name="ToggleFullscreenButton" type="Button" parent="Control/MarginContainer"]
+[node name="ToggleFullscreenButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
@@ -130,10 +141,17 @@ tooltip_text = "Toggle Fullscreen"
 icon = ExtResource("5_x7cjt")
 icon_alignment = 1
 
+[node name="BuildLabel" type="Label" parent="Control/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Build: build_label"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource("5_fiemo")
 
 [connection signal="pressed" from="Control/Panel/VBoxContainer/PracticeButton" to="." method="_on_practice_button_pressed"]
 [connection signal="pressed" from="Control/Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/ToggleFullscreenButton" to="." method="_on_toggle_fullscreen_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/ToggleFullscreenButton" to="." method="_on_maximize_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/VolumeButton" to="." method="_on_volume_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/HBoxContainer/ToggleFullscreenButton" to="." method="_on_toggle_fullscreen_button_pressed"]
