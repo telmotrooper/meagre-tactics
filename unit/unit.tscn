@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dmwu4m4o2fwkm" path="res://unit/soldier.tres" id="2_sde36"]
 [ext_resource type="PackedScene" uid="uid://dxpsnxyb8fp00" path="res://unit/default_model.tscn" id="5_xcfkg"]
 [ext_resource type="AudioStream" uid="uid://msili56a3mam" path="res://sounds/broken_ceramic_cup_pieces_movement_zapsplat_modified.mp3" id="6_h8wnr"]
-[ext_resource type="PackedScene" uid="uid://bgdmkxdd5acau" path="res://unit/arrow.tscn" id="7_iw0nk"]
+[ext_resource type="PackedScene" uid="uid://bgdmkxdd5acau" path="res://unit/arrow/arrow.tscn" id="7_iw0nk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qi4j4"]
 radius = 0.25

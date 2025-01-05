@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgdmkxdd5acau"]
+
+[ext_resource type="Script" path="res://unit/arrow/arrow.gd" id="2_sddrl"]
+[ext_resource type="PackedScene" uid="uid://dfif3i8fis3gc" path="res://unit/arrow/arrow.blend" id="3_wpt75"]
+
+[node name="Arrow" type="Node3D"]
+script = ExtResource("2_sddrl")
+
+[node name="arrow" parent="." instance=ExtResource("3_wpt75")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.5)
