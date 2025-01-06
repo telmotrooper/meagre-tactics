@@ -1,5 +1,5 @@
 extends Node3D
 
 func _ready() -> void:
-	GameState.current_team = "blue"
+	GameState.initialize_game_state()
 	GameState.ui.update_turn()

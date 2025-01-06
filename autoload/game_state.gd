@@ -32,6 +32,11 @@ var remaining_actions := [Action.MOVE, Action.ATTACK, Action.TURN]
 var current_action := Action.MOVE
 var turn_time := 45.0
 
+func initialize_game_state() -> void:
+	current_team = "blue"
+	remaining_actions = [Action.MOVE, Action.ATTACK, Action.TURN]
+	current_action = Action.MOVE
+
 func end_turn() -> void:
 	current_team = "blue" if current_team == "red" else "red"
 	remaining_actions = [Action.MOVE, Action.ATTACK, Action.TURN]
