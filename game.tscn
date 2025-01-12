@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=10 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_2c1y3"]
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="2_qole7"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://xxejjtcm12rr" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_2_zapsplat.mp3" id="7_byk71"]
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="8_7pww7"]
 [ext_resource type="PackedScene" uid="uid://djmy0eeab85si" path="res://ui/ui.tscn" id="8_aoq4e"]
+[ext_resource type="PackedScene" uid="uid://cld0lu4bh5i8" path="res://unit.blend" id="9_s1ven"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_2c1y3")
@@ -105,3 +106,6 @@ transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -
 environment = ExtResource("8_7pww7")
 
 [node name="UI" parent="." instance=ExtResource("8_aoq4e")]
+
+[node name="unit" parent="." instance=ExtResource("9_s1ven")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00130177, 0.219226, 0.992321)
