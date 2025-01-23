@@ -6,7 +6,7 @@ signal clicked
 @export var blocked_material: Material
 @export var highlight_shader_material: ShaderMaterial
 
-@onready var model = $arrow/Plane_001
+@onready var model: MeshInstance3D = $arrow/Plane_001
 
 func _ready() -> void:
 	# Make materials unique to the instance.
@@ -29,5 +29,5 @@ func _on_input_event(_camera: Node, event: InputEvent, _event_position: Vector3,
 		clicked.emit(self)
 
 func set_enabled(enabled: bool) -> void:
-	var material = regular_material if enabled else blocked_material
+	var material := regular_material if enabled else blocked_material
 	model.set_surface_override_material(0, material)

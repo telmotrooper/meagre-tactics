@@ -5,9 +5,10 @@ enum State { REGULAR, REGULAR_HOVER, WALKABLE, WALKABLE_HOVER, ATTACKABLE, ATTAC
 
 @export var unit_selected_sound: AudioStream
 
-@onready var ray_casts = %RayCasts
+@onready var ray_casts: Node3D = %RayCasts
 
 var state := State.REGULAR
+@warning_ignore("untyped_declaration")
 var reached_through_enemy_tile = null
 var capturing_mouse := true
 var being_hovered := false
@@ -43,8 +44,8 @@ func is_walkable(tile: Tile) -> bool:
 	return tile.state == State.WALKABLE or tile.state == State.WALKABLE_HOVER
 
 func has_walkable_neighbors() -> bool:
-	var neighboring_tiles = get_neighboring_tiles(self)
-	return neighboring_tiles.any(func(tile): return is_walkable(tile) and not tile.reached_through_enemy_tile)
+	var neighboring_tiles := get_neighboring_tiles(self)
+	return neighboring_tiles.any(func(tile: Tile) -> bool: return is_walkable(tile) and not tile.reached_through_enemy_tile)
 
 func _on_area_3d_mouse_entered() -> void:
 	being_hovered = true
@@ -114,8 +115,8 @@ func compute_tiles(action: GameState.Action) -> void:
 			compute_attack_tiles()
 
 func compute_walk_tiles() -> void:
-	var in_current_team = GameState.current_team == get_unit().team_color
-	var unit_type = get_unit().unit_type
+	var in_current_team: bool = (GameState.current_team == get_unit().team_color)
+	var unit_type: UnitType = get_unit().unit_type
 	
 	var target_state := State.WALKABLE if in_current_team else State.BLOCKED
 	
@@ -158,8 +159,8 @@ func compute_walk_tiles() -> void:
 				affected_tile.reset_state()
 
 func compute_attack_tiles() -> void:
-	var in_current_team = GameState.current_team == get_unit().team_color
-	var unit_type = get_unit().unit_type
+	var in_current_team: bool = (GameState.current_team == get_unit().team_color)
+	var unit_type: UnitType = get_unit().unit_type
 	
 	var target_state := State.ATTACKABLE if in_current_team else State.BLOCKED
 	

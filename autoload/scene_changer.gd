@@ -5,7 +5,7 @@ signal faded_out
 
 const FALLBACK_SCENE := "res://game.tscn"
 
-@export var duration = 0.5 # seconds
+@export var duration := 0.5 # seconds
 
 func _ready() -> void:
 	fade_in()
@@ -21,15 +21,15 @@ func change_scene(path: String) -> void:
 	fade_in()
 
 func fade_in() -> void:
-	var tween = create_tween()
+	var tween := create_tween()
 	tween.tween_property($ColorRect, "modulate", Color(0,0,0,0), duration) # transparent
-	tween.tween_callback(func():
+	tween.tween_callback(func() -> void:
 		hide()
 		faded_in.emit()
 	)
 
 func fade_out() -> void:
 	show()
-	var tween = create_tween()
+	var tween := create_tween()
 	tween.tween_property($ColorRect, "modulate", Color(0,0,0,1), duration) # black
-	tween.tween_callback(func(): faded_out.emit())
+	tween.tween_callback(func() -> void: faded_out.emit())

@@ -22,7 +22,7 @@ func _ready() -> void:
 
 # Derive a brighter or darker version of an existing material.
 func derive_material(existing_material: Material, factor := 0.2) -> Material:
-	var new_material = StandardMaterial3D.new()
+	var new_material := StandardMaterial3D.new()
 	new_material.albedo_texture = tile_texture
 	
 	new_material.albedo_color = Color(
