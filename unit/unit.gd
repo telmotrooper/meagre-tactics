@@ -20,8 +20,12 @@ func _ready() -> void:
 	
 	if team_color == "blue":
 		$Headband.set_surface_override_material(0, blue_material)
+		$Model/Sword.set_surface_override_material(1, blue_material)
+		$Model/Shield.set_surface_override_material(1, blue_material)
 	elif team_color == "red":
 		$Headband.set_surface_override_material(0, red_material)
+		$Model/Sword.set_surface_override_material(1, red_material)
+		$Model/Shield.set_surface_override_material(1, red_material)
 
 func get_tile() -> Tile:
 	var collider = $RayCast3D.get_collider()

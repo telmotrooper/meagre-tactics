@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene load_steps=13 format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://m1rlcraq236s" path="res://unit/sounds/sword_swing_swipe_hit_body_slash_zapsplat_modified.mp3" id="7_e7okb"]
 [ext_resource type="PackedScene" uid="uid://bgdmkxdd5acau" path="res://unit/arrow/arrow.tscn" id="7_iw0nk"]
 [ext_resource type="AudioStream" uid="uid://dw66offh8warc" path="res://unit/sounds/sword_swing_fast_whoosh_in_air_with_metal_sound_of_blade_swiping_version_3_zapsplat.mp3" id="8_dje8i"]
+[ext_resource type="PackedScene" uid="uid://cld0lu4bh5i8" path="res://unit/unit.blend" id="8_m3l7a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qi4j4"]
 radius = 0.25
@@ -16,8 +17,8 @@ height = 1.5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_2ifsu"]
 material = ExtResource("2_ov4dn")
-top_radius = 0.25
-bottom_radius = 0.3
+top_radius = 0.16
+bottom_radius = 0.195
 height = 0.1
 
 [node name="Unit" type="CharacterBody3D"]
@@ -33,7 +34,17 @@ moving_sound = ExtResource("6_h8wnr")
 attacking_sound = ExtResource("7_e7okb")
 missing_attack_sound = ExtResource("8_dje8i")
 
+[node name="Model" parent="." instance=ExtResource("8_m3l7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+
+[node name="Sword" parent="Model" index="2"]
+surface_material_override/1 = ExtResource("2_ov4dn")
+
+[node name="Shield" parent="Model" index="3"]
+surface_material_override/1 = ExtResource("2_ov4dn")
+
 [node name="DefaultModel" parent="." instance=ExtResource("5_xcfkg")]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_qi4j4")
@@ -69,3 +80,5 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [connection signal="clicked" from="Arrows/BackArrow" to="." method="_on_arrow_clicked"]
 [connection signal="clicked" from="Arrows/LeftArrow" to="." method="_on_arrow_clicked"]
 [connection signal="clicked" from="Arrows/RightArrow" to="." method="_on_arrow_clicked"]
+
+[editable path="Model"]

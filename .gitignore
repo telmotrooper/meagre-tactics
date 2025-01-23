@@ -16,3 +16,4 @@ mono_crash.*.json
 /android/
 
 *.blend1
+*.7z
