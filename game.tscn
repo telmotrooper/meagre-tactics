@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://xxejjtcm12rr" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_2_zapsplat.mp3" id="7_byk71"]
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="8_7pww7"]
 [ext_resource type="PackedScene" uid="uid://djmy0eeab85si" path="res://ui/ui.tscn" id="8_aoq4e"]
-[ext_resource type="PackedScene" uid="uid://cld0lu4bh5i8" path="res://unit.blend" id="9_s1ven"]
+[ext_resource type="PackedScene" uid="uid://cld0lu4bh5i8" path="res://unit/unit.blend" id="9_s1ven"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_2c1y3")
