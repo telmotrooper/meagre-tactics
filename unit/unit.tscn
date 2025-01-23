@@ -34,8 +34,14 @@ moving_sound = ExtResource("6_h8wnr")
 attacking_sound = ExtResource("7_e7okb")
 missing_attack_sound = ExtResource("8_dje8i")
 
-[node name="unit" parent="." instance=ExtResource("8_m3l7a")]
+[node name="Model" parent="." instance=ExtResource("8_m3l7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+
+[node name="Sword" parent="Model" index="2"]
+surface_material_override/1 = ExtResource("2_ov4dn")
+
+[node name="Shield" parent="Model" index="3"]
+surface_material_override/1 = ExtResource("2_ov4dn")
 
 [node name="DefaultModel" parent="." instance=ExtResource("5_xcfkg")]
 visible = false
@@ -74,3 +80,5 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [connection signal="clicked" from="Arrows/BackArrow" to="." method="_on_arrow_clicked"]
 [connection signal="clicked" from="Arrows/LeftArrow" to="." method="_on_arrow_clicked"]
 [connection signal="clicked" from="Arrows/RightArrow" to="." method="_on_arrow_clicked"]
+
+[editable path="Model"]
