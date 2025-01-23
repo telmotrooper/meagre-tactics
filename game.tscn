@@ -99,8 +99,13 @@ transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -
 projection = 1
 size = 11.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CameraPivot"]
+[node name="DirectionalLight3DFront" type="DirectionalLight3D" parent="CameraPivot"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 5, 4)
+light_energy = 0.5
+
+[node name="DirectionalLight3DBack" type="DirectionalLight3D" parent="CameraPivot"]
+transform = Transform3D(-0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, 0.5, -0.5, -4, 5, -4)
+light_energy = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("8_7pww7")
@@ -109,3 +114,6 @@ environment = ExtResource("8_7pww7")
 
 [node name="unit" parent="." instance=ExtResource("9_s1ven")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.00130177, 0.219226, 0.992321)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
