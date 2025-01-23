@@ -28,7 +28,7 @@ func _ready() -> void:
 		$Model/Shield.set_surface_override_material(1, red_material)
 
 func get_tile() -> Tile:
-	var collider = $RayCast3D.get_collider()
+	var collider: Object = $RayCast3D.get_collider()
 	
 	if collider is TileArea3D:
 		return collider.get_tile()
@@ -42,16 +42,16 @@ func walk_to(tile: Tile) -> void:
 	GameState.board.set_state(Board.State.BUSY)
 	
 	get_tree().call_group("tiles", "reset_state")
-	var target_position = Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
+	var target_position := Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
 	look_at(target_position, Vector3.UP, true)
-	var tween = create_tween()
-	tween.tween_callback(func():
+	var tween := create_tween()
+	tween.tween_callback(func() -> void:
 		$AudioStreamPlayer.stream = moving_sound
 		$AudioStreamPlayer.play()
 	)
 	# TODO: In the future use distance in number of tiles to calculate time.
 	tween.tween_property(self, "global_position", target_position, 0.5)
-	tween.tween_callback(func():
+	tween.tween_callback(func() -> void:
 		$AudioStreamPlayer.stop()
 		GameState.consume_action(GameState.Action.MOVE)
 		GameState.board.set_state(Board.State.IDLE)
@@ -61,10 +61,10 @@ func attack(tile: Tile) -> void:
 	GameState.board.set_state(Board.State.BUSY)
 	
 	get_tree().call_group("tiles", "reset_state")
-	var target_position = Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
+	var target_position := Vector3(tile.global_position.x, global_position.y, tile.global_position.z)
 	look_at(target_position, Vector3.UP, true)
-	var tween = create_tween()
-	tween.tween_callback(func():
+	var tween := create_tween()
+	tween.tween_callback(func() -> void:
 		$AudioStreamPlayer.stream = attacking_sound if tile.get_unit() else missing_attack_sound
 		$AudioStreamPlayer.play()
 		
@@ -78,7 +78,7 @@ func attack(tile: Tile) -> void:
 	)
 
 func display_arrows() -> void:
-	var enabled = team_color == GameState.current_team
+	var enabled: bool = (team_color == GameState.current_team)
 	
 	for arrow in $Arrows.get_children():
 		arrow.set_enabled(enabled)
