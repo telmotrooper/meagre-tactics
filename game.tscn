@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene load_steps=10 format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_2c1y3"]
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="2_qole7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://camera_pivot.gd" id="5_xqxay"]
 [ext_resource type="AudioStream" uid="uid://dhra8lxayunuw" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_1_zapsplat.mp3" id="6_b454t"]
 [ext_resource type="AudioStream" uid="uid://xxejjtcm12rr" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_2_zapsplat.mp3" id="7_byk71"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="7_ftnx3"]
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="8_7pww7"]
 [ext_resource type="PackedScene" uid="uid://djmy0eeab85si" path="res://ui/ui.tscn" id="8_aoq4e"]
 
@@ -97,6 +98,8 @@ sound_effect_right = ExtResource("7_byk71")
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 4.5, 3)
 projection = 1
 size = 11.0
+script = ExtResource("7_ftnx3")
+can_pan = true
 
 [node name="DirectionalLight3DFront" type="DirectionalLight3D" parent="CameraPivot"]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 5, 4)
