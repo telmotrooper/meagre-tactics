@@ -34,7 +34,7 @@ func _ready() -> void:
 	$Headband.set_surface_override_material(0, team_color_material)
 	$Model/SoldierSword.set_surface_override_material(1, team_color_material)
 	$Model/SoldierShield.set_surface_override_material(1, team_color_material)
-	$Model/MageHat.set_surface_override_material(0, team_color_material)
+	$Model/MageHat.set_surface_override_material(1, team_color_material)
 	$Model/MageRod.set_surface_override_material(1, team_color_material)
 
 func get_tile() -> Tile:
