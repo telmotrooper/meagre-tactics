@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
 [ext_resource type="Material" uid="uid://buqakypy8cde" path="res://unit/materials/blue_material.tres" id="2_ov4dn"]
-[ext_resource type="Resource" uid="uid://dmwu4m4o2fwkm" path="res://unit/soldier.tres" id="2_sde36"]
+[ext_resource type="Resource" uid="uid://dmwu4m4o2fwkm" path="res://unit/unit_types/soldier.tres" id="2_sde36"]
 [ext_resource type="PackedScene" uid="uid://dxpsnxyb8fp00" path="res://unit/default_model.tscn" id="5_xcfkg"]
 [ext_resource type="AudioStream" uid="uid://msili56a3mam" path="res://unit/sounds/broken_ceramic_cup_pieces_movement_zapsplat_modified.mp3" id="6_h8wnr"]
 [ext_resource type="AudioStream" uid="uid://m1rlcraq236s" path="res://unit/sounds/sword_swing_swipe_hit_body_slash_zapsplat_modified.mp3" id="7_e7okb"]
