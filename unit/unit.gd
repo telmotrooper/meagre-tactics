@@ -15,35 +15,25 @@ extends CharacterBody3D
 @export var attacking_sound: AudioStream
 @export var missing_attack_sound: AudioStream
 
-var meshes := {
-	"Body": "All",
-	"Head": "All",
-	"SoldierSword": "Soldier",
-	"SoldierShield": "Soldier",
-	"MageHat": "Mage",
-	"MageRod": "Mage"
-}
+var global_meshes := { "Body": true, "Head": true }
 
 func _ready() -> void:
 	current_hp = unit_type.max_hp
 	
+	var team_color_material := blue_material if team_color == "blue" else red_material
+	
 	for child in $Model.get_children():
 		child.set_visible(false)
-
-		if meshes.has(child.name):
-			if meshes[child.name] == "All" or meshes[child.name] == unit_type.unit_name:
-				child.set_visible(true)
+		
+		if global_meshes.has(child.name):
+			child.set_visible(true)
+		elif child.name.begins_with(unit_type.unit_name):
+			child.set_visible(true)
+			child.set_surface_override_material(1, team_color_material)
 	
 	if unit_type.unit_name != "Soldier":
 		$Headband.set_visible(false)
-	
-	var team_color_material := blue_material if team_color == "blue" else red_material
-	
 	$Headband.set_surface_override_material(0, team_color_material)
-	$Model/SoldierSword.set_surface_override_material(1, team_color_material)
-	$Model/SoldierShield.set_surface_override_material(1, team_color_material)
-	$Model/MageHat.set_surface_override_material(0, team_color_material)
-	$Model/MageRod.set_surface_override_material(1, team_color_material)
 
 func get_tile() -> Tile:
 	var collider: Object = $RayCast3D.get_collider()

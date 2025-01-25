@@ -45,7 +45,7 @@ surface_material_override/1 = ExtResource("2_ov4dn")
 
 [node name="MageHat" parent="Model" index="4"]
 visible = false
-surface_material_override/0 = ExtResource("2_ov4dn")
+surface_material_override/1 = ExtResource("2_ov4dn")
 
 [node name="MageRod" parent="Model" index="5"]
 visible = false
