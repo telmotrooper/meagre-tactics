@@ -15,24 +15,16 @@ extends CharacterBody3D
 @export var attacking_sound: AudioStream
 @export var missing_attack_sound: AudioStream
 
-var meshes := {
-	"Body": "All",
-	"Head": "All",
-	"SoldierSword": "Soldier",
-	"SoldierShield": "Soldier",
-	"MageHat": "Mage",
-	"MageRod": "Mage"
-}
+var global_meshes := { "Body": true, "Head": true }
 
 func _ready() -> void:
 	current_hp = unit_type.max_hp
 	
 	for child in $Model.get_children():
 		child.set_visible(false)
-
-		if meshes.has(child.name):
-			if meshes[child.name] == "All" or meshes[child.name] == unit_type.unit_name:
-				child.set_visible(true)
+		
+		if global_meshes.has(child.name) or child.name.begins_with(unit_type.unit_name):
+			child.set_visible(true)
 	
 	if unit_type.unit_name != "Soldier":
 		$Headband.set_visible(false)
