@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_k2mjn")
 unit_name = "Rogue"
-max_hp = 10
+max_hp = 15
 movement_type = 0
 movement_range = 4
 attack_type = 0
