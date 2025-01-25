@@ -19,6 +19,7 @@ var global_meshes := { "Body": true, "Head": true }
 
 func _ready() -> void:
 	current_hp = unit_type.max_hp
+	$Headband.set_visible(unit_type.unit_name in ["Soldier", "Rogue"])
 	
 	var team_color_material := blue_material if team_color == "blue" else red_material
 	
@@ -30,9 +31,7 @@ func _ready() -> void:
 		elif child.name.begins_with(unit_type.unit_name):
 			child.set_visible(true)
 			child.set_surface_override_material(1, team_color_material)
-	
-	if unit_type.unit_name != "Soldier":
-		$Headband.set_visible(false)
+
 	$Headband.set_surface_override_material(0, team_color_material)
 
 func get_tile() -> Tile:
