@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckvef5vjpsbxc"]
 
-[ext_resource type="Script" path="res://autoload/scene_changer.gd" id="1_ydwj2"]
+[ext_resource type="Script" uid="uid://50r0vatr338h" path="res://autoload/scene_changer.gd" id="1_ydwj2"]
 
 [node name="SceneChanger" type="Control"]
 z_index = 4096

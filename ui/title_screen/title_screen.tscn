@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bu2f54i4tkcy7"]
 
-[ext_resource type="Script" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
+[ext_resource type="Script" uid="uid://c716snu00ka8k" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
 [ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
 [ext_resource type="PackedScene" uid="uid://cgkfhhl56nqim" path="res://ui/title_screen/dungeon_entry.blend" id="3_e07mo"]
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="4_3rylc"]
@@ -166,6 +166,7 @@ theme_type_variation = &"SubPanelOptionButton"
 selected = 0
 item_count = 1
 popup/item_0/text = "Local Player vs Player"
+popup/item_0/id = 0
 
 [node name="PlayButton" type="Button" parent="Control/Panels/PracticePanel/VBoxContainer"]
 layout_mode = 2

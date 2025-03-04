@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bfr6ahl1msuvj"]
 
-[ext_resource type="Script" path="res://unit/unit.gd" id="1_yopb6"]
+[ext_resource type="Script" uid="uid://nr75bckfoxcl" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
 [ext_resource type="Material" uid="uid://buqakypy8cde" path="res://unit/materials/blue_material.tres" id="2_ov4dn"]
 [ext_resource type="Resource" uid="uid://dmwu4m4o2fwkm" path="res://unit/unit_types/soldier.tres" id="2_sde36"]

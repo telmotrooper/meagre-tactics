@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://cm7b76vakvonu"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_2c1y3"]
+[ext_resource type="Script" uid="uid://8bigf0i74aco" path="res://game.gd" id="1_2c1y3"]
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="2_qole7"]
 [ext_resource type="PackedScene" uid="uid://bfr6ahl1msuvj" path="res://unit/unit.tscn" id="4_p2ii1"]
 [ext_resource type="Resource" uid="uid://dhvc0qcosqy47" path="res://unit/unit_types/mage.tres" id="4_yo8fj"]
 [ext_resource type="Resource" uid="uid://db5w0bj3vq477" path="res://unit/unit_types/rogue.tres" id="5_xf31b"]
-[ext_resource type="Script" path="res://camera_pivot.gd" id="5_xqxay"]
+[ext_resource type="Script" uid="uid://dx15sbffh5stg" path="res://camera_pivot.gd" id="5_xqxay"]
 [ext_resource type="AudioStream" uid="uid://dhra8lxayunuw" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_1_zapsplat.mp3" id="6_b454t"]
 [ext_resource type="AudioStream" uid="uid://xxejjtcm12rr" path="res://sounds/ceramic_square_bowl_turn_or_rotate_on_stone_surface_2_zapsplat.mp3" id="7_byk71"]
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="8_7pww7"]

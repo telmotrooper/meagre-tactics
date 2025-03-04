@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpcaw8n28awfh"]
 
-[ext_resource type="Script" path="res://autoload/game_state.gd" id="1_rsbb3"]
+[ext_resource type="Script" uid="uid://pkq26mruuhfh" path="res://autoload/game_state.gd" id="1_rsbb3"]
 [ext_resource type="AudioStream" uid="uid://yuxwjfottcan" path="res://sounds/i_know_im_nothing_biiansu_zapsplat.mp3" id="3_d4lek"]
 [ext_resource type="AudioStream" uid="uid://bxb31b4oit2rp" path="res://sounds/alarm_clock_button_press_zapsplat.mp3" id="4_o0rgv"]
 
