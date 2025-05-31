@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cys55hkbt2xbd"]
 
-[ext_resource type="Script" path="res://tile/tile.gd" id="2_hh2o7"]
-[ext_resource type="Script" path="res://tile/tile_area3d.gd" id="5_o0p71"]
+[ext_resource type="Script" uid="uid://ds1fkf432pi12" path="res://tile/tile.gd" id="2_hh2o7"]
+[ext_resource type="Script" uid="uid://dcijy0c87ty7s" path="res://tile/tile_area3d.gd" id="5_o0p71"]
 [ext_resource type="Material" uid="uid://dkyn1hqn46ue6" path="res://tile/materials/tile.tres" id="7_6penk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oybon"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7ss0ckdihwsf"]
 
-[ext_resource type="Script" path="res://board.gd" id="1_uvr6d"]
+[ext_resource type="Script" uid="uid://jsnhv5wdl8e7" path="res://board.gd" id="1_uvr6d"]
 [ext_resource type="PackedScene" uid="uid://cys55hkbt2xbd" path="res://tile/tile.tscn" id="1_ymon7"]
 
 [node name="Board" type="Node3D"]
