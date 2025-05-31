@@ -11,7 +11,10 @@ func _ready() -> void:
 	update_volume_button()
 	
 	if OS.has_feature("web"):
-		%QuitButton.queue_free()
+		%QuitButton.queue_free() # No point in having a "Quit" button in a web app.
+	
+	if not OS.has_feature("web_android") and not OS.has_feature("web_ios"):
+		%InviteButton.queue_free() # No point in displaying a QR Code if not on mobile.
 	
 	for panel in %Panels.get_children():
 		panel.hide()
@@ -79,3 +82,5 @@ func display_panel(panel_name: String) -> void:
 			%MainPanel.show()
 		"PracticePanel":
 			%PracticePanel.show()
+		"InvitePanel":
+			%InvitePanel.show()
