@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4j872wgrp4bw"]
+
+[ext_resource type="Script" uid="uid://ytv07byga0nc" path="res://autoload/multiplayer_client.gd" id="1_p3mig"]
+
+[node name="MultiplayerClient" type="Node"]
+script = ExtResource("1_p3mig")

@@ -22,6 +22,7 @@ GameState="*res://autoload/game_state.tscn"
 Hotkeys="*res://autoload/hotkeys.gd"
 MaterialManager="*res://autoload/material_manager.tscn"
 Utils="*res://autoload/utils.gd"
+MultiplayerClient="*res://autoload/multiplayer_client.tscn"
 
 [debug]
 

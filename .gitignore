@@ -1,3 +1,6 @@
+# HTTPS server configuration files (for running the web build locally)
+server.pem
+
 # Godot 4+ specific ignores
 .godot/
 
