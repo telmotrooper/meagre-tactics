@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu2f54i4tkcy7"]
+[gd_scene load_steps=11 format=3 uid="uid://bu2f54i4tkcy7"]
 
 [ext_resource type="Script" uid="uid://c716snu00ka8k" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
 [ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://cgsj5nqegvbsd" path="res://sounds/brick_or_piece_of_stone_short_scrape_on_concrete_surface_2_zapsplat.mp3" id="5_fiemo"]
 [ext_resource type="Texture2D" uid="uid://dqraxd5n34p31" path="res://ui/icons/expand_solid_fontawesome.svg" id="5_x7cjt"]
 [ext_resource type="Texture2D" uid="uid://bcp27bylc6jvd" path="res://ui/icons/chevron_left_solid_fontawesome.svg" id="7_jb8j4"]
+[ext_resource type="Texture2D" uid="uid://botwoal4dm8bv" path="res://ui/title_screen/qr_code.png" id="8_gwpbi"]
 
 [node name="TitleScreen" type="Node3D"]
 script = ExtResource("1_cl6t8")
@@ -70,7 +71,6 @@ mouse_filter = 2
 
 [node name="MainPanel" type="Panel" parent="Control/Panels"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -115,6 +115,12 @@ theme_type_variation = &"TitleScreenButton"
 disabled = true
 text = "Settings"
 
+[node name="InviteButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleScreenButton"
+text = "Invite a Friend"
+
 [node name="QuitButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -123,6 +129,7 @@ text = "Quit"
 
 [node name="PracticePanel" type="Panel" parent="Control/Panels"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,6 +199,66 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 icon = ExtResource("7_jb8j4")
 
+[node name="InvitePanel" type="Panel" parent="Control/Panels"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -100.0
+offset_right = 284.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/InvitePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -43.0
+offset_right = 136.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QRCode" type="TextureRect" parent="Control/Panels/InvitePanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+texture = ExtResource("8_gwpbi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Control/Panels/InvitePanel/VBoxContainer"]
+layout_mode = 2
+text = "Let them scan this QR code with their camera."
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panels/InvitePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="BackButton" type="Button" parent="Control/Panels/InvitePanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+icon = ExtResource("7_jb8j4")
+
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
@@ -235,8 +302,10 @@ text = "Build: build_label"
 stream = ExtResource("5_fiemo")
 
 [connection signal="pressed" from="Control/Panels/MainPanel/VBoxContainer/PracticeButton" to="." method="display_panel" binds= ["PracticePanel"]]
+[connection signal="pressed" from="Control/Panels/MainPanel/VBoxContainer/InviteButton" to="." method="display_panel" binds= ["InvitePanel"]]
 [connection signal="pressed" from="Control/Panels/MainPanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Control/Panels/PracticePanel/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Control/Panels/PracticePanel/MarginContainer/BackButton" to="." method="display_panel" binds= ["MainPanel"]]
+[connection signal="pressed" from="Control/Panels/InvitePanel/MarginContainer/BackButton" to="." method="display_panel" binds= ["MainPanel"]]
 [connection signal="pressed" from="Control/MarginContainer/HBoxContainer/VolumeButton" to="." method="_on_volume_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/HBoxContainer/ToggleFullscreenButton" to="." method="_on_toggle_fullscreen_button_pressed"]
