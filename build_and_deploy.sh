@@ -7,11 +7,12 @@
 GAME_NAME=meagre-tactics
 TARGET_FOLDER=~/Desktop
 GITHUB_PAGES_BRANCH=web
+SERVER=https://olhometro.vsti.dev/meagre-tactics
 
 TIME_STAMP=$(date -u +"%Y%m%d-%H%M%S")
 EXPORT_PATH=$TARGET_FOLDER/"$GAME_NAME"_"$TIME_STAMP"
 
-echo '{"build": "'$TIME_STAMP'"}' > metadata.json
+echo -e '{\n  "build": "'$TIME_STAMP'",\n  "server": "'$SERVER'"\n}' > metadata.json
 git add metadata.json
 git commit -m "build label updated to \"$TIME_STAMP\""
 git push
