@@ -14,6 +14,10 @@ app.use(cors({
   ]
 }))
 
+app.get("/", (c) => {
+  return c.redirect("health-check")
+})
+
 app.get("/health-check", (c) => {
   return c.json({
     status: "available",
