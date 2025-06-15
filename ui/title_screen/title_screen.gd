@@ -22,10 +22,8 @@ func _ready() -> void:
 	%MainPanel.show()
 
 func read_build_label() -> void:
-	var metadata_file: String = FileAccess.get_file_as_string("res://metadata.json")
-	var metadata: Dictionary = JSON.parse_string(metadata_file)
-	if metadata.build:
-		%BuildLabel.text = "Build: %s" % metadata.build
+	if Metadata.data.build:
+		%BuildLabel.text = "Build: %s" % Metadata.data.build
 
 func update_volume_button() -> void:
 	if GameState.background_music_player.playing:

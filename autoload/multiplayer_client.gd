@@ -1,10 +1,11 @@
 extends Node
 
-const BASE_API = "http://localhost:3000" 
+var BASE_API: String
 
 var offline_mode := true
 
 func _ready() -> void:
+	BASE_API = Metadata.data.server
 	test_connection()
 
 func test_connection() -> void:
@@ -19,6 +20,7 @@ func test_connection() -> void:
 				print("Unable to connect to server.")
 				return
 			
+			print("Connected to server.")
 			var json := JSON.new()
 			json.parse(body.get_string_from_utf8())
 			var response: Dictionary = json.get_data()
@@ -26,4 +28,6 @@ func test_connection() -> void:
 			if response["status"] == "available":
 				offline_mode = false
 	)
+	
+	print("Connecting to \"%s\"..." % BASE_API)
 	http_request.request("%s/health-check" % BASE_API)
