@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfr6ahl1msuvj"]
+[gd_scene format=3 uid="uid://bfr6ahl1msuvj"]
 
 [ext_resource type="Script" uid="uid://nr75bckfoxcl" path="res://unit/unit.gd" id="1_yopb6"]
 [ext_resource type="Material" uid="uid://bmo1xfx2vluua" path="res://unit/materials/red_material.tres" id="2_52lg3"]
@@ -21,7 +21,7 @@ top_radius = 0.165
 bottom_radius = 0.195
 height = 0.1
 
-[node name="Unit" type="CharacterBody3D"]
+[node name="Unit" type="CharacterBody3D" unique_id=64868052]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 collision_mask = 0
 input_ray_pickable = false
@@ -34,54 +34,54 @@ moving_sound = ExtResource("6_h8wnr")
 attacking_sound = ExtResource("7_e7okb")
 missing_attack_sound = ExtResource("8_dje8i")
 
-[node name="Model" parent="." instance=ExtResource("8_m3l7a")]
+[node name="Model" parent="." unique_id=1772906746 instance=ExtResource("8_m3l7a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 
-[node name="SoldierSword" parent="Model" index="2"]
+[node name="SoldierSword" parent="Model" index="2" unique_id=780030092]
 surface_material_override/1 = ExtResource("2_ov4dn")
 
-[node name="SoldierShield" parent="Model" index="3"]
+[node name="SoldierShield" parent="Model" index="3" unique_id=2140924080]
 surface_material_override/1 = ExtResource("2_ov4dn")
 
-[node name="MageHat" parent="Model" index="4"]
+[node name="MageHat" parent="Model" index="4" unique_id=771915600]
 visible = false
 surface_material_override/1 = ExtResource("2_ov4dn")
 
-[node name="MageRod" parent="Model" index="5"]
+[node name="MageRod" parent="Model" index="5" unique_id=867752227]
 visible = false
 surface_material_override/1 = ExtResource("2_ov4dn")
 
-[node name="DefaultModel" parent="." instance=ExtResource("5_xcfkg")]
+[node name="DefaultModel" parent="." unique_id=2032430564 instance=ExtResource("5_xcfkg")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=498528199]
 shape = SubResource("CapsuleShape3D_qi4j4")
 
-[node name="Headband" type="MeshInstance3D" parent="."]
+[node name="Headband" type="MeshInstance3D" parent="." unique_id=825810447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("CylinderMesh_2ifsu")
 surface_material_override/0 = ExtResource("2_ov4dn")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=876274028]
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1546640897]
 target_position = Vector3(0, -2, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Arrows" type="Node3D" parent="."]
+[node name="Arrows" type="Node3D" parent="." unique_id=576619971]
 visible = false
 
-[node name="FrontArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
+[node name="FrontArrow" parent="Arrows" unique_id=1827002798 instance=ExtResource("7_iw0nk")]
 
-[node name="BackArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
+[node name="BackArrow" parent="Arrows" unique_id=1169866289 instance=ExtResource("7_iw0nk")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="LeftArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
+[node name="LeftArrow" parent="Arrows" unique_id=1859684230 instance=ExtResource("7_iw0nk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="RightArrow" parent="Arrows" instance=ExtResource("7_iw0nk")]
+[node name="RightArrow" parent="Arrows" unique_id=1500700375 instance=ExtResource("7_iw0nk")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
 [connection signal="clicked" from="Arrows/FrontArrow" to="." method="_on_arrow_clicked"]

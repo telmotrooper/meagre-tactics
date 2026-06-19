@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvm1jrmyvxxbs"]
+[gd_scene format=3 uid="uid://cvm1jrmyvxxbs"]
 
 [ext_resource type="Script" uid="uid://dixlewqbc254l" path="res://autoload/material_manager.gd" id="1_d41ki"]
 [ext_resource type="Material" uid="uid://dkyn1hqn46ue6" path="res://tile/materials/tile.tres" id="2_i2lv1"]
@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://cj0bs40tto217" path="res://tile/materials/walk_tile.tres" id="3_k6wgi"]
 [ext_resource type="Material" uid="uid://s7hxboosx8bs" path="res://tile/materials/attack_tile.tres" id="4_uxwnw"]
 
-[node name="MaterialManager" type="Node"]
+[node name="MaterialManager" type="Node" unique_id=416691214]
 script = ExtResource("1_d41ki")
 tile_texture = ExtResource("2_u18o7")
 tile_material = ExtResource("2_i2lv1")
