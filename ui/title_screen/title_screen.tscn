@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu2f54i4tkcy7"]
+[gd_scene format=3 uid="uid://bu2f54i4tkcy7"]
 
 [ext_resource type="Script" uid="uid://c716snu00ka8k" path="res://ui/title_screen/title_screen.gd" id="1_cl6t8"]
 [ext_resource type="PackedScene" uid="uid://cm7b76vakvonu" path="res://game.tscn" id="2_ig3re"]
@@ -11,28 +11,28 @@
 [ext_resource type="Texture2D" uid="uid://bcp27bylc6jvd" path="res://ui/icons/chevron_left_solid_fontawesome.svg" id="7_jb8j4"]
 [ext_resource type="Texture2D" uid="uid://botwoal4dm8bv" path="res://ui/title_screen/qr_code.png" id="8_gwpbi"]
 
-[node name="TitleScreen" type="Node3D"]
+[node name="TitleScreen" type="Node3D" unique_id=257466096]
 script = ExtResource("1_cl6t8")
 practice_scene = ExtResource("2_ig3re")
 volume_on_icon = ExtResource("5_5c3bh")
 volume_off_icon = ExtResource("4_g8evf")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Node3D" type="Node3D" parent="." unique_id=1942181259]
 
-[node name="DungeonEntry" parent="Node3D" instance=ExtResource("3_e07mo")]
+[node name="DungeonEntry" parent="Node3D" unique_id=449489630 instance=ExtResource("3_e07mo")]
 
-[node name="Camera3D" type="Camera3D" parent="Node3D"]
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=766240931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5.1)
 current = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node3D" unique_id=1464059895]
 environment = ExtResource("4_3rylc")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Node3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=684185214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 1)
 omni_range = 8.0
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=65785988]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control" unique_id=250517246]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,7 +59,7 @@ text = "[center]Meagre Tactics[center]"
 fit_content = true
 autowrap_mode = 0
 
-[node name="Panels" type="Control" parent="Control"]
+[node name="Panels" type="Control" parent="Control" unique_id=697219581]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -69,7 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MainPanel" type="Panel" parent="Control/Panels"]
+[node name="MainPanel" type="Panel" parent="Control/Panels" unique_id=189778281]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -84,7 +84,7 @@ offset_bottom = 335.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/MainPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/MainPanel" unique_id=1163205685]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -98,36 +98,36 @@ offset_bottom = 34.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PracticeButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer"]
+[node name="PracticeButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer" unique_id=476895615]
 layout_mode = 2
 theme_type_variation = &"TitleScreenButton"
 text = "Practice"
 
-[node name="PlayOnlineButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer"]
+[node name="PlayOnlineButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer" unique_id=738228341]
 layout_mode = 2
 theme_type_variation = &"TitleScreenButton"
 disabled = true
 text = "Play Online"
 
-[node name="SettingsButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer" unique_id=913852206]
 layout_mode = 2
 theme_type_variation = &"TitleScreenButton"
 disabled = true
 text = "Settings"
 
-[node name="InviteButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer"]
+[node name="InviteButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer" unique_id=1955416675]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleScreenButton"
 text = "Invite a Friend"
 
-[node name="QuitButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="Control/Panels/MainPanel/VBoxContainer" unique_id=1624734606]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"TitleScreenButton"
 text = "Quit"
 
-[node name="PracticePanel" type="Panel" parent="Control/Panels"]
+[node name="PracticePanel" type="Panel" parent="Control/Panels" unique_id=1930700997]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -143,7 +143,7 @@ offset_bottom = 236.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/PracticePanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/PracticePanel" unique_id=1596059285]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -157,17 +157,17 @@ offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameType" type="VBoxContainer" parent="Control/Panels/PracticePanel/VBoxContainer"]
+[node name="GameType" type="VBoxContainer" parent="Control/Panels/PracticePanel/VBoxContainer" unique_id=2051479179]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/Panels/PracticePanel/VBoxContainer/GameType"]
+[node name="Label" type="Label" parent="Control/Panels/PracticePanel/VBoxContainer/GameType" unique_id=340018859]
 layout_mode = 2
 theme_type_variation = &"SubPanelLabel"
 text = "Game Type:
 "
 
-[node name="OptionButton" type="OptionButton" parent="Control/Panels/PracticePanel/VBoxContainer/GameType"]
+[node name="OptionButton" type="OptionButton" parent="Control/Panels/PracticePanel/VBoxContainer/GameType" unique_id=1039862378]
 layout_mode = 2
 theme_type_variation = &"SubPanelOptionButton"
 selected = 0
@@ -175,12 +175,12 @@ item_count = 1
 popup/item_0/text = "Local Player vs Player"
 popup/item_0/id = 0
 
-[node name="PlayButton" type="Button" parent="Control/Panels/PracticePanel/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="Control/Panels/PracticePanel/VBoxContainer" unique_id=633019275]
 layout_mode = 2
 theme_type_variation = &"SubPanelButton"
 text = "Play"
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panels/PracticePanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panels/PracticePanel" unique_id=106003283]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -193,13 +193,13 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="BackButton" type="Button" parent="Control/Panels/PracticePanel/MarginContainer"]
+[node name="BackButton" type="Button" parent="Control/Panels/PracticePanel/MarginContainer" unique_id=1751504995]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 icon = ExtResource("7_jb8j4")
 
-[node name="InvitePanel" type="Panel" parent="Control/Panels"]
+[node name="InvitePanel" type="Panel" parent="Control/Panels" unique_id=190816870]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -215,7 +215,7 @@ offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/InvitePanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panels/InvitePanel" unique_id=386389264]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -229,18 +229,18 @@ offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="QRCode" type="TextureRect" parent="Control/Panels/InvitePanel/VBoxContainer"]
+[node name="QRCode" type="TextureRect" parent="Control/Panels/InvitePanel/VBoxContainer" unique_id=1052972099]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 texture = ExtResource("8_gwpbi")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Control/Panels/InvitePanel/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/Panels/InvitePanel/VBoxContainer" unique_id=1778531208]
 layout_mode = 2
 text = "Let them scan this QR code with their camera."
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panels/InvitePanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panels/InvitePanel" unique_id=1758153186]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -253,13 +253,13 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="BackButton" type="Button" parent="Control/Panels/InvitePanel/MarginContainer"]
+[node name="BackButton" type="Button" parent="Control/Panels/InvitePanel/MarginContainer" unique_id=871053903]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 icon = ExtResource("7_jb8j4")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=508280613]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -268,12 +268,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=1913500135]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="VolumeButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+[node name="VolumeButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=679267737]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
@@ -282,7 +282,7 @@ tooltip_text = "Toggle Fullscreen"
 icon = ExtResource("5_5c3bh")
 icon_alignment = 1
 
-[node name="ToggleFullscreenButton" type="Button" parent="Control/MarginContainer/HBoxContainer"]
+[node name="ToggleFullscreenButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=1069681445]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
@@ -291,14 +291,14 @@ tooltip_text = "Toggle Fullscreen"
 icon = ExtResource("5_x7cjt")
 icon_alignment = 1
 
-[node name="BuildLabel" type="Label" parent="Control/MarginContainer"]
+[node name="BuildLabel" type="Label" parent="Control/MarginContainer" unique_id=1380048072]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Build: build_label"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control" unique_id=219577576]
 stream = ExtResource("5_fiemo")
 
 [connection signal="pressed" from="Control/Panels/MainPanel/VBoxContainer/PracticeButton" to="." method="display_panel" binds= ["PracticePanel"]]

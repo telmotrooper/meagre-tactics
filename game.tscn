@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cm7b76vakvonu"]
+[gd_scene format=3 uid="uid://cm7b76vakvonu"]
 
 [ext_resource type="Script" uid="uid://8bigf0i74aco" path="res://game.gd" id="1_2c1y3"]
 [ext_resource type="PackedScene" uid="uid://c7ss0ckdihwsf" path="res://board.tscn" id="2_qole7"]
@@ -11,120 +11,120 @@
 [ext_resource type="Environment" uid="uid://c51urvrfdavmr" path="res://default_environment.tres" id="8_7pww7"]
 [ext_resource type="PackedScene" uid="uid://djmy0eeab85si" path="res://ui/ui.tscn" id="8_aoq4e"]
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node3D" unique_id=303012632]
 script = ExtResource("1_2c1y3")
 
-[node name="Board" parent="." instance=ExtResource("2_qole7")]
+[node name="Board" parent="." unique_id=1314114061 instance=ExtResource("2_qole7")]
 
-[node name="Team1" type="Node" parent="Board"]
+[node name="Team1" type="Node" parent="Board" unique_id=1675716877]
 
-[node name="Unit" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit" parent="Board/Team1" unique_id=1130829186 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1, -4)
 unit_type = ExtResource("5_xf31b")
-current_hp = 10
+current_hp = 15
 
-[node name="Unit2" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit2" parent="Board/Team1" unique_id=1632835609 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, -3)
 unit_type = ExtResource("4_yo8fj")
 current_hp = 10
 
-[node name="Unit3" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit3" parent="Board/Team1" unique_id=1962024715 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, -2)
 
-[node name="Unit4" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit4" parent="Board/Team1" unique_id=131405001 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1, -1)
 
-[node name="Unit5" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit5" parent="Board/Team1" unique_id=1160414285 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1, 0)
 
-[node name="Unit6" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit6" parent="Board/Team1" unique_id=1303664092 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1, 0)
 
-[node name="Unit7" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit7" parent="Board/Team1" unique_id=984180682 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1, 1)
 
-[node name="Unit8" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit8" parent="Board/Team1" unique_id=1128366975 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, 2)
 
-[node name="Unit9" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit9" parent="Board/Team1" unique_id=1012557919 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, 3)
 unit_type = ExtResource("4_yo8fj")
 current_hp = 10
 
-[node name="Unit10" parent="Board/Team1" instance=ExtResource("4_p2ii1")]
+[node name="Unit10" parent="Board/Team1" unique_id=71773183 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 1, 4)
 unit_type = ExtResource("5_xf31b")
-current_hp = 10
+current_hp = 15
 
-[node name="Team2" type="Node" parent="Board"]
+[node name="Team2" type="Node" parent="Board" unique_id=1457225455]
 
-[node name="Unit" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit" parent="Board/Team2" unique_id=1829607942 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3, 1, -4)
 team_color = "red"
 unit_type = ExtResource("5_xf31b")
-current_hp = 10
+current_hp = 15
 
-[node name="Unit2" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit2" parent="Board/Team2" unique_id=331768352 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, -3)
 team_color = "red"
 unit_type = ExtResource("4_yo8fj")
 current_hp = 10
 
-[node name="Unit3" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit3" parent="Board/Team2" unique_id=1999595313 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, -2)
 team_color = "red"
 
-[node name="Unit4" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit4" parent="Board/Team2" unique_id=2382726 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3, 1, -1)
 team_color = "red"
 
-[node name="Unit5" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit5" parent="Board/Team2" unique_id=1864834478 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3, 1, -2.18557e-08)
 team_color = "red"
 
-[node name="Unit6" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit6" parent="Board/Team2" unique_id=1595790415 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 5, 1, 6.55671e-08)
 team_color = "red"
 
-[node name="Unit7" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit7" parent="Board/Team2" unique_id=1888767546 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3, 1, 1)
 team_color = "red"
 
-[node name="Unit8" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit8" parent="Board/Team2" unique_id=1341091736 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, 2)
 team_color = "red"
 
-[node name="Unit9" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit9" parent="Board/Team2" unique_id=515144812 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 4, 1, 3)
 team_color = "red"
 unit_type = ExtResource("4_yo8fj")
 current_hp = 10
 
-[node name="Unit10" parent="Board/Team2" instance=ExtResource("4_p2ii1")]
+[node name="Unit10" parent="Board/Team2" unique_id=2057768123 instance=ExtResource("4_p2ii1")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3, 1, 4)
 team_color = "red"
 unit_type = ExtResource("5_xf31b")
-current_hp = 10
+current_hp = 15
 
-[node name="CameraPivot" type="Node3D" parent="."]
+[node name="CameraPivot" type="Node3D" parent="." unique_id=52861645]
 script = ExtResource("5_xqxay")
 sound_effect_left = ExtResource("6_b454t")
 sound_effect_right = ExtResource("7_byk71")
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1320101612]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 3, 4.5, 3)
 projection = 1
 size = 11.0
 
-[node name="DirectionalLight3DFront" type="DirectionalLight3D" parent="CameraPivot"]
+[node name="DirectionalLight3DFront" type="DirectionalLight3D" parent="CameraPivot" unique_id=801843030]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 4, 5, 4)
 light_energy = 0.5
 
-[node name="DirectionalLight3DBack" type="DirectionalLight3D" parent="CameraPivot"]
+[node name="DirectionalLight3DBack" type="DirectionalLight3D" parent="CameraPivot" unique_id=1949266807]
 transform = Transform3D(-0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, 0.5, -0.5, -4, 5, -4)
 light_energy = 0.5
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=648996133]
 environment = ExtResource("8_7pww7")
 
-[node name="UI" parent="." instance=ExtResource("8_aoq4e")]
+[node name="UI" parent="." unique_id=411723041 instance=ExtResource("8_aoq4e")]

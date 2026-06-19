@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://brc2s1pdg7hdb"]
+[gd_resource type="Theme" format=3 uid="uid://brc2s1pdg7hdb"]
 
 [ext_resource type="FontFile" uid="uid://c05l6327icab2" path="res://ui/fonts/black_chancery.ttf" id="1_urdoo"]
 [ext_resource type="StyleBox" uid="uid://dxaramdl7rorx" path="res://ui/progress_bar_fill.tres" id="1_ygn05"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cys55hkbt2xbd"]
+[gd_scene format=3 uid="uid://cys55hkbt2xbd"]
 
 [ext_resource type="Script" uid="uid://ds1fkf432pi12" path="res://tile/tile.gd" id="2_hh2o7"]
 [ext_resource type="Script" uid="uid://dcijy0c87ty7s" path="res://tile/tile_area3d.gd" id="5_o0p71"]
@@ -7,48 +7,48 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_oybon"]
 size = Vector3(1, 0.5, 1)
 
-[node name="Tile" type="CSGBox3D" groups=["tiles"]]
+[node name="Tile" type="CSGBox3D" unique_id=1362269409 groups=["tiles"]]
 size = Vector3(1, 0.5, 1)
 material = ExtResource("7_6penk")
 script = ExtResource("2_hh2o7")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1709225260]
 collision_layer = 2
 collision_mask = 0
 monitoring = false
 script = ExtResource("5_o0p71")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1992376045]
 shape = SubResource("BoxShape3D_oybon")
 
-[node name="UnitDetector" type="RayCast3D" parent="."]
+[node name="UnitDetector" type="RayCast3D" parent="." unique_id=1103983378]
 unique_name_in_owner = true
 visible = false
 target_position = Vector3(0, 1, 0)
 
-[node name="RayCasts" type="Node3D" parent="."]
+[node name="RayCasts" type="Node3D" parent="." unique_id=774417446]
 unique_name_in_owner = true
 visible = false
 
-[node name="TopRayCast3D" type="RayCast3D" parent="RayCasts"]
+[node name="TopRayCast3D" type="RayCast3D" parent="RayCasts" unique_id=18065795]
 target_position = Vector3(0, 0, -1)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="DownRayCast3D" type="RayCast3D" parent="RayCasts"]
+[node name="DownRayCast3D" type="RayCast3D" parent="RayCasts" unique_id=733006703]
 target_position = Vector3(0, 0, 1)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="LeftRayCast3D" type="RayCast3D" parent="RayCasts"]
+[node name="LeftRayCast3D" type="RayCast3D" parent="RayCasts" unique_id=670895995]
 target_position = Vector3(-1, 0, 0)
 collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="RightRayCast3D" type="RayCast3D" parent="RayCasts"]
+[node name="RightRayCast3D" type="RayCast3D" parent="RayCasts" unique_id=1574095757]
 target_position = Vector3(1, 0, 0)
 collision_mask = 2
 collide_with_areas = true

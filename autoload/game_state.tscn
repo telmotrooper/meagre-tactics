@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpcaw8n28awfh"]
+[gd_scene format=3 uid="uid://cpcaw8n28awfh"]
 
 [ext_resource type="Script" uid="uid://pkq26mruuhfh" path="res://autoload/game_state.gd" id="1_rsbb3"]
 [ext_resource type="AudioStream" uid="uid://yuxwjfottcan" path="res://sounds/i_know_im_nothing_biiansu_zapsplat.mp3" id="3_d4lek"]
 [ext_resource type="AudioStream" uid="uid://bxb31b4oit2rp" path="res://sounds/alarm_clock_button_press_zapsplat.mp3" id="4_o0rgv"]
 
-[node name="GameState" type="Node"]
+[node name="GameState" type="Node" unique_id=1760673106]
 script = ExtResource("1_rsbb3")
 end_turn_sound = ExtResource("4_o0rgv")
 
-[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1520881824]
 stream = ExtResource("3_d4lek")
 autoplay = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=475793851]
 max_polyphony = 2
